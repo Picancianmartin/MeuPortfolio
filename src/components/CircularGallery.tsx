@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Renderer, Camera, Transform, Program, Mesh, Texture, Vec2 } from 'ogl';
+import { Renderer, Camera, Transform, Program, Mesh, Texture, Vec2, Geometry } from 'ogl';
 
 interface CircularGalleryProps {
   items: Array<{ image: string; text: string }>;
@@ -97,7 +97,7 @@ class Title {
   createMesh() {
     const aspect = 4;
     
-    this.geometry = {
+    this.geometry = new Geometry(this.gl, {
       position: { size: 3, data: new Float32Array([
         -aspect, -1, 0,
         aspect, -1, 0,
@@ -111,7 +111,7 @@ class Title {
         1, 0,
       ])},
       index: { data: new Uint16Array([0, 1, 2, 1, 3, 2]) },
-    };
+    });
 
     this.program = new Program(this.gl, {
       vertex: `
@@ -217,7 +217,7 @@ class Media {
   }
 
   createMesh() {
-    this.geometry = {
+    this.geometry = new Geometry(this.gl, {
       position: { size: 3, data: new Float32Array([
         -this.width / 2, -this.height / 2, 0,
         this.width / 2, -this.height / 2, 0,
@@ -231,7 +231,7 @@ class Media {
         1, 0,
       ])},
       index: { data: new Uint16Array([0, 1, 2, 1, 3, 2]) },
-    };
+    });
 
     this.program = new Program(this.gl, {
       vertex: `
@@ -374,6 +374,7 @@ class App {
     this.createCamera();
     this.createScene();
     this.createMedias();
+    this.onResize();
     this.addEventListeners();
     this.update();
   }
@@ -386,7 +387,6 @@ class App {
     this.gl = this.renderer.gl;
     this.gl.clearColor(0, 0, 0, 0);
     this.container.appendChild(this.gl.canvas);
-    this.onResize();
   }
 
   createCamera() {
@@ -414,19 +414,28 @@ class App {
   }
 
   onResize() {
-    this.renderer.setSize(this.container.offsetWidth, this.container.offsetHeight);
+    if (!this.renderer || !this.camera || !this.gl) return;
+    
+    const width = this.container.offsetWidth;
+    const height = this.container.offsetHeight;
+    
+    this.renderer.setSize(width, height);
+    
+    const aspect = width / height;
     this.camera.perspective({
-      aspect: this.gl.canvas.width / this.gl.canvas.height,
+      aspect: aspect,
     });
 
     const fov = this.camera.fov * (Math.PI / 180);
-    const height = 2 * Math.tan(fov / 2) * this.camera.position.z;
-    const width = height * this.camera.aspect;
+    const viewHeight = 2 * Math.tan(fov / 2) * this.camera.position.z;
+    const viewWidth = viewHeight * aspect;
 
-    this.medias.forEach((media) => {
-      media.width = width / 4;
-      media.height = (width / 4) * 1.33;
-    });
+    if (this.medias && this.medias.length > 0) {
+      this.medias.forEach((media) => {
+        media.width = viewWidth / 4;
+        media.height = (viewWidth / 4) * 1.33;
+      });
+    }
   }
 
   onTouchDown(e: TouchEvent | MouseEvent) {
@@ -505,7 +514,11 @@ class App {
       media.update(this.scroll.current, this.speed.current, this.time, this.bend);
     });
 
-    this.renderer.render({ scene: this.scene, camera: this.camera });
+    this.renderer.render({ 
+      scene: this.scene, 
+      camera: this.camera,
+      frustumCull: false,
+    });
     requestAnimationFrame(this.update);
   }
 
