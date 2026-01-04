@@ -27,6 +27,8 @@ function lerp(start: number, end: number, t: number) {
   return start * (1 - t) + end * t;
 }
 
+// Automatically bind all methods to the instance
+// Note: This is called only once in the constructor, so performance impact is minimal
 function autoBind(instance: any) {
   const proto = Object.getPrototypeOf(instance);
   const propertyNames = Object.getOwnPropertyNames(proto);
@@ -45,7 +47,12 @@ function getFontSize(font: string): number {
 
 function createTextTexture(text: string, font: string, color: string): HTMLCanvasElement {
   const canvas = document.createElement('canvas');
-  const ctx = canvas.getContext('2d')!;
+  const ctx = canvas.getContext('2d');
+  
+  if (!ctx) {
+    throw new Error('Could not get 2D context from canvas');
+  }
+  
   const fontSize = getFontSize(font);
   
   canvas.width = 512;
