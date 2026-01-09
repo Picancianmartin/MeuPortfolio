@@ -1,16 +1,18 @@
 import React from 'react';
 import image_placeholder from '../assets/placeholder.jpg';
+import imageMedFlow from '../assets/MedFlowCapa.png';
 import { Github, ExternalLink } from 'lucide-react';
 
 export function Projects() {
   const projects = [
     {
-      title: 'E-commerce Platform',
-      description: 'Plataforma completa de e-commerce com carrinho, pagamentos e gestão de produtos.',
-      image: image_placeholder,
-      tags: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
-      github: 'https://github.com',
-      demo: 'https://demo.com',
+      title: "MedFlow",
+      image: imageMedFlow,
+      description:
+        "App iOS para organizar remédios por nome ou sintoma, sugerir horários/dias e enviar lembretes com controle de tomada (tomado/não tomado).",
+      tags: ["Swift", "SwiftUI", "Xcode", "iOS"],
+      github: "https://github.com/Picancianmartin/MedFlowiOS.git",
+      demo: "https://github.com/SEU-USUARIO/medflow#demo"
     },
     {
       title: 'Task Management App',
