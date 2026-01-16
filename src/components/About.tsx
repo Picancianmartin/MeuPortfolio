@@ -57,7 +57,7 @@ export function About() {
           </div>
 
           <div className="space-y-6">
-            <p className="text-lg text-text-secondary -mt-40 lg:mt-0 leading-relaxed">
+            <p className="text-lg text-text-secondary -mt-10 lg:mt-0 leading-relaxed">
               Como ex-atleta profissional com 8 anos de experiência, entendi que
               o sucesso é fruto de dedicação, colaboração e superação de
               limites. Minha jornada me ensinou o real significado de liderança,
