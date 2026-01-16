@@ -8,7 +8,7 @@ export function Hero() {
       id="home"
       className="min-h-screen bg-surface-primary flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16"
     >
-      <div className="max-w-7xl mx-auto -mt-40 lg:mt-0 w-full">
+      <div className="max-w-7xl mx-auto -mt-10 lg:mt-0 w-full">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Text Content */}
           <div className="text-center lg:text-left space-y-5">
