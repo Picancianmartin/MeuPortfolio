@@ -107,41 +107,37 @@ export const CircularProjectGallery = ({
     if (autoplayRef.current) clearInterval(autoplayRef.current);
   }, [itemsLength]);
 
-  // ... seus outros estados (currentIndex, etc)
+  // --- Lógica de Swipe Mobile (Corrigida) ---
+const minSwipeDistance = 50;
+const touchStartX = useRef<number | null>(null);
+const touchEndX = useRef<number | null>(null);
 
-  const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+const onTouchStart = (e: React.TouchEvent) => {
+  touchEndX.current = null; // Reseta o fim
+  touchStartX.current = e.targetTouches[0].clientX;
+};
 
-  // O quanto o usuário precisa arrastar para considerar um "swipe" (em pixels)
-  const minSwipeDistance = 50;
+const onTouchMove = (e: React.TouchEvent) => {
+  touchEndX.current = e.targetTouches[0].clientX;
+};
 
-  const onTouchStart = (e: React.TouchEvent) => {
-    setTouchEnd(null); // Reseta o fim para evitar bugs
-    setTouchStart(e.targetTouches[0].clientX);
-  };
+const onTouchEnd = () => {
+  if (!touchStartX.current || !touchEndX.current) return;
 
-  const onTouchMove = (e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
+  const distance = touchStartX.current - touchEndX.current;
+  const isLeftSwipe = distance > minSwipeDistance;
+  const isRightSwipe = distance < -minSwipeDistance;
 
-  const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > minSwipeDistance;
-    const isRightSwipe = distance < -minSwipeDistance;
-
-    if (isLeftSwipe) {
-      // Arrastou para a esquerda -> Próximo Projeto
-      nextProject(); // Chame aqui sua função de avançar
-    }
-
-    if (isRightSwipe) {
-      // Arrastou para a direita -> Projeto Anterior
-      prevProject(); // Chame aqui sua função de voltar
-    }
-  };
-
+  if (isLeftSwipe) {
+    // Arrastou para a Esquerda (Próximo)
+    handleNext(); // Use a função que avança o projeto
+  }
+  
+  if (isRightSwipe) {
+    // Arrastou para a Direita (Anterior)
+    handlePrev(); // Use a função que volta o projeto
+  }
+};
   // --- Lógica 3D e Estilos das Imagens ---
   function getImageStyle(index: number): React.CSSProperties {
     const gap = calculateGap(containerWidth);
@@ -204,7 +200,7 @@ export const CircularProjectGallery = ({
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         {/* --- COLUNA ESQUERDA: CARROSSEL 3D --- */}
         <div
-          className="relative w-full h-[350px] md:h-[450px] flex items-center justify-center"
+          className="relative w-full h-[350px] md:h-[450px] flex items-center justify-center touch-pan-y"
           style={{ perspective: "1000px" }}
           ref={imageContainerRef}
           onTouchStart={onTouchStart}
