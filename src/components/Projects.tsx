@@ -51,23 +51,23 @@ export function Projects() {
   ];
 
   return (
-    <section id="projects" className="py-20 bg-gray-50 bg-surface-primary min-h-screen flex flex-col justify-center overflow-hidden relative transition-colors duration-300">
+    <section id="projects" className="py-16 sm:py-20 bg-gray-50 bg-surface-primary min-h-screen flex flex-col justify-center overflow-hidden relative transition-colors duration-300">
       
       {/* Background Decorativo Cyberpunk */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full pointer-events-none">
-        <div className="absolute top-[10%] left-[10%] w-96 h-96 bg-neon-purple/10 rounded-full blur-[100px]" />
-        <div className="absolute bottom-[10%] right-[10%] w-96 h-96 bg-neon-blue/10 rounded-full blur-[100px]" />
+        <div className="absolute top-[10%] left-[10%] w-64 sm:w-96 h-64 sm:h-96 bg-neon-purple/10 rounded-full blur-[100px]" />
+        <div className="absolute bottom-[10%] right-[10%] w-64 sm:w-96 h-64 sm:h-96 bg-neon-blue/10 rounded-full blur-[100px]" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
         
         {/* Cabeçalho */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl gradient-tesxt md:text-5xl font-bold text-gray-900 dark:text-white mb-6 transition-colors duration-300">
+        <div className="text-center mb-10 sm:mb-12 lg:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 transition-colors duration-300">
             Projetos <span className="bg-gradient-to-r from-neon-purple via-neon-blue to-neon-yellow bg-clip-text text-transparent"></span>
           </h2>
-          <div className="w-20 h-1 bg-brand-primary mx-auto mb-5"></div>
-          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg transition-colors duration-300 space-y-8">
+          <div className="w-20 h-1 bg-brand-primary mx-auto mb-4 sm:mb-5"></div>
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-base sm:text-lg transition-colors duration-300 space-y-8">
             Navegue pela galeria circular para explorar os detalhes de cada aplicação.
           </p>
         </div>

@@ -147,12 +147,12 @@ export function Contact() {
       {/* --- SEÇÃO DE CONTATO --- */}
       <section
         id="contact"
-        className="py-32 px-4 sm:px-6 lg:px-8 bg-surface-primary"
+        className="py-20 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-surface-primary"
       >
         {/* TOAST NOTIFICATION */}
         {toast && (
           <div
-            className="fixed top-6 right-6 z-[9999] w-[calc(100%-3rem)] sm:w-[420px]"
+            className="fixed top-4 sm:top-6 right-4 sm:right-6 z-[9999] w-[calc(100%-2rem)] sm:w-[420px]"
             aria-live="polite"
           >
             <div
@@ -208,9 +208,9 @@ export function Contact() {
 
         <div className="max-w-7xl mx-auto">
           {/* Header da Seção */}
-          <div className="text-center mb-20">
+          <div className="text-center mb-12 sm:mb-16 lg:mb-20">
             <h2
-              className="text-3xl sm:text-4xl font-bold text-text-primary mb-4"
+              className="text-2xl sm:text-3xl lg:text-4xl font-bold text-text-primary mb-4"
               style={{
                 fontFamily: "Space Grotesk, sans-serif",
                 letterSpacing: "-0.01em",
@@ -219,50 +219,50 @@ export function Contact() {
               Entre em Contato
             </h2>
             <div className="w-20 h-1 bg-brand-primary mx-auto"></div>
-            <p className="text-lg text-text-secondary mt-6 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg text-text-secondary mt-4 sm:mt-6 max-w-2xl mx-auto">
               Estou sempre aberta a novas oportunidades e colaborações
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12">
             {/* Esquerda: Informações de Contato */}
-            <div className="space-y-8">
+            <div className="space-y-6 sm:space-y-8">
               <div>
                 <h3
-                  className="text-2xl font-bold text-text-primary mb-4"
+                  className="text-xl sm:text-2xl font-bold text-text-primary mb-3 sm:mb-4"
                   style={{ fontFamily: "Space Grotesk, sans-serif" }}
                 >
                   Vamos conversar!
                 </h3>
-                <p className="text-text-secondary leading-relaxed mb-8">
+                <p className="text-text-secondary leading-relaxed mb-6 sm:mb-8 text-sm sm:text-base">
                   Se você está procurando uma desenvolvedora dedicada e
                   apaixonada por tecnologia, ficarei feliz em conversar sobre como
                   posso contribuir para seu projeto ou equipe.
                 </p>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 {contactInfo.map((item, index) => (
                   <div
                     key={index}
-                    className="flex items-start gap-4 p-6 bg-surface-elevated rounded-xl border border-brand-primary/20 hover:border-brand-primary/50 transition-all glass-effect glow-purple-hover"
+                    className="flex items-start gap-3 sm:gap-4 p-4 sm:p-6 bg-surface-elevated rounded-xl border border-brand-primary/20 hover:border-brand-primary/50 transition-all glass-effect glow-purple-hover"
                   >
-                    <div className="p-3 bg-brand-primary/10 rounded-lg border border-brand-primary/20">
-                      <item.icon className="text-brand-primary" size={24} />
+                    <div className="p-2 sm:p-3 bg-brand-primary/10 rounded-lg border border-brand-primary/20 flex-shrink-0">
+                      <item.icon className="text-brand-primary" size={20} />
                     </div>
                     <div>
-                      <h4 className="text-text-primary font-bold mb-1">
+                      <h4 className="text-text-primary font-bold mb-1 text-sm sm:text-base">
                         {item.title}
                       </h4>
                       {item.link ? (
                         <a
                           href={item.link}
-                          className="text-text-secondary hover:text-brand-primary transition-colors"
+                          className="text-text-secondary hover:text-brand-primary transition-colors text-xs sm:text-sm break-all"
                         >
                           {item.value}
                         </a>
                       ) : (
-                        <p className="text-text-secondary">{item.value}</p>
+                        <p className="text-text-secondary text-xs sm:text-sm">{item.value}</p>
                       )}
                     </div>
                   </div>
@@ -271,17 +271,17 @@ export function Contact() {
             </div>
 
             {/* Direita: Formulário */}
-            <div className="bg-surface-elevated rounded-xl p-8 border border-brand-primary/20 glass-effect">
+            <div className="bg-surface-elevated rounded-xl p-6 sm:p-8 border border-brand-primary/20 glass-effect">
               <form
                 key={formKey}
                 onSubmit={handleSubmit}
                 autoComplete="off"
-                className="space-y-6"
+                className="space-y-4 sm:space-y-6"
               >
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-text-primary font-medium mb-2"
+                    className="block text-text-primary font-medium mb-2 text-sm sm:text-base"
                   >
                     Nome
                   </label>
@@ -293,7 +293,7 @@ export function Contact() {
                     onChange={handleChange}
                     required
                     disabled={isLoading}
-                    className="w-full px-4 py-3 bg-[var(--input-background)] border border-brand-primary/20 rounded-lg text-text-primary placeholder-text-secondary focus:outline-none focus:border-brand-primary transition-all disabled:opacity-50"
+                    className="w-full px-4 py-3 text-sm sm:text-base bg-[var(--input-background)] border border-brand-primary/20 rounded-lg text-text-primary placeholder-text-secondary focus:outline-none focus:border-brand-primary transition-all disabled:opacity-50 min-h-[44px]"
                     placeholder="Seu nome"
                   />
                 </div>
@@ -301,7 +301,7 @@ export function Contact() {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-text-primary font-medium mb-2"
+                    className="block text-text-primary font-medium mb-2 text-sm sm:text-base"
                   >
                     Email
                   </label>
@@ -313,7 +313,7 @@ export function Contact() {
                     onChange={handleChange}
                     required
                     disabled={isLoading}
-                    className="w-full px-4 py-3 bg-[var(--input-background)] border border-brand-primary/20 rounded-lg text-text-primary placeholder-text-secondary focus:outline-none focus:border-brand-primary transition-all disabled:opacity-50"
+                    className="w-full px-4 py-3 text-sm sm:text-base bg-[var(--input-background)] border border-brand-primary/20 rounded-lg text-text-primary placeholder-text-secondary focus:outline-none focus:border-brand-primary transition-all disabled:opacity-50 min-h-[44px]"
                     placeholder="seu@email.com"
                     autoCapitalize="none"
                     autoCorrect="off"
@@ -325,7 +325,7 @@ export function Contact() {
                 <div>
                   <label
                     htmlFor="subject"
-                    className="block text-text-primary font-medium mb-2"
+                    className="block text-text-primary font-medium mb-2 text-sm sm:text-base"
                   >
                     Assunto
                   </label>
@@ -337,7 +337,7 @@ export function Contact() {
                     onChange={handleChange}
                     required
                     disabled={isLoading}
-                    className="w-full px-4 py-3 bg-[var(--input-background)] border border-brand-primary/20 rounded-lg text-text-primary placeholder-text-secondary focus:outline-none focus:border-brand-primary transition-all disabled:opacity-50"
+                    className="w-full px-4 py-3 text-sm sm:text-base bg-[var(--input-background)] border border-brand-primary/20 rounded-lg text-text-primary placeholder-text-secondary focus:outline-none focus:border-brand-primary transition-all disabled:opacity-50 min-h-[44px]"
                     placeholder="Assunto da mensagem"
                   />
                 </div>
@@ -345,7 +345,7 @@ export function Contact() {
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-text-primary font-medium mb-2"
+                    className="block text-text-primary font-medium mb-2 text-sm sm:text-base"
                   >
                     Mensagem
                   </label>
@@ -357,7 +357,7 @@ export function Contact() {
                     required
                     disabled={isLoading}
                     rows={5}
-                    className="w-full px-4 py-3 bg-[var(--input-background)] border border-brand-primary/20 rounded-lg text-text-primary placeholder-text-secondary transition-all focus:outline-none focus:border-brand-primary resize-none disabled:opacity-50"
+                    className="w-full px-4 py-3 text-sm sm:text-base bg-[var(--input-background)] border border-brand-primary/20 rounded-lg text-text-primary placeholder-text-secondary transition-all focus:outline-none focus:border-brand-primary resize-none disabled:opacity-50"
                     placeholder="Sua mensagem..."
                   />
                 </div>
@@ -366,11 +366,11 @@ export function Contact() {
                   type="submit"
                   disabled={isLoading}
                   aria-busy={isLoading}
-                  className={`w-full px-8 py-4 font-bold rounded-lg transition-all
-                  flex items-center justify-center gap-3 shadow-lg hover:shadow-xl hover:scale-105
+                  className={`w-full px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold rounded-lg transition-all
+                  flex items-center justify-center gap-2 sm:gap-3 shadow-lg hover:shadow-xl hover:scale-105
                   disabled:opacity-80 disabled:cursor-not-allowed
                   bg-accent-cta hover:bg-accent-cta/90 text-white
-                  relative overflow-hidden`}
+                  relative overflow-hidden min-h-[44px]`}
                 >
                   {isLoading && (
                     <span
@@ -406,18 +406,18 @@ export function Contact() {
       </section>
 
       {/* --- RODAPÉ (FOOTER) --- */}
-<footer className="bg-zinc-50 dark:bg-[#0f172a] border-t border-zinc-200 dark:border-white/10 pt-12 pb-8 transition-colors duration-300">
+<footer className="bg-zinc-50 dark:bg-[#0f172a] border-t border-zinc-200 dark:border-white/10 pt-8 sm:pt-10 lg:pt-12 pb-6 sm:pb-8 transition-colors duration-300">
   <div className="max-w-7xl mx-auto px-4">
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
       
       {/* 1. Identidade */}
-      <div className="col-span-1 md:col-span-2">
-        <h3 className="text-2xl font-bold text-zinc-900 dark:text-white mb-4 transition-colors">
+      <div className="col-span-1 sm:col-span-2">
+        <h3 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-white mb-3 sm:mb-4 transition-colors">
           Pietra Cancian Martin
           {/* O ponto usa a cor da marca (Cyan/Azul) adaptada para leitura */}
           <span className="text-cyan-600 dark:text-cyan-400">.</span>
         </h3>
-        <p className="text-zinc-600 dark:text-zinc-400 max-w-sm transition-colors">
+        <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 max-w-sm transition-colors">
           Desenvolvedora focada em criar experiências digitais únicas e
           funcionais.
         </p>
@@ -425,10 +425,10 @@ export function Contact() {
 
       {/* 2. Links Rápidos */}
       <div>
-        <h4 className="text-zinc-900 dark:text-white font-semibold mb-4 transition-colors">
+        <h4 className="text-zinc-900 dark:text-white font-semibold mb-3 sm:mb-4 text-sm sm:text-base transition-colors">
           Navegação
         </h4>
-        <ul className="space-y-2">
+        <ul className="space-y-1.5 sm:space-y-2">
           {['Início', 'Sobre', 'Habilidades', 'Projetos', 'Contato'].map((item) => {
              // Mapeamento simples para hrefs
              const hrefs: Record<string, string> = {
@@ -439,7 +439,7 @@ export function Contact() {
               <li key={item}>
                 <a
                   href={hrefs[item]}
-                  className="text-zinc-600 dark:text-zinc-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"
+                  className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors inline-block py-1"
                 >
                   {item}
                 </a>
@@ -451,10 +451,10 @@ export function Contact() {
 
       {/* 3. Redes Sociais */}
       <div>
-        <h4 className="text-zinc-900 dark:text-white font-semibold mb-4 transition-colors">
+        <h4 className="text-zinc-900 dark:text-white font-semibold mb-3 sm:mb-4 text-sm sm:text-base transition-colors">
           Conecte-se
         </h4>
-        <div className="flex gap-4">
+        <div className="flex gap-3 sm:gap-4">
           {[
             { Icon: Github, href: "https://github.com/Picancianmartin", label: "GitHub" },
             { Icon: Linkedin, href: "https://linkedin.com/in/pietra-cancian-martin", label: "LinkedIn" },
@@ -465,13 +465,13 @@ export function Contact() {
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full transition-all duration-300
+              className="p-2.5 rounded-full transition-all duration-300 min-w-[44px] min-h-[44px] flex items-center justify-center
                          bg-zinc-200 dark:bg-white/5 
                          text-zinc-700 dark:text-zinc-400
                          hover:bg-cyan-500 hover:text-white dark:hover:bg-cyan-500 dark:hover:text-white"
               aria-label={label}
             >
-              <Icon size={20} />
+              <Icon size={18} className="sm:w-5 sm:h-5" />
             </a>
           ))}
         </div>
@@ -479,20 +479,20 @@ export function Contact() {
     </div>
 
     {/* Linha Divisória */}
-    <div className="border-t border-zinc-200 dark:border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 transition-colors">
-      <p className="text-zinc-500 dark:text-zinc-500 text-sm text-center md:text-left">
+    <div className="border-t border-zinc-200 dark:border-white/10 pt-6 sm:pt-8 flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4 transition-colors">
+      <p className="text-zinc-500 dark:text-zinc-500 text-xs sm:text-sm text-center md:text-left">
         © {currentYear} Pietra Martin. Todos os direitos reservados.
       </p>
 
-      <div className="flex items-center gap-6">
-        <span className="text-zinc-500 text-sm hidden md:block">
+      <div className="flex items-center gap-4 sm:gap-6">
+        <span className="text-zinc-500 text-xs sm:text-sm hidden md:block">
           Feito com React & Tailwind CSS
         </span>
 
         {/* Botão Voltar ao Topo */}
         <button
           onClick={scrollToTop}
-          className="p-2 rounded-lg transition-all duration-300 group
+          className="p-2.5 rounded-lg transition-all duration-300 group min-w-[44px] min-h-[44px] flex items-center justify-center
                      bg-zinc-200 dark:bg-white/5 
                      text-zinc-700 dark:text-zinc-400
                      hover:bg-cyan-500 hover:text-white"

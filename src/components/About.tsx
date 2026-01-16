@@ -26,16 +26,16 @@ export function About() {
   ];
 
   return (
-    <section id="about" className="py-32 px-4 sm:px-6 lg:px-8 bg-surface-primary">
+    <section id="about" className="py-20 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-surface-primary">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-20">
-          <h2 className="text-3xl sm:text-4xl font-bold text-text-primary mb-4 " style={{ fontFamily: 'Space Grotesk, sans-serif', letterSpacing: '-0.01em' }}>Sobre Mim</h2>
+        <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-text-primary mb-4 " style={{ fontFamily: 'Space Grotesk, sans-serif', letterSpacing: '-0.01em' }}>Sobre Mim</h2>
           <div className="w-20 h-1 bg-brand-primary mx-auto"></div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
           <div>
-            <div className="relative glow-purple-hover w-full aspect-square max-w-lg mx-auto ">
+            <div className="relative glow-purple-hover w-full aspect-square max-w-sm sm:max-w-md lg:max-w-lg mx-auto ">
 
               <div className="absolute inset-0 bg-brand-primary/20 rounded-2xl blur-3xl"></div>
               <img
@@ -46,9 +46,9 @@ export function About() {
             </div>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             
-            <p className="text-lg text-text-secondary leading-relaxed">
+            <p className="text-base sm:text-lg text-text-secondary leading-relaxed">
             Como ex-atleta profissional com 8 anos de experiência, 
             entendi que o sucesso é fruto de dedicação, colaboração e superação de limites. 
             Minha jornada me ensinou o real significado de liderança, trabalho em equipe e resiliência sob pressão. 
@@ -57,15 +57,15 @@ export function About() {
             usando a mentalidade de um atleta para superar limites e contribuir com o avanço e a inovação tecnológica.
             </p>
 
-            <div className="grid sm:grid-cols-2 gap-4 pt-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-2 sm:pt-4">
               {highlights.map((item, index) => (
                 <div
                   key={index}
-                  className="p-6 bg-surface-elevated rounded-xl border border-brand-primary/20 hover:border-brand-primary/50 transition-all hover:shadow-lg glass-effect glow-purple-hover hover:-translate-y-1"
+                  className="p-4 sm:p-6 bg-surface-elevated rounded-xl border border-brand-primary/20 hover:border-brand-primary/50 transition-all hover:shadow-lg glass-effect glow-purple-hover hover:-translate-y-1"
                 >
-                  <item.icon className="text-brand-primary mb-3" size={32} />
-                  <h3 className="text-text-primary font-bold mb-2" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>{item.title}</h3>
-                  <p className="text-sm text-text-secondary">{item.description}</p>
+                  <item.icon className="text-brand-primary mb-2 sm:mb-3" size={28} />
+                  <h3 className="text-text-primary font-bold mb-1 sm:mb-2 text-sm sm:text-base" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>{item.title}</h3>
+                  <p className="text-xs sm:text-sm text-text-secondary">{item.description}</p>
                 </div>
               ))}
             </div>

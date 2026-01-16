@@ -30,8 +30,8 @@ export function Navigation({ activeSection, setActiveSection }: NavigationProps)
   return (
     <nav className="fixed top-0 w-full artic-sky backdrop-blur-xl z-50 border-b border-brand-primary/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="text-xl font-bold text-text-primary" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+        <div className="flex justify-between items-center h-14 sm:h-16">
+          <div className="text-lg sm:text-xl font-bold text-text-primary" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
             &lt;Portfolio /&gt;
           </div>
 
@@ -52,11 +52,13 @@ export function Navigation({ activeSection, setActiveSection }: NavigationProps)
           </div>
 
           {/* Mobile Menu Button & Toggle */}
-          <div className="md:hidden flex items-center gap-4">
+          <div className="md:hidden flex items-center gap-3">
             <ThemeToggle />
             <button
-              className="text-text-primary"
+              className="text-text-primary min-w-[44px] min-h-[44px] flex items-center justify-center"
               onClick={() => setIsOpen(!isOpen)}
+              aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
+              aria-expanded={isOpen}
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -67,12 +69,12 @@ export function Navigation({ activeSection, setActiveSection }: NavigationProps)
       {/* Mobile Navigation */}
       {isOpen && (
         <div className="md:hidden bg-surface-primary/95 backdrop-blur-xl border-t border-brand-primary/20">
-          <div className="px-4 py-4 space-y-3">
+          <div className="px-4 py-3 space-y-2">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`block w-full text-left px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                className={`block w-full text-left px-4 py-3 rounded-lg text-base font-medium transition-colors min-h-[44px] ${
                   activeSection === item.id
                     ? 'bg-brand-primary/20 text-brand-primary'
                     : 'text-text-primary hover:bg-surface-elevated'
