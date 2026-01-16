@@ -251,3 +251,32 @@ select:-webkit-autofill:active {
 
   transition: background-color 9999s ease-in-out 0s;
 }
+
+/* =========================================================
+   MOBILE OPTIMIZATIONS
+   ========================================================= */
+html {
+  /* Smooth scrolling with offset for fixed header */
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+/* Improve touch targets and mobile experience */
+@media (max-width: 768px) {
+  /* Better tap highlight */
+  button, a {
+    -webkit-tap-highlight-color: color-mix(in srgb, var(--color-brand-primary) 20%, transparent);
+    tap-highlight-color: color-mix(in srgb, var(--color-brand-primary) 20%, transparent);
+  }
+
+  /* Prevent text size adjustment */
+  body {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  /* Better spacing for mobile forms */
+  input, textarea, select, button {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}

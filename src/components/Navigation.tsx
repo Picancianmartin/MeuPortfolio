@@ -52,13 +52,14 @@ export function Navigation({ activeSection, setActiveSection }: NavigationProps)
           </div>
 
           {/* Mobile Menu Button & Toggle */}
-          <div className="md:hidden flex items-center gap-4">
+          <div className="md:hidden flex items-center gap-2">
             <ThemeToggle />
             <button
-              className="text-text-primary"
+              className="text-text-primary p-2 rounded-lg hover:bg-surface-elevated transition-colors"
               onClick={() => setIsOpen(!isOpen)}
+              aria-label={isOpen ? 'Fechar menu' : 'Abrir menu'}
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
         </div>
@@ -67,12 +68,12 @@ export function Navigation({ activeSection, setActiveSection }: NavigationProps)
       {/* Mobile Navigation */}
       {isOpen && (
         <div className="md:hidden bg-surface-primary/95 backdrop-blur-xl border-t border-brand-primary/20">
-          <div className="px-4 py-4 space-y-3">
+          <div className="px-4 py-6 space-y-2">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`block w-full text-left px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                className={`block w-full text-left px-6 py-4 rounded-lg text-base font-medium transition-colors ${
                   activeSection === item.id
                     ? 'bg-brand-primary/20 text-brand-primary'
                     : 'text-text-primary hover:bg-surface-elevated'
