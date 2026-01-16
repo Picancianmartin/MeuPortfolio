@@ -125,8 +125,8 @@ export function Contact() {
     {
       icon: Mail,
       title: "Email",
-      value: "pietra.cmartin@gmail.com",
-      link: "mailto:pietra.cmartin@gmail.com",
+      value: "contato@pietramartin.dev",
+      link: "mailto:contato@pietramartin.dev",
     },
     {
       icon: Phone,
@@ -147,7 +147,7 @@ export function Contact() {
       {/* --- SEÇÃO DE CONTATO --- */}
       <section
         id="contact"
-        className="py-32 px-4 sm:px-6 lg:px-8 bg-surface-primary"
+        className="lg:py-32 px-4 sm:px-6 lg:px-8 bg-surface-primary mb-16 lg:mb-0"
       >
         {/* TOAST NOTIFICATION */}
         {toast && (
@@ -226,7 +226,7 @@ export function Contact() {
 
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Esquerda: Informações de Contato */}
-            <div className="space-y-8">
+            <div className="lg:space-y-8 -mt-6 lg:mt-0">
               <div>
                 <h3
                   className="text-2xl font-bold text-text-primary mb-4"
@@ -236,12 +236,12 @@ export function Contact() {
                 </h3>
                 <p className="text-text-secondary leading-relaxed mb-8">
                   Se você está procurando uma desenvolvedora dedicada e
-                  apaixonada por tecnologia, ficarei feliz em conversar sobre como
-                  posso contribuir para seu projeto ou equipe.
+                  apaixonada por tecnologia, ficarei feliz em conversar sobre
+                  como posso contribuir para seu projeto ou equipe.
                 </p>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-4 hidden lg:block">
                 {contactInfo.map((item, index) => (
                   <div
                     key={index}
@@ -271,7 +271,7 @@ export function Contact() {
             </div>
 
             {/* Direita: Formulário */}
-            <div className="bg-surface-elevated rounded-xl p-8 border border-brand-primary/20 glass-effect">
+            <div className="bg-surface-elevated -mt-8 lg:mt-0 rounded-xl p-8 border border-brand-primary/20 glass-effect">
               <form
                 key={formKey}
                 onSubmit={handleSubmit}
@@ -408,108 +408,152 @@ export function Contact() {
       </section>
 
       {/* --- RODAPÉ (FOOTER) --- */}
-<footer className="bg-zinc-50 dark:bg-[#0f172a] border-t border-zinc-200 dark:border-white/10 pt-12 pb-8 transition-colors duration-300">
-  <div className="max-w-7xl mx-auto px-4">
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-      
-      {/* 1. Identidade */}
-      <div className="col-span-1 md:col-span-2">
-        <h3 className="text-2xl font-bold text-zinc-900 dark:text-white mb-4 transition-colors">
-          Pietra Cancian Martin
-          {/* O ponto usa a cor da marca (Cyan/Azul) adaptada para leitura */}
-          <span className="text-cyan-600 dark:text-cyan-400">.</span>
-        </h3>
-        <p className="text-zinc-600 dark:text-zinc-400 max-w-sm transition-colors">
-          Desenvolvedora focada em criar experiências digitais únicas e
-          funcionais.
-        </p>
-      </div>
+      <footer className="bg-zinc-50 dark:bg-[#0f172a] border-t border-zinc-200 dark:border-white/10 pt-12 pb-8 transition-colors duration-300">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            {/* 1. Identidade */}
+            <div className="col-span-1 md:col-span-2">
+              <h3 className="text-2xl font-bold text-zinc-900 dark:text-white mb-4 transition-colors">
+                Pietra Cancian Martin
+                {/* O ponto usa a cor da marca (Cyan/Azul) adaptada para leitura */}
+                <span className="text-cyan-600 dark:text-cyan-400">.</span>
+              </h3>
+              <p className="text-zinc-600 dark:text-zinc-400 max-w-sm transition-colors">
+                Desenvolvedora focada em criar experiências digitais únicas e
+                funcionais.
+              </p>
+            </div>
 
-      {/* 2. Links Rápidos */}
-      <div>
-        <h4 className="text-zinc-900 dark:text-white font-semibold mb-4 transition-colors">
-          Navegação
-        </h4>
-        <ul className="space-y-2">
-          {['Início', 'Sobre', 'Habilidades', 'Projetos', 'Contato'].map((item) => {
-             // Mapeamento simples para hrefs
-             const hrefs: Record<string, string> = {
-               'Início': '#home', 'Sobre': '#about', 'Habilidades': '#skills',
-               'Projetos': '#projects', 'Contato': '#contact'
-             };
-             return (
-              <li key={item}>
-                <a
-                  href={hrefs[item]}
-                  className="text-zinc-600 dark:text-zinc-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"
-                >
-                  {item}
-                </a>
-              </li>
-             );
-          })}
-        </ul>
-      </div>
+            {/* 2. Links Rápidos */}
+            <div>
+              <h4 className="text-zinc-900 dark:text-white font-semibold mb-4 transition-colors">
+                Navegação
+              </h4>
+              <ul className="space-y-2">
+                {["Início", "Sobre", "Habilidades", "Projetos", "Contato"].map(
+                  (item) => {
+                    // Mapeamento simples para hrefs
+                    const hrefs: Record<string, string> = {
+                      Início: "#home",
+                      Sobre: "#about",
+                      Habilidades: "#skills",
+                      Projetos: "#projects",
+                      Contato: "#contact",
+                    };
+                    return (
+                      <li key={item}>
+                        <a
+                          href={hrefs[item]}
+                          className="text-zinc-600 dark:text-zinc-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"
+                        >
+                          {item}
+                        </a>
+                      </li>
+                    );
+                  }
+                )}
+              </ul>
+            </div>
 
-      {/* 3. Redes Sociais */}
-      <div>
-        <h4 className="text-zinc-900 dark:text-white font-semibold mb-4 transition-colors">
-          Conecte-se
-        </h4>
-        <div className="flex gap-4">
-          {[
-            { Icon: Github, href: "https://github.com/Picancianmartin", label: "GitHub" },
-            { Icon: Linkedin, href: "https://linkedin.com/in/pietra-cancian-martin", label: "LinkedIn" },
-            { Icon: Instagram, href: "https://www.instagram.com/piimartin", label: "Instagram" }
-          ].map(({ Icon, href, label }) => (
-            <a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full transition-all duration-300
-                         bg-zinc-200 dark:bg-white/5 
-                         text-zinc-700 dark:text-zinc-400
-                         hover:bg-cyan-500 hover:text-white dark:hover:bg-cyan-500 dark:hover:text-white
-                         active:scale-90"
-              aria-label={label}
-            >
-              <Icon size={20} />
-            </a>
-          ))}
-        </div>
-      </div>
-    </div>
+            {/* 3. Redes Sociais */}
+            <div>
+              <h4 className="text-zinc-900 dark:text-white font-semibold mb-4 transition-colors">
+                Conecte-se
+              </h4>
 
-    {/* Linha Divisória */}
-    <div className="border-t border-zinc-200 dark:border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 transition-colors">
-      <p className="text-zinc-500 dark:text-zinc-500 text-sm text-center md:text-left">
-        © {currentYear} Pietra Martin. Todos os direitos reservados.
-      </p>
+              <div className="flex gap-4">
+                {[
+                  {
+                    Icon: Github,
+                    href: "https://github.com/Picancianmartin",
+                    label: "GitHub",
+                  },
+                  {
+                    Icon: Linkedin,
+                    href: "https://linkedin.com/in/pietra-cancian-martin",
+                    label: "LinkedIn",
+                  },
+                  {
+                    Icon: Instagram,
+                    href: "https://www.instagram.com/piimartin",
+                    label: "Instagram",
+                  },
+                  { Icon: Mail, scrollTo: "contact", label: "Email" }, // <- aqui
+                ].map(({ Icon, href, scrollTo, label }) => {
+                  const baseClass =
+                    "p-3 rounded-full transition-all duration-300 " +
+                    "bg-zinc-200 dark:bg-white/5 " +
+                    "text-zinc-700 dark:text-zinc-400 " +
+                    "hover:bg-cyan-500 hover:text-white dark:hover:bg-cyan-500 dark:hover:text-white " +
+                    "active:scale-90";
 
-      <div className="flex items-center gap-6">
-        <span className="text-zinc-500 text-sm hidden md:block">
-          Feito com React & Tailwind CSS
-        </span>
+                  // Caso especial: Email faz scroll (não mailto)
+                  if (scrollTo) {
+                    return (
+                      <button
+                        key={label}
+                        type="button"
+                        onClick={() =>
+                          document.getElementById(scrollTo)?.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start",
+                          })
+                        }
+                        className={baseClass}
+                        aria-label="Ir para o formulário de contato"
+                      >
+                        <Icon size={20} />
+                      </button>
+                    );
+                  }
 
-        {/* Botão Voltar ao Topo */}
-        <button
-          onClick={scrollToTop}
-          className="p-3 rounded-lg transition-all duration-300 group
+                  // Links normais (externos)
+                  return (
+                    <a
+                      key={label}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={baseClass}
+                      aria-label={label}
+                    >
+                      <Icon size={20} />
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
+          {/* Linha Divisória */}
+          <div className="border-t border-zinc-200 dark:border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 transition-colors">
+            <p className="text-zinc-500 dark:text-zinc-500 text-sm text-center md:text-left">
+              © {currentYear} Pietra Martin. Todos os direitos reservados.
+            </p>
+
+            <div className="flex items-center gap-6">
+              <span className="text-zinc-500 text-sm hidden md:block">
+                Feito com React & Tailwind CSS
+              </span>
+
+              {/* Botão Voltar ao Topo */}
+              <button
+                onClick={scrollToTop}
+                className="p-3 rounded-lg transition-all duration-300 group
                      bg-zinc-200 dark:bg-white/5 
                      text-zinc-700 dark:text-zinc-400
                      hover:bg-cyan-500 hover:text-white active:scale-90"
-          aria-label="Voltar ao topo"
-        >
-          <ChevronUp
-            size={20}
-            className="group-hover:-translate-y-1 transition-transform"
-          />
-        </button>
-      </div>
-    </div>
-  </div>
-</footer>
+                aria-label="Voltar ao topo"
+              >
+                <ChevronUp
+                  size={20}
+                  className="group-hover:-translate-y-1 transition-transform"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </footer>
     </>
   );
 }

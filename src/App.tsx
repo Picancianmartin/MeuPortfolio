@@ -29,6 +29,8 @@ function HomePage() {
         return;
       }
 
+      
+
       const sections = document.querySelectorAll('section[id]');
       
       sections.forEach((section) => {
