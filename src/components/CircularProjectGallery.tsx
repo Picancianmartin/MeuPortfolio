@@ -200,7 +200,7 @@ const onTouchEnd = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         {/* --- COLUNA ESQUERDA: CARROSSEL 3D --- */}
         <div
-          className="relative w-full h-[350px] md:h-[450px] flex items-center justify-center touch-pan-y"
+          className="relative w-full h-[300px] md:h-[450px] flex items-center justify-center touch-pan-y"
           style={{ perspective: "1000px" }}
           ref={imageContainerRef}
           onTouchStart={onTouchStart}

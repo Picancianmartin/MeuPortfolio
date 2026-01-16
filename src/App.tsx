@@ -8,6 +8,7 @@ import { Skills } from './components/Skills';
 import { Projects } from './components/Projects';
 import { Contact } from './components/Contact';
 import { Navigation } from './components/Navigation';
+import { MobileNavigation } from './components/MobileNavigation';
 import { ThemeProvider } from './contexts/ThemeContext';
 
 // 2. Importar a nova Galeria
@@ -50,8 +51,9 @@ function HomePage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background-primary transition-colors duration-300">
+    <div className="min-h-screen bg-background-primary transition-colors duration-300 pb-16 md:pb-0">
       <Navigation activeSection={activeSection} setActiveSection={setActiveSection} />
+      <MobileNavigation activeSection={activeSection} setActiveSection={setActiveSection} />
       <Hero />
       <About />
       <Skills />

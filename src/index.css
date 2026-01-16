@@ -261,6 +261,13 @@ html {
   scroll-padding-top: 5rem;
 }
 
+/* Safe area for notched devices */
+@supports (padding: env(safe-area-inset-bottom)) {
+  .safe-area-inset-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
 /* Improve touch targets and mobile experience */
 @media (max-width: 768px) {
   /* Better tap highlight */
@@ -277,5 +284,10 @@ html {
   /* Better spacing for mobile forms - respect user font size while preventing iOS zoom */
   input, textarea, select, button {
     font-size: max(16px, 1rem);
+  }
+  
+  /* Ensure content doesn't get hidden behind bottom nav */
+  section:last-of-type {
+    margin-bottom: 4rem;
   }
 }
