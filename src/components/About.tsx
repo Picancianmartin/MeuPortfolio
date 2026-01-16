@@ -28,7 +28,7 @@ export function About() {
   return (
     <section
       id="about"
-      className="relative z-10 lg:py-32 px-4 sm:px-6 py-20 lg:px-8 bg-surface-primary"
+      className="relative z-10 lg:py-32 px-4 sm:px-6 py-32 lg:px-8 bg-surface-primary"
     >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
