@@ -410,10 +410,5 @@ const onTouchEnd = () => {
     </div>
   );
 };
-function nextProject() {
-  throw new Error("Function not implemented.");
-}
 
-function prevProject() {
-  throw new Error("Function not implemented.");
-}
+

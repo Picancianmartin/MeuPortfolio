@@ -50,7 +50,7 @@ function HomePage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background-primary transition-colors duration-300">
+    <div className="min-h-screen bg-background-primary transition-colors duration-300 pb-20 md:pb-0">
       <Navigation activeSection={activeSection} setActiveSection={setActiveSection} />
       <Hero />
       <About />
