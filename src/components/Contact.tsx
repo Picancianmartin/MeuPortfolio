@@ -293,7 +293,8 @@ export function Contact() {
                     onChange={handleChange}
                     required
                     disabled={isLoading}
-                    className="w-full px-4 py-3 bg-[var(--input-background)] border border-brand-primary/20 rounded-lg text-text-primary placeholder-text-secondary focus:outline-none focus:border-brand-primary transition-all disabled:opacity-50"
+                    autoComplete="name"
+                    className="w-full px-4 py-4 sm:py-3 text-base bg-[var(--input-background)] border border-brand-primary/20 rounded-lg text-text-primary placeholder-text-secondary focus:outline-none focus:border-brand-primary transition-all disabled:opacity-50"
                     placeholder="Seu nome"
                   />
                 </div>
@@ -313,7 +314,8 @@ export function Contact() {
                     onChange={handleChange}
                     required
                     disabled={isLoading}
-                    className="w-full px-4 py-3 bg-[var(--input-background)] border border-brand-primary/20 rounded-lg text-text-primary placeholder-text-secondary focus:outline-none focus:border-brand-primary transition-all disabled:opacity-50"
+                    autoComplete="email"
+                    className="w-full px-4 py-4 sm:py-3 text-base bg-[var(--input-background)] border border-brand-primary/20 rounded-lg text-text-primary placeholder-text-secondary focus:outline-none focus:border-brand-primary transition-all disabled:opacity-50"
                     placeholder="seu@email.com"
                     autoCapitalize="none"
                     autoCorrect="off"
@@ -337,7 +339,7 @@ export function Contact() {
                     onChange={handleChange}
                     required
                     disabled={isLoading}
-                    className="w-full px-4 py-3 bg-[var(--input-background)] border border-brand-primary/20 rounded-lg text-text-primary placeholder-text-secondary focus:outline-none focus:border-brand-primary transition-all disabled:opacity-50"
+                    className="w-full px-4 py-4 sm:py-3 text-base bg-[var(--input-background)] border border-brand-primary/20 rounded-lg text-text-primary placeholder-text-secondary focus:outline-none focus:border-brand-primary transition-all disabled:opacity-50"
                     placeholder="Assunto da mensagem"
                   />
                 </div>
@@ -357,7 +359,7 @@ export function Contact() {
                     required
                     disabled={isLoading}
                     rows={5}
-                    className="w-full px-4 py-3 bg-[var(--input-background)] border border-brand-primary/20 rounded-lg text-text-primary placeholder-text-secondary transition-all focus:outline-none focus:border-brand-primary resize-none disabled:opacity-50"
+                    className="w-full px-4 py-4 sm:py-3 text-base bg-[var(--input-background)] border border-brand-primary/20 rounded-lg text-text-primary placeholder-text-secondary transition-all focus:outline-none focus:border-brand-primary resize-none disabled:opacity-50"
                     placeholder="Sua mensagem..."
                   />
                 </div>
@@ -366,11 +368,11 @@ export function Contact() {
                   type="submit"
                   disabled={isLoading}
                   aria-busy={isLoading}
-                  className={`w-full px-8 py-4 font-bold rounded-lg transition-all
+                  className={`w-full px-8 py-5 sm:py-4 font-bold text-base rounded-lg transition-all
                   flex items-center justify-center gap-3 shadow-lg hover:shadow-xl hover:scale-105
                   disabled:opacity-80 disabled:cursor-not-allowed
                   bg-accent-cta hover:bg-accent-cta/90 text-white
-                  relative overflow-hidden`}
+                  active:scale-95 relative overflow-hidden`}
                 >
                   {isLoading && (
                     <span
@@ -465,10 +467,11 @@ export function Contact() {
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full transition-all duration-300
+              className="p-3 rounded-full transition-all duration-300
                          bg-zinc-200 dark:bg-white/5 
                          text-zinc-700 dark:text-zinc-400
-                         hover:bg-cyan-500 hover:text-white dark:hover:bg-cyan-500 dark:hover:text-white"
+                         hover:bg-cyan-500 hover:text-white dark:hover:bg-cyan-500 dark:hover:text-white
+                         active:scale-90"
               aria-label={label}
             >
               <Icon size={20} />
@@ -492,10 +495,10 @@ export function Contact() {
         {/* Botão Voltar ao Topo */}
         <button
           onClick={scrollToTop}
-          className="p-2 rounded-lg transition-all duration-300 group
+          className="p-3 rounded-lg transition-all duration-300 group
                      bg-zinc-200 dark:bg-white/5 
                      text-zinc-700 dark:text-zinc-400
-                     hover:bg-cyan-500 hover:text-white"
+                     hover:bg-cyan-500 hover:text-white active:scale-90"
           aria-label="Voltar ao topo"
         >
           <ChevronUp

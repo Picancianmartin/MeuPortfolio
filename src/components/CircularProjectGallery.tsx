@@ -207,12 +207,25 @@ const onTouchEnd = () => {
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
         >
+          {/* Mobile touch hint - apenas em mobile */}
+          <div className="lg:hidden absolute top-4 left-1/2 -translate-x-1/2 z-20 bg-brand-primary/90 text-white px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2 pointer-events-none animate-pulse">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M18 15v-3H6v3"></path>
+              <path d="M18 7.5V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v1.5"></path>
+              <path d="M18 12v6a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-6"></path>
+              <path d="M9 15V9"></path>
+              <path d="M12 15V9"></path>
+              <path d="M15 15V9"></path>
+            </svg>
+            Toque para explorar
+          </div>
+          
           {items.map((item, index) => (
             <img
               key={item.id}
               src={item.image}
               alt={item.title}
-              className="absolute w-full h-full object-cover rounded-3xl shadow-2xl border border-white/10 cursor-pointer "
+              className="absolute w-full h-full object-cover rounded-3xl shadow-2xl border border-white/10 cursor-pointer"
               style={{
                 ...getImageStyle(index),
                 maxWidth: "100%",

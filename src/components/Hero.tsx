@@ -51,7 +51,7 @@ export function Hero() {
                     projectsSection.scrollIntoView({ behavior: "smooth" });
                   }
                 }}
-                className="px-8 py-3 rounded-3xl font-bold cursor-pointer
+                className="px-8 py-4 sm:py-3 rounded-3xl font-bold cursor-pointer text-base
              text-text-primary bg-surface-primary
              border border-transparent
              /* A mágica do gradiente na borda: */
@@ -59,7 +59,7 @@ export function Hero() {
              
              /* Efeitos de Hover e Transição */
              hover:scale-105 hover:bg-surface-elevated hover:shadow-lg
-             transition-all duration-300"
+             transition-all duration-300 active:scale-95"
               >
                 Ver Projetos
               </button>
@@ -92,7 +92,8 @@ export function Hero() {
                 href="https://www.github.com/Picancianmartin"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 bg-surface-elevated hover:bg-brand-primary/20 text-text-primary hover:text-brand-primary rounded-lg transition-all border border-brand-primary/20 hover:border-brand-primary/50"
+                aria-label="GitHub"
+                className="p-4 bg-surface-elevated hover:bg-brand-primary/20 text-text-primary hover:text-brand-primary rounded-lg transition-all border border-brand-primary/20 hover:border-brand-primary/50 active:scale-95"
               >
                 <Github size={24} />
               </a>
@@ -100,7 +101,8 @@ export function Hero() {
                 href="https://www.linkedin.com/in/pietra-cancian-martin/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 bg-surface-elevated hover:bg-brand-primary/20 text-text-primary hover:text-brand-primary rounded-lg transition-all border border-brand-primary/20 hover:border-brand-primary/50"
+                aria-label="LinkedIn"
+                className="p-4 bg-surface-elevated hover:bg-brand-primary/20 text-text-primary hover:text-brand-primary rounded-lg transition-all border border-brand-primary/20 hover:border-brand-primary/50 active:scale-95"
               >
                 <Linkedin size={24} />
               </a>
@@ -108,13 +110,15 @@ export function Hero() {
                 href="https://www.instagram.com/piimartin"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 bg-surface-elevated hover:bg-brand-primary/20 text-text-primary hover:text-brand-primary rounded-lg transition-all border border-brand-primary/20 hover:border-brand-primary/50"
+                aria-label="Instagram"
+                className="p-4 bg-surface-elevated hover:bg-brand-primary/20 text-text-primary hover:text-brand-primary rounded-lg transition-all border border-brand-primary/20 hover:border-brand-primary/50 active:scale-95"
               >
                 <Instagram size={24} />
               </a>
               <a
                 href="mailto:pietra.cmartin@gmail.com"
-                className="p-3 bg-surface-elevated hover:bg-brand-primary/20 text-text-primary hover:text-brand-primary rounded-lg transition-all border border-brand-primary/20 hover:border-brand-primary/50"
+                aria-label="Email"
+                className="p-4 bg-surface-elevated hover:bg-brand-primary/20 text-text-primary hover:text-brand-primary rounded-lg transition-all border border-brand-primary/20 hover:border-brand-primary/50 active:scale-95"
               >
                 <Mail size={24} />
               </a>
