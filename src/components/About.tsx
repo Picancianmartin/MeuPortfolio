@@ -28,7 +28,7 @@ export function About() {
   return (
     <section
       id="about"
-      className="py-32 px-4 sm:px-6 lg:px-8 bg-surface-primary"
+      className="py-32 px-4 sm:px-6 mt-10 lg:px-8 bg-surface-primary"
     >
       <div className="max-w-7xl mx-auto -mt-60 lg:mt-0">
         <div className="text-center mb-20">
@@ -57,7 +57,7 @@ export function About() {
           </div>
 
           <div className="space-y-6">
-            <p className="text-lg text-text-secondary lg:mt-0 leading-relaxed">
+            <p className="text-lg text-text-secondary mt-10 lg:mt-0 leading-relaxed">
               Como ex-atleta profissional com 8 anos de experiência, entendi que
               o sucesso é fruto de dedicação, colaboração e superação de
               limites. Minha jornada me ensinou o real significado de liderança,
