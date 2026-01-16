@@ -6,7 +6,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen bg-surface-primary flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16"
+      className="min-h-screen bg-surface-primary mb-10 lg:mb-0 flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16"
     >
       <div className="max-w-7xl mx-auto mt-10 lg:mt-0 w-full">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
