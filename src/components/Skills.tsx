@@ -84,7 +84,7 @@ export function Skills() {
   return (
     <section
       id="skills"
-      className="-mt-10 lg:py-32 px-4 sm:px-6 lg:px-8 bg-surface-primary"
+      className="py-10 lg:py-32 px-4 sm:px-6 lg:px-8 bg-surface-primary"
     >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
