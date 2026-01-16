@@ -107,6 +107,41 @@ export const CircularProjectGallery = ({
     if (autoplayRef.current) clearInterval(autoplayRef.current);
   }, [itemsLength]);
 
+  // ... seus outros estados (currentIndex, etc)
+
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  // O quanto o usuário precisa arrastar para considerar um "swipe" (em pixels)
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null); // Reseta o fim para evitar bugs
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      // Arrastou para a esquerda -> Próximo Projeto
+      nextProject(); // Chame aqui sua função de avançar
+    }
+
+    if (isRightSwipe) {
+      // Arrastou para a direita -> Projeto Anterior
+      prevProject(); // Chame aqui sua função de voltar
+    }
+  };
+
   // --- Lógica 3D e Estilos das Imagens ---
   function getImageStyle(index: number): React.CSSProperties {
     const gap = calculateGap(containerWidth);
@@ -172,6 +207,9 @@ export const CircularProjectGallery = ({
           className="relative w-full h-[350px] md:h-[450px] flex items-center justify-center"
           style={{ perspective: "1000px" }}
           ref={imageContainerRef}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
         >
           {items.map((item, index) => (
             <img
@@ -217,7 +255,6 @@ export const CircularProjectGallery = ({
                     Em desenvolvimento
                   </span>
                 )}
-                
               </div>
 
               <div className="flex flex-wrap gap-2">
@@ -302,15 +339,14 @@ export const CircularProjectGallery = ({
                 )}
                 {activeItem.wipSoon && (
                   <span
-                  className="inline-flex items-center gap-2
+                    className="inline-flex items-center gap-2
                   px-5 py-2 rounded-full text-sm font-bold
                   text-text-primary border border-transparent
                   [background:linear-gradient(var(--color-surface-primary),var(--color-surface-primary))_padding-box,linear-gradient(135deg,var(--color-brand-primary),var(--color-accent-cta))_border-box]"
-                >
-                  <span className="h-2.5 w-2.5 rounded-full bg-accent-cta animate-pulse" />
-                  WIP • Em breve
-                </span>
-                
+                  >
+                    <span className="h-2.5 w-2.5 rounded-full bg-accent-cta animate-pulse" />
+                    WIP • Em breve
+                  </span>
                 )}
               </div>
             </motion.div>
@@ -365,3 +401,10 @@ export const CircularProjectGallery = ({
     </div>
   );
 };
+function nextProject() {
+  throw new Error("Function not implemented.");
+}
+
+function prevProject() {
+  throw new Error("Function not implemented.");
+}
