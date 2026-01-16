@@ -51,14 +51,16 @@ function HomePage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background-primary transition-colors duration-300 pb-16 md:pb-0">
-      <Navigation activeSection={activeSection} setActiveSection={setActiveSection} />
-      <MobileNavigation activeSection={activeSection} setActiveSection={setActiveSection} />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Contact />
+    <div className="min-h-screen bg-background-primary transition-colors duration-300">
+      <div className="pb-16 md:pb-0">
+        <Navigation activeSection={activeSection} setActiveSection={setActiveSection} />
+        <MobileNavigation activeSection={activeSection} setActiveSection={setActiveSection} />
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Contact />
+      </div>
     </div>
   );
 }

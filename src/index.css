@@ -285,9 +285,4 @@ html {
   input, textarea, select, button {
     font-size: max(16px, 1rem);
   }
-  
-  /* Ensure content doesn't get hidden behind bottom nav */
-  section:last-of-type {
-    margin-bottom: 4rem;
-  }
 }

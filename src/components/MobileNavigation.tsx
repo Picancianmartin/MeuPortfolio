@@ -23,7 +23,7 @@ export function MobileNavigation({ activeSection, setActiveSection }: MobileNavi
   };
 
   return (
-    <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-surface-primary/95 backdrop-blur-xl border-t border-brand-primary/20 safe-area-inset-bottom">
+    <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-surface-primary/95 backdrop-blur-xl border-t border-brand-primary/20" style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}>
       <div className="grid grid-cols-5 h-16">
         {navItems.map((item) => {
           const Icon = item.icon;
