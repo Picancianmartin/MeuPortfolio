@@ -1,4 +1,4 @@
-@custom-variant dark (&:is(.dark *));
+/* Removed invalid @custom-variant rule */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap');
 
@@ -262,4 +262,127 @@
 
 html {
   font-size: var(--font-size);
+}.glow-gradient-hover:hover {
+  box-shadow:
+    0 0 70px -35px color-mix(in srgb, var(--color-brand-primary) 60%, transparent),
+    0 0 70px -35px color-mix(in srgb, var(--color-accent-cta) 55%, transparent);
+}
+
+.glass-effect {
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  background: color-mix(in srgb, var(--color-brand-primary) 8%, transparent);
+  /* REMOVIDO: border */
+}
+
+@supports (color: color-mix(in oklab, black, black)) {
+  .glass-effect {
+    background: color-mix(in oklab, var(--color-brand-primary) 8%, transparent);
+  }
+}
+
+@layer utilities {
+  /* Outline gradiente (sutil) */
+  .outline-gradient {
+    border: 1px solid transparent;
+    background:
+      linear-gradient(var(--color-surface-elevated), var(--color-surface-elevated)) padding-box,
+      linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--color-brand-primary) 25%, transparent),
+        color-mix(in srgb, var(--color-accent-cta) 25%, transparent)
+      ) border-box;
+  }
+
+  /* Outline gradiente (forte) no hover */
+  .outline-gradient-hover:hover {
+    background:
+      linear-gradient(var(--color-surface-elevated), var(--color-surface-elevated)) padding-box,
+      linear-gradient(135deg, var(--color-brand-primary), var(--color-accent-cta)) border-box;
+  }
+
+  @supports (color: color-mix(in oklab, black, black)) {
+    .outline-gradient {
+      background:
+        linear-gradient(var(--color-surface-elevated), var(--color-surface-elevated)) padding-box,
+        linear-gradient(
+          135deg,
+          color-mix(in oklab, var(--color-brand-primary) 25%, transparent),
+          color-mix(in oklab, var(--color-accent-cta) 25%, transparent)
+        ) border-box;
+    }
+
+    .outline-gradient-hover:hover {
+      background:
+        linear-gradient(var(--color-surface-elevated), var(--color-surface-elevated)) padding-box,
+        linear-gradient(135deg, var(--color-brand-primary), var(--color-accent-cta)) border-box;
+    }
+  }
+}
+@layer base {
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--color-text-primary) !important;
+    caret-color: var(--color-text-primary) !important;
+
+    /* mata o amarelo e aplica o seu fundo */
+    -webkit-box-shadow: 0 0 0px 1000px var(--input-background) inset !important;
+    box-shadow: 0 0 0px 1000px var(--input-background) inset !important;
+
+    transition: background-color 9999s ease-in-out 0s;
+  }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-120%); opacity: 0; }
+  15% { opacity: 1; }
+  100% { transform: translateX(120%); opacity: 0; }
+}
+
+@keyframes dot-bounce {
+  0%, 80%, 100% { transform: translateY(0); opacity: .35; }
+  40% { transform: translateY(-3px); opacity: 1; }
+}
+
+.loading-dots span {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  /* background: rgba(255,255,255,.9); */
+  margin-left: 4px;
+  animation: dot-bounce 1s infinite ease-in-out;
+}
+.loading-dots span:nth-child(2) { animation-delay: .15s; }
+.loading-dots span:nth-child(3) { animation-delay: .30s; }
+/* Autofill (Chrome/Safari) — remove amarelo/branco e respeita o tema */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:active,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus,
+select:-webkit-autofill:active {
+  /* força o fundo do seu tema (com fallback) */
+  -webkit-box-shadow: 0 0 0 1000px var(--input-background, #102446) inset !important;
+  box-shadow: 0 0 0 1000px var(--input-background, #102446) inset !important;
+  background-color: var(--input-background, #102446) !important;
+
+  /* força cor correta do texto */
+  -webkit-text-fill-color: var(--color-text-primary) !important;
+  caret-color: var(--color-text-primary) !important;
+
+  transition: background-color 9999s ease-in-out 0s;
 }

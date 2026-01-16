@@ -1,4 +1,3 @@
-import React from 'react';
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { ThemeToggle } from './ThemeToggle';
@@ -29,7 +28,7 @@ export function Navigation({ activeSection, setActiveSection }: NavigationProps)
   };
 
   return (
-    <nav className="fixed top-0 w-full bg-background-primary/80 backdrop-blur-xl z-50 border-b border-brand-primary/20">
+    <nav className="fixed top-0 w-full artic-sky backdrop-blur-xl z-50 border-b border-brand-primary/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="text-xl font-bold text-text-primary" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>

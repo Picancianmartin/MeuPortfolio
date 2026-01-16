@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Sun, Moon } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 
@@ -12,8 +12,8 @@ export function ThemeToggle() {
       aria-label={`Alternar para modo ${theme === 'light' ? 'escuro' : 'claro'}`}
     >
       <div
-        className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-brand-primary flex items-center justify-center transition-transform duration-300 ${
-          theme === 'dark' ? 'translate-x-7' : 'translate-x-0'
+        className={`absolute top-0.5 left-1  w-5 h-5 rounded-full bg-brand-primary flex items-center justify-center transition-transform duration-300 ${
+          theme === 'dark' ? 'translate-x-6' : 'translate-x-0'
         }`}
       >
         {theme === 'light' ? (
