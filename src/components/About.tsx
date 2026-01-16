@@ -28,9 +28,9 @@ export function About() {
   return (
     <section
       id="about"
-      className="lg:py-32 px-4 sm:px-6 mt-40 lg:mt-0 lg:px-8 bg-surface-primary"
+      className="relative z-10 lg:py-32 px-4 sm:px-6 py-20 lg:px-8 bg-surface-primary"
     >
-      <div className="max-w-7xl mx-auto -mt-60 lg:mt-0">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
           <h2
             className="text-3xl sm:text-4xl font-bold text-text-primary mb-4 "
