@@ -75,7 +75,7 @@ export default function App() {
           
           {/* Rota da Nova Galeria de IA (Página separada) */}
           <Route path="/ai-studio" element={<AIGallery />} />
-          <Route path="/lp" element={ <LPAulaGo /> } />
+          <Route path="/lp-aulago" element={ <LPAulaGo /> } />
         </Routes>
       </Router>
     </ThemeProvider>
