@@ -25,7 +25,7 @@ export function Projects() {
       image: agcapa,
       tags: ["React", "TypeScript", "Tailwind", "Vite"],
       github: "https://github.com/Jessica-G-arcia/AulaGo_mobile.git",
-      demo: "/lp",
+      demo: "/lp-aulago",
       inDevelopment: true,
     },
     {
