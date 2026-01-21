@@ -53,8 +53,7 @@ export default function Links() {
             animationSpeed={0.5} 
             lineCount={[4, 6, 2]}
             lineDistance={[0.5, 0.3, 0.2]} 
-            interactive={true} 
-            background="transparent"
+            interactive={true}
         />
       </div>
 
