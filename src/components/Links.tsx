@@ -1,19 +1,20 @@
 import { Mail, Github, Linkedin, FileText, Globe, ArrowRight } from "lucide-react";
 import StarBorder from "./StarBorder"; 
 import FloatingLines from "./FloatingLines";
+import curriculopdf from "../assets/Currículo.pdf";
 
 const links = [
   {
     title: "Portfólio",
     subtitle: "Projetos, cases e habilidades",
-    href: "https://pietramartin.dev",
+    href: "/",
     icon: Globe,
     highlight: true,
   },
   {
     title: "Currículo (PDF)",
     subtitle: "Baixar ou visualizar",
-    href: "https://pietramartin.dev/Curriculo.pdf",
+    href: curriculopdf,
     icon: FileText,
   },
   {
@@ -31,7 +32,7 @@ const links = [
   {
     title: "Entre em contato",
     subtitle: "Envie uma mensagem direta",
-    href: "https://pietramartin.dev/#contact",
+    href: "/#contact",
     icon: Mail,
   },
 ];
