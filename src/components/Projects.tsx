@@ -51,7 +51,7 @@ export function Projects() {
   ];
 
   return (
-    <section id="projects" className="py-20 bg-gray-50 bg-surface-primary min-h-screen flex flex-col justify-center overflow-hidden relative transition-colors duration-300">
+    <section id="projects" className="scroll-mt-24 py-20 bg-gray-50 bg-surface-primary min-h-screen flex flex-col justify-center overflow-hidden relative transition-colors duration-300">
       
       {/* Background Decorativo Cyberpunk */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full pointer-events-none">
