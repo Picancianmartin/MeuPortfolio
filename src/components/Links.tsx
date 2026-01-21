@@ -64,8 +64,8 @@ export default function Links() {
           <div className="mx-auto mb-6 h-32 w-32 rounded-2xl flex items-center justify-center
                           bg-white/5 border border-white/10 backdrop-blur-md shadow-2xl shadow-[#6E5CF4]/20
                           group hover:border-[#6E5CF4]/50 hover:scale-105 transition-all duration-500 relative">
-            <span className="font-mono text-3xl font-bold text-gray-300 group-hover:text-[#6E5CF4] transition-colors duration-300 z-10">
-              &lt;PM /&gt;
+            <span className="gradient-text font-mono text-3xl font-bold text-gray-300 group-hover:text-[#6E5CF4] transition-colors duration-300 z-10">
+              &lt;PM/&gt;
             </span>
             <div className="absolute inset-0 bg-[#6E5CF4]/20 blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-500 rounded-full pointer-events-none" />
           </div>
