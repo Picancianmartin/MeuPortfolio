@@ -147,7 +147,7 @@ export function Contact() {
       {/* --- SEÇÃO DE CONTATO --- */}
       <section
         id="contact"
-        className="lg:py-32 px-4 sm:px-6 lg:px-8 bg-surface-primary mb-16 lg:mb-0"
+        className="scroll-mt-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-surface-primary mb-16 lg:mb-0"
       >
         {/* TOAST NOTIFICATION */}
         {toast && (

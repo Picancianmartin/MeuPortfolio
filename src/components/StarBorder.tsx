@@ -4,7 +4,7 @@ type StarBorderProps<T extends React.ElementType> = React.ComponentPropsWithoutR
   as?: T;
   className?: string;
   children?: React.ReactNode;
-  color?: string;
+  color?: string; // Esta será a cor da animação no HOVER
   speed?: React.CSSProperties['animationDuration'];
   thickness?: number;
 };
@@ -12,7 +12,7 @@ type StarBorderProps<T extends React.ElementType> = React.ComponentPropsWithoutR
 const StarBorder = <T extends React.ElementType = 'button'>({
   as,
   className = '',
-  color = 'cyan', 
+  color = 'cyan', // Cor padrão do brilho ao passar o mouse
   speed = '6s',
   thickness = 1,
   children,
@@ -22,45 +22,48 @@ const StarBorder = <T extends React.ElementType = 'button'>({
 
   return (
     <Component
-      className={`relative inline-block overflow-hidden rounded-[20px] ${className}`}
+      // 1. Adicionamos 'group' aqui para que o hover neste elemento controle os filhos
+      className={`relative inline-block overflow-hidden rounded-[20px] group ${className}`}
       {...(rest as any)}
       style={{
-        padding: `${thickness}px`,
+        padding: `${thickness}px 0`,
         ...(rest as any).style
       }}
     >
-      {/* --- CONTEÚDO INTERNO --- 
-          ESTRATÉGIA DE ALTO CONTRASTE:
-          - Light Mode (Padrão): Fundo Zinc-900 (Quase preto), Texto Branco.
-          - Dark Mode (dark:): Fundo transparente/escuro, Texto Branco.
-          
-          Isso faz o botão ser sempre um elemento de destaque escuro,
-          permitindo que a luz (Star) brilhe mesmo se o site estiver branco.
-      */}
-      <div className="relative z-10 
-                      bg-zinc-900 dark:bg-white/5 
-                      backdrop-blur-md 
-                      border border-zinc-800 dark:border-white/10
-                      text-white 
-                      text-center text-[16px] py-3 px-6 rounded-[19px] h-full flex items-center justify-center transition-colors duration-300">
+      {/* --- ANIMAÇÃO INFERIOR --- */}
+      <div
+        // MUDANÇA AQUI:
+        // - opacity-0: Invisível por padrão
+        // - group-hover:opacity-100: Fica visível quando o mouse está no pai ('group')
+        // - transition-opacity duration-500: Suaviza a aparição
+        className="absolute w-[300%] h-[50%] opacity-0 group-hover:opacity-100 transition-opacity duration-500 bottom-[-11px] right-[-250%] rounded-full animate-star-movement-bottom z-0"
+        style={{
+          // A cor do gradiente usa a prop 'color' que definimos
+          background: `radial-gradient(circle, ${color}, transparent 10%)`,
+          animationDuration: speed
+        }}
+      ></div>
+
+      {/* --- ANIMAÇÃO SUPERIOR --- */}
+      <div
+        // MUDANÇA AQUI (Mesma lógica da inferior):
+        className="absolute w-[300%] h-[50%] opacity-0 group-hover:opacity-100 transition-opacity duration-500 top-[-10px] left-[-250%] rounded-full animate-star-movement-top z-0"
+        style={{
+          background: `radial-gradient(circle, ${color}, transparent 10%)`,
+          animationDuration: speed
+        }}
+      ></div>
+
+      {/* --- CONTEÚDO INTERNO (Borda Estática) --- */}
+      <div className="relative z-1 bg-gradient-to-b from-black to-gray-900 border border-gray-800 text-white text-center text-[16px] py-[16px] px-[26px] rounded-[20px] transition-colors duration-500 group-hover:border-transparent">
+        {/*
+           Explicação do container interno:
+           - border-gray-800: É a cor da borda quando NÃO está em hover.
+           - group-hover:border-transparent: No hover, a borda cinza some para dar lugar ao brilho colorido.
+           - transition-colors: Suaviza essa troca de borda.
+        */}
         {children}
       </div>
-
-      {/* --- LUZES --- */}
-      <div
-        className="absolute w-[300%] h-[50%] opacity-70 bottom-[-11px] right-[-250%] rounded-full animate-star-movement-bottom z-0 pointer-events-none"
-        style={{
-          background: `radial-gradient(circle, ${color}, transparent 10%)`,
-          animationDuration: speed
-        }}
-      ></div>
-      <div
-        className="absolute w-[300%] h-[50%] opacity-70 top-[-10px] left-[-250%] rounded-full animate-star-movement-top z-0 pointer-events-none"
-        style={{
-          background: `radial-gradient(circle, ${color}, transparent 10%)`,
-          animationDuration: speed
-        }}
-      ></div>
     </Component>
   );
 };
