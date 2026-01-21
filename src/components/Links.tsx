@@ -7,14 +7,14 @@ const links = [
   {
     title: "Portfólio",
     subtitle: "Projetos, cases e habilidades",
-    href: "/",
+    href: "/", // Vai para a Home
     icon: Globe,
-    highlight: true,
+    isInternal: true, // Marcação interna
   },
   {
     title: "Currículo (PDF)",
     subtitle: "Baixar ou visualizar",
-    href: curriculopdf,
+    href: curriculopdf, // Link direto para o PDF
     icon: FileText,
   },
   {
@@ -32,8 +32,9 @@ const links = [
   {
     title: "Entre em contato",
     subtitle: "Envie uma mensagem direta",
-    href: "/#contact",
+    href: "/#contact", // Vai para Home e rola até #contact
     icon: Mail,
+    isInternal: true,
   },
 ];
 
@@ -52,33 +53,25 @@ export default function Links() {
         <FloatingLines 
             linesGradient={[brandColors.primary, brandColors.secondary, brandColors.accent]} 
             animationSpeed={0.5} 
-            lineCount={[4, 6, 2]}
-            lineDistance={[0.5, 0.3, 0.2]} 
-            interactive={true}
+            interactive={true} 
         />
       </div>
 
       <div className="relative z-10 w-full max-w-xl mx-auto">
         
-        {/* --- HEADER --- */}
+        {/* HEADER (Opção 1 - Tag de Código) */}
         <div className="text-center mb-10 flex flex-col items-center">
-          
-          {/* OPÇÃO 1: Tag de Código Neon (<PM />) */}
-          <div className="mx-auto mb-5 h-32 w-32 rounded-2xl flex items-center justify-center
+          <div className="mx-auto mb-6 h-32 w-32 rounded-2xl flex items-center justify-center
                           bg-white/5 border border-white/10 backdrop-blur-md shadow-2xl shadow-[#6E5CF4]/20
                           group hover:border-[#6E5CF4]/50 hover:scale-105 transition-all duration-500 relative">
-            
-            {/* O texto <PM /> */}
-            <span className="gradient-text font-mono text-3xl font-bold text-gray-300 group-hover:text-[#6E5CF4] transition-colors duration-300 ">
-              &lt;PM/&gt;
+            <span className="font-mono text-3xl font-bold text-gray-300 group-hover:text-[#6E5CF4] transition-colors duration-300 z-10">
+              &lt;PM /&gt;
             </span>
-            
-            {/* Efeito de brilho extra no hover (Glow Interno) */}
             <div className="absolute inset-0 bg-[#6E5CF4]/20 blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-500 rounded-full pointer-events-none" />
           </div>
 
           <h1 className="text-3xl font-bold tracking-tight text-white drop-shadow-lg">
-            Pietra Cancian Martin
+            Pietra Martin
           </h1>
 
           <p className="text-sm text-gray-300 mt-2 font-medium">
@@ -86,17 +79,20 @@ export default function Links() {
           </p>
         </div>
 
-        {/* Lista de Links */}
+        {/* LISTA DE LINKS */}
         <div className="space-y-4">
           {links.map((item) => (
             <StarBorder 
                 as="a" 
                 key={item.title}
                 href={item.href}
-                target={item.href.startsWith("http") ? "_blank" : undefined}
-                rel={item.href.startsWith("http") ? "noreferrer" : undefined}
+                // Lógica Simplificada: Se NÃO for interno, abre em nova aba. 
+                // Se for interno, abre na mesma aba (recarregando a página para limpar a memória).
+                target={!item.isInternal ? "_blank" : undefined}
+                rel={!item.isInternal ? "noreferrer" : undefined}
+                
                 color={brandColors.primary} 
-                className="w-full block bg-black/40 backdrop-blur-sm"
+                className="w-full block bg-black/40 backdrop-blur-sm cursor-pointer"
             >
                 <div className="flex items-center gap-4 w-full px-1">
                     <div className="h-10 w-10 rounded-lg bg-white/5 flex items-center justify-center 
