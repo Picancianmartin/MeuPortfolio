@@ -470,7 +470,7 @@ export function Contact() {
                   },
                   {
                     Icon: Linkedin,
-                    href: "https://linkedin.com/in/pietra-cancian-martin",
+                    href: "https://linkedin.com/in/martinpietra",
                     label: "LinkedIn",
                   },
                   {
