@@ -91,7 +91,7 @@ export function Hero() {
                 <Github size={24} />
               </a>
               <a
-                href="https://www.linkedin.com/in/pietra-cancian-martin/"
+                href="https://www.linkedin.com/in/martinpietra/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
