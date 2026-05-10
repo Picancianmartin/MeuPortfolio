@@ -124,7 +124,8 @@ export const translations = {
       title: "Let's build something scalable.",
       location: "Sorocaba, Brazil — open to remote/global roles",
       connect: "Connect",
-      copyright: "© {year} Pietra Martin. All rights reserved.",
+      copyright: (year: number) =>
+        `© ${year} Pietra Martin. All rights reserved.`,
     },
   },
   pt: {
@@ -252,7 +253,8 @@ export const translations = {
       title: "Vamos construir algo escalável.",
       location: "Sorocaba, Brasil — aberta a trabalho remoto/global",
       connect: "Conecte-se",
-      copyright: "© {year} Pietra Martin. Todos os direitos reservados.",
+      copyright: (year: number) =>
+        `© ${year} Pietra Martin. Todos os direitos reservados.`,
     },
   },
 } as const;

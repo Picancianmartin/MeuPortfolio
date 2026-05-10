@@ -53,21 +53,24 @@ export function Hero() {
             </h1>
 
             <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
-              {socialLinks.map(({ label, href, Icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target={href.startsWith("http") ? "_blank" : undefined}
-                  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+              {socialLinks.map(({ label, href, Icon }) => {
+                const isExternal = href.startsWith("http");
+                return (
+                  <a
+                    key={label}
+                    href={href}
+                    target={isExternal ? "_blank" : undefined}
+                    rel={isExternal ? "noopener noreferrer" : undefined}
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold
                   bg-surface-elevated text-text-primary border border-brand-primary/20
                   hover:border-brand-primary/60 hover:text-brand-primary hover:bg-brand-primary/10 transition-all"
-                  aria-label={label}
-                >
-                  <Icon size={18} />
-                  {label}
-                </a>
-              ))}
+                    aria-label={`${label}${isExternal ? " (opens in new window)" : ""}`}
+                  >
+                    <Icon size={18} />
+                    {label}
+                  </a>
+                );
+              })}
             </div>
 
             <p className="text-lg text-text-secondary max-w-2xl mx-auto lg:mx-0 leading-relaxed">

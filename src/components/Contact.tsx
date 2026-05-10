@@ -55,7 +55,7 @@ export function Contact() {
         </div>
 
         <p className="text-xs text-text-secondary pt-4">
-          {t.contact.copyright.replace("{year}", String(currentYear))}
+          {t.contact.copyright(currentYear)}
         </p>
       </div>
     </footer>
