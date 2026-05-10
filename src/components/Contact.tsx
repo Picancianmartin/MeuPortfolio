@@ -44,7 +44,7 @@ export function Contact() {
             GitHub
           </a>
           <a
-            href="https://linkedin.com/in/martinpietra"
+            href="https://www.linkedin.com/in/martinpietra/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-primary/30 text-text-primary hover:text-brand-primary hover:border-brand-primary/60 transition-all"
