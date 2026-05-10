@@ -83,16 +83,8 @@ export function Hero() {
                     projectsSection.scrollIntoView({ behavior: "smooth" });
                   }
                 }}
-                className="px-8 py-4 sm:py-3 rounded-3xl font-bold cursor-pointer text-base
-             text-text-primary bg-surface-primary
-             border border-transparent
-             /* A mágica do gradiente na borda: */
-             [background:linear-gradient(var(--color-surface-primary),var(--color-surface-primary))_padding-box,linear-gradient(135deg,color-mix(in_srgb,var(--color-brand-primary)_70%,transparent),color-mix(in_srgb,var(--color-accent-cta)_70%,transparent))_border-box]
-             
-             /* Efeitos de Hover e Transição */
-             hover:scale-105 hover:bg-surface-elevated hover:shadow-lg
-              transition-all duration-300 active:scale-95"
-              >
+                className="px-8 py-4 sm:py-3 rounded-3xl font-bold cursor-pointer text-base text-text-primary bg-surface-primary border border-transparent [background:linear-gradient(var(--color-surface-primary),var(--color-surface-primary))_padding-box,linear-gradient(135deg,color-mix(in_srgb,var(--color-brand-primary)_70%,transparent),color-mix(in_srgb,var(--color-accent-cta)_70%,transparent))_border-box] hover:scale-105 hover:bg-surface-elevated hover:shadow-lg transition-all duration-300 active:scale-95"
+                >
                 {t.hero.cta}
               </button>
               <a

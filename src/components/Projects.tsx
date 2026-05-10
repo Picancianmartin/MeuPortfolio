@@ -3,8 +3,8 @@ import imageMedFlow from '../assets/MedFlowCapa.png';
 import imageLP from '../assets/LandingPage.png';
 import agcapa from '../assets/agCapa.png';
 import aiStudio from '../assets/AIStudio.png'
-import placeholder from '../assets/placeholder.jpg';
-import codeImage from '../assets/code.jpg';
+import placeholderImage from '../assets/placeholder.jpg';
+import codeImageAsset from '../assets/code.jpg';
 import { useLanguage } from "../contexts/LanguageContext";
 import { translations } from "../content/translations";
 
@@ -38,7 +38,7 @@ export function Projects() {
       id: 3,
       title: t.projects.items.beachmatch.title,
       description: t.projects.items.beachmatch.description,
-      image: placeholder,
+      image: placeholderImage,
       tags: ["React", "Supabase", "Multi-tenant", "Mobile-first"],
       inDevelopment: false,
     },
@@ -46,7 +46,7 @@ export function Projects() {
       id: 4,
       title: t.projects.items.uniformes.title,
       description: t.projects.items.uniformes.description,
-      image: placeholder,
+      image: placeholderImage,
       tags: ["React", "Supabase", "Pix", "Mercado Pago"],
       inDevelopment: false,
     },
@@ -64,7 +64,7 @@ export function Projects() {
       id: 6,
       title: t.projects.items.aiAutomation.title,
       description: t.projects.items.aiAutomation.description,
-      image: codeImage,
+      image: codeImageAsset,
       tags: ["n8n", "APIs", "AI Agents", "Automation"],
       inDevelopment: false,
     },

@@ -8,7 +8,7 @@ export const translations = {
       contact: "Contact",
     },
     hero: {
-      badge: "Open to Global Systems Developer Roles",
+      badge: "open to Global Systems Developer Roles",
       headline: "Systems Developer",
       headlineHighlight: "| Web & Mobile",
       summary:
