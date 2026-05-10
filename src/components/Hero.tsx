@@ -61,9 +61,7 @@ export function Hero() {
                     href={href}
                     target={isExternal ? "_blank" : undefined}
                     rel={isExternal ? "noopener noreferrer" : undefined}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold
-                  bg-surface-elevated text-text-primary border border-brand-primary/20
-                  hover:border-brand-primary/60 hover:text-brand-primary hover:bg-brand-primary/10 transition-all"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-surface-elevated text-text-primary border border-brand-primary/20 hover:border-brand-primary/60 hover:text-brand-primary hover:bg-brand-primary/10 transition-all"
                     aria-label={`${label}${isExternal ? " (opens in new window)" : ""}`}
                   >
                     <Icon size={18} />
