@@ -4,7 +4,7 @@ import imageLP from '../assets/LandingPage.png';
 import agcapa from '../assets/agCapa.png';
 import aiStudio from '../assets/AIStudio.png'
 import placeholderImage from '../assets/placeholder.jpg';
-import codeImageAsset from '../assets/code.jpg';
+import codeImage from '../assets/code.jpg';
 import { useLanguage } from "../contexts/LanguageContext";
 import { translations } from "../content/translations";
 
@@ -64,7 +64,7 @@ export function Projects() {
       id: 6,
       title: t.projects.items.aiAutomation.title,
       description: t.projects.items.aiAutomation.description,
-      image: codeImageAsset,
+      image: codeImage,
       tags: ["n8n", "APIs", "AI Agents", "Automation"],
       inDevelopment: false,
     },
