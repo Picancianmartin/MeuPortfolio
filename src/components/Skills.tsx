@@ -15,17 +15,17 @@ export function Skills() {
     {
       category: t.skills.categories.backend,
       icon: Server,
-      skills: ["Node.js", "Python", "Supabase"],
+      skills: ["Node.js", "Python", "Supabase", "REST APIs"],
     },
     {
-      category: t.skills.categories.architecture,
-      icon: Cpu,
-      skills: ["CI/CD", "GitHub Actions", "Fastlane", "Jest/XCTest"],
-    },
-    {
-      category: t.skills.categories.automation,
+      category: t.skills.categories.workflows,
       icon: Brain,
-      skills: ["n8n", "API Orchestration", "AI Agents"],
+      skills: ["n8n", "AI Agent Orchestration", "API Integrations"],
+    },
+    {
+      category: t.skills.categories.tools,
+      icon: Cpu,
+      skills: ["GitHub", "Xcode", "VS Code"],
     },
   ];
 

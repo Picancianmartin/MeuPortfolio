@@ -8,12 +8,12 @@ export const translations = {
       contact: "Contact",
     },
     hero: {
-      badge: "Open to Global Opportunities",
-      headline: "Engineering products",
-      headlineHighlight: "with measurable impact",
+      badge: "Open to Global Systems Roles",
+      headline: "Systems Developer",
+      headlineHighlight: "| Web & Mobile",
       summary:
-        "Full-stack engineer bridging UI/UX, scalable systems, and AI-driven automation to ship reliable web and mobile experiences.",
-      cta: "View Engineering Case Studies",
+        "Systems developer building cross-platform web and mobile applications end-to-end, pairing robust backends with clean, reliable interfaces.",
+      cta: "View Systems & Applications",
       cvLabel: "Curriculum Vitae",
       cvAction: "Download PDF",
       socials: {
@@ -24,34 +24,34 @@ export const translations = {
     },
     about: {
       title: "About",
-      body: "After 8 years as a professional athlete, I learned to stay calm during production incidents, iterate quickly on code review feedback, and deliver consistently under tight deadlines. Today I apply that mindset to bridge UI/UX, full-stack development, and AI agent orchestration—turning complex requirements into scalable, user-centered systems.",
+      body: "After 8 years as a professional athlete, I learned to stay calm during production incidents, iterate quickly on code reviews, and maintain consistent system delivery under tight deadlines. Today I focus on building scalable web and mobile applications end-to-end, integrating robust backends with clean user interfaces.",
       highlights: [
         {
           title: "Education",
           description: "Systems Analysis & Development (Facens)",
         },
         {
-          title: "Product Engineering",
-          description: "Full stack delivery with UI/UX alignment",
+          title: "Systems Development",
+          description: "End-to-end web & mobile applications",
         },
         {
           title: "Athlete Mindset",
           description: "8 years of elite performance under pressure",
         },
         {
-          title: "Impact",
-          description: "Reliable releases for global teams",
+          title: "Delivery",
+          description: "Consistent system delivery under deadlines",
         },
       ],
     },
     skills: {
       title: "Skills",
-      subtitle: "Engineering domains & strengths",
+      subtitle: "Systems development domains & strengths",
       categories: {
-        frontend: "Frontend",
-        backend: "Backend & Database",
-        architecture: "Architecture & DevOps",
-        automation: "Automation & AI",
+        frontend: "Web & Mobile Frontend",
+        backend: "Backend & Systems",
+        workflows: "Workflows & Automation",
+        tools: "Tools & Environment",
       },
       differentiators: "Strengths",
       softSkills: [
@@ -75,7 +75,7 @@ export const translations = {
     },
     projects: {
       title: "Projects",
-      subtitle: "Navigate the carousel to explore each engineering case study.",
+      subtitle: "Explore the systems & applications case studies below.",
       swipe: "Swipe",
       inDevelopment: "In development",
       viewProject: "View Project",
@@ -86,22 +86,22 @@ export const translations = {
         medflow: {
           title: "MedFlow iOS",
           description:
-            "Built with SwiftUI to improve medication adherence, overcoming background state constraints for reliable reminders and usage history.",
+            "Native iOS application built with SwiftUI, implementing complex background state management for reliable medication scheduling.",
         },
         aulago: {
           title: "AulaGo",
           description:
-            "Designed a multi-platform architecture for independent teachers, blending a conversion-focused landing page with scalable scheduling flows.",
+            "Multi-platform system architecture connecting students and teachers with scalable scheduling and communication flows.",
         },
         beachmatch: {
           title: "BeachMatch",
           description:
-            "Mobile-first platform for sports arenas with multi-tenant management, tournament logic, and social feeds—complex data relationships with fast UX.",
+            "Mobile-first platform for sports arenas with multi-tenancy, tournament logic, and social feeds, backed by complex data relationships.",
         },
         uniformes: {
           title: "UniformesCoach",
           description:
-            "Full-stack e-commerce for team uniforms with Pix/Mercado Pago integrations, responsive design, and a scalable Supabase backbone.",
+            "Full-stack web e-commerce system with Pix/Mercado Pago integrations, responsive design, and a scalable Supabase database.",
         },
         smartBanking: {
           title: "Smart Banking",
@@ -121,8 +121,8 @@ export const translations = {
       },
     },
     contact: {
-      title: "Let's build something scalable.",
-      location: "Sorocaba, Brazil — open to remote/global roles",
+      title: "Let's build robust systems.",
+      location: "Sorocaba, Brazil — willing to work remote/global",
       connect: "Connect",
       copyright: (year: number) =>
         `© ${year} Pietra Martin. All rights reserved.`,
@@ -137,12 +137,12 @@ export const translations = {
       contact: "Contato",
     },
     hero: {
-      badge: "Disponível para Oportunidades Globais",
-      headline: "Engenharia de produtos",
-      headlineHighlight: "com impacto mensurável",
+      badge: "Disponível para Vagas Globais em Sistemas",
+      headline: "Systems Developer",
+      headlineHighlight: "| Web & Mobile",
       summary:
-        "Engenheira full stack conectando UI/UX, sistemas escaláveis e automação com IA para entregar experiências web e mobile confiáveis.",
-      cta: "Ver Cases de Engenharia",
+        "Desenvolvedora de sistemas criando aplicações web e mobile completas, integrando backends robustos com interfaces limpas e confiáveis.",
+      cta: "Ver Sistemas e Aplicações",
       cvLabel: "Currículo",
       cvAction: "Baixar PDF",
       socials: {
@@ -153,34 +153,34 @@ export const translations = {
     },
     about: {
       title: "Sobre Mim",
-      body: "Depois de 8 anos como atleta profissional, aprendi a manter a calma em incidentes de produção, iterar rápido com feedbacks de code review e entregar com consistência em prazos apertados. Hoje aplico essa mentalidade para conectar UI/UX, desenvolvimento full stack e orquestração de agentes de IA, transformando requisitos complexos em sistemas escaláveis e centrados no usuário.",
+      body: "Depois de 8 anos como atleta profissional, aprendi a manter a calma em incidentes de produção, iterar rápido em code reviews e manter a entrega consistente de sistemas sob prazos apertados. Hoje foco em construir aplicações web e mobile escaláveis de ponta a ponta, integrando backends robustos com interfaces limpas.",
       highlights: [
         {
           title: "Formação Acadêmica",
           description: "Análise e Desenv. de Sistemas (Facens)",
         },
         {
-          title: "Engenharia de Produto",
-          description: "Full stack com alinhamento UI/UX",
+          title: "Desenvolvimento de Sistemas",
+          description: "Aplicações web e mobile ponta a ponta",
         },
         {
           title: "Mentalidade Atleta",
           description: "8 anos de performance sob pressão",
         },
         {
-          title: "Impacto",
-          description: "Entregas confiáveis para times globais",
+          title: "Entrega",
+          description: "Consistência de sistemas sob prazos",
         },
       ],
     },
     skills: {
       title: "Habilidades",
-      subtitle: "Domínios de engenharia & pontos fortes",
+      subtitle: "Domínios de sistemas & pontos fortes",
       categories: {
-        frontend: "Frontend",
-        backend: "Backend & Dados",
-        architecture: "Arquitetura & DevOps",
-        automation: "Automação & IA",
+        frontend: "Frontend Web & Mobile",
+        backend: "Backend & Sistemas",
+        workflows: "Workflows & Automação",
+        tools: "Ferramentas & Ambiente",
       },
       differentiators: "Diferenciais",
       softSkills: [
@@ -204,7 +204,7 @@ export const translations = {
     },
     projects: {
       title: "Projetos",
-      subtitle: "Navegue pela galeria para explorar cada case de engenharia.",
+      subtitle: "Explore os cases de sistemas e aplicações abaixo.",
       swipe: "Deslize",
       inDevelopment: "Em desenvolvimento",
       viewProject: "Ver Projeto",
@@ -215,22 +215,22 @@ export const translations = {
         medflow: {
           title: "MedFlow iOS",
           description:
-            "Construído com SwiftUI para melhorar a adesão a medicamentos, superando limitações de background para lembretes e histórico confiáveis.",
+            "Aplicação iOS nativa em SwiftUI, com gerenciamento complexo de estado em background para agendamentos confiáveis.",
         },
         aulago: {
           title: "AulaGo",
           description:
-            "Arquitetura multiplataforma para professores autônomos, unindo landing page de alta conversão com fluxos de agendamento escaláveis.",
+            "Arquitetura de sistema multiplataforma conectando alunos e professores com fluxos de agendamento e comunicação escaláveis.",
         },
         beachmatch: {
           title: "BeachMatch",
           description:
-            "Plataforma mobile-first para arenas esportivas com multi-tenancy, lógica de torneios e feed social, mantendo UX rápido e intuitivo.",
+            "Plataforma mobile-first para arenas esportivas com multi-tenancy, lógica de torneios e feed social, apoiada por relações complexas no backend.",
         },
         uniformes: {
           title: "UniformesCoach",
           description:
-            "E-commerce full stack com integrações Pix/Mercado Pago, design responsivo e arquitetura Supabase escalável.",
+            "Sistema web full stack para e-commerce com Pix/Mercado Pago, design responsivo e banco Supabase escalável.",
         },
         smartBanking: {
           title: "Smart Banking",
@@ -250,8 +250,8 @@ export const translations = {
       },
     },
     contact: {
-      title: "Vamos construir algo escalável.",
-      location: "Sorocaba, Brasil — aberta a trabalho remoto/global",
+      title: "Vamos construir sistemas robustos.",
+      location: "Sorocaba, Brasil — disponível para remoto/global",
       connect: "Conecte-se",
       copyright: (year: number) =>
         `© ${year} Pietra Martin. Todos os direitos reservados.`,
