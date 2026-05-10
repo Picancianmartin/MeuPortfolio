@@ -1,5 +1,7 @@
-import { Home, User, Cpu, Code, Mail, FileText } from 'lucide-react';
+import { Home, User, Cpu, Code, Mail } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
+import { useLanguage } from '../contexts/LanguageContext';
+import { translations } from '../content/translations';
 
 interface NavigationProps {
   activeSection: string;
@@ -7,15 +9,17 @@ interface NavigationProps {
 }
 
 export function Navigation({ activeSection, setActiveSection }: NavigationProps) {
+  const { language, toggleLanguage } = useLanguage();
+  const t = translations[language];
   
   // Definição dos itens com seus respectivos ícones
   const navItems = [
-    { id: 'home', label: 'Início', icon: Home },
-    { id: 'about', label: 'Sobre', icon: User },
-    { id: 'skills', label: 'Skills', icon: Cpu },
-    { id: 'projects', label: 'Projetos', icon: Code },
+    { id: 'home', label: t.nav.home, icon: Home },
+    { id: 'about', label: t.nav.about, icon: User },
+    { id: 'skills', label: t.nav.skills, icon: Cpu },
+    { id: 'projects', label: t.nav.projects, icon: Code },
     // Adicionei CV aqui se quiser linkar no futuro, ou mantenha Contato
-    { id: 'contact', label: 'Contato', icon: Mail },
+    { id: 'contact', label: t.nav.contact, icon: Mail },
   ];
 
   const scrollToSection = (id: string) => {
@@ -55,11 +59,39 @@ export function Navigation({ activeSection, setActiveSection }: NavigationProps)
                   {item.label}
                 </button>
               ))}
+              <button
+                type="button"
+                onClick={toggleLanguage}
+                className="flex items-center gap-1 rounded-full border border-brand-primary/30 px-3 py-1 text-xs font-semibold text-text-secondary hover:text-brand-primary transition-colors"
+                aria-label="Toggle language"
+              >
+                <span className={language === "en" ? "text-brand-primary" : ""}>
+                  EN
+                </span>
+                <span className="text-text-secondary/60">/</span>
+                <span className={language === "pt" ? "text-brand-primary" : ""}>
+                  PT
+                </span>
+              </button>
               <ThemeToggle />
             </div>
 
             {/* Mobile: Apenas o Toggle de Tema no topo (Menu sumiu daqui) */}
             <div className="md:hidden flex items-center">
+              <button
+                type="button"
+                onClick={toggleLanguage}
+                className="flex items-center gap-1 rounded-full border border-brand-primary/30 px-3 py-1 text-[10px] font-semibold text-text-secondary hover:text-brand-primary transition-colors mr-3"
+                aria-label="Toggle language"
+              >
+                <span className={language === "en" ? "text-brand-primary" : ""}>
+                  EN
+                </span>
+                <span className="text-text-secondary/60">/</span>
+                <span className={language === "pt" ? "text-brand-primary" : ""}>
+                  PT
+                </span>
+              </button>
               <ThemeToggle />
             </div>
           </div>

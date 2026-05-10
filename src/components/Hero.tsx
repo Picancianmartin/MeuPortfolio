@@ -1,8 +1,31 @@
 import image_code from "../assets/code.jpg";
-import { Github, Linkedin, Mail, Download, Instagram } from "lucide-react";
+import { Github, Linkedin, Mail, Download } from "lucide-react";
 import curriculopdf from "../assets/Currículo.pdf";
+import { useLanguage } from "../contexts/LanguageContext";
+import { translations } from "../content/translations";
 
 export function Hero() {
+  const { language } = useLanguage();
+  const t = translations[language];
+
+  const socialLinks = [
+    {
+      label: t.hero.socials.github,
+      href: "https://www.github.com/Picancianmartin",
+      Icon: Github,
+    },
+    {
+      label: t.hero.socials.linkedin,
+      href: "https://www.linkedin.com/in/martinpietra/",
+      Icon: Linkedin,
+    },
+    {
+      label: t.hero.socials.email,
+      href: "mailto:contato@pietramartin.dev",
+      Icon: Mail,
+    },
+  ];
+
   return (
     <section
       id="home"
@@ -13,7 +36,7 @@ export function Hero() {
           {/* Text Content */}
           <div className="text-center lg:text-left space-y-5">
             <div className="inline-block px-4 py-2 bg-brand-primary/10 border border-brand-primary/30 rounded-full gradient-text text-sm font-medium">
-              Disponível para Oportunidades
+              {t.hero.badge}
             </div>
 
             <h1
@@ -23,17 +46,32 @@ export function Hero() {
                 letterSpacing: "-0.02em",
               }}
             >
-              Desenvolvendo ideias,
+              {t.hero.headline}
               <span className="block gradient-text mt-2">
-                projetando experiências
+                {t.hero.headlineHighlight}
               </span>
             </h1>
 
+            <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
+              {socialLinks.map(({ label, href, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold
+                  bg-surface-elevated text-text-primary border border-brand-primary/20
+                  hover:border-brand-primary/60 hover:text-brand-primary hover:bg-brand-primary/10 transition-all"
+                  aria-label={label}
+                >
+                  <Icon size={18} />
+                  {label}
+                </a>
+              ))}
+            </div>
+
             <p className="text-lg text-text-secondary max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-              Sou formada em Análise e Desenvolvimento de Sistemas e apaixonada
-              por construir produtos úteis. Atuo entre UI/UX e desenvolvimento
-              fullstack, criando soluções web e mobile e explorando IA aplicada
-              para automatizar tarefas, otimizar processos e apoiar decisões.
+              {t.hero.summary}
             </p>
 
             <div className="flex flex-wrap gap-2 justify-center lg:justify-start pt-3">
@@ -52,9 +90,9 @@ export function Hero() {
              
              /* Efeitos de Hover e Transição */
              hover:scale-105 hover:bg-surface-elevated hover:shadow-lg
-             transition-all duration-300 active:scale-95"
+              transition-all duration-300 active:scale-95"
               >
-                Ver Projetos
+                {t.hero.cta}
               </button>
               <a
                 href={curriculopdf}
@@ -71,56 +109,13 @@ export function Hero() {
 
                 <div className="flex flex-col">
                   <span className="text-[10px] uppercase tracking-wider text-zinc-500 font-semibold group-hover:text-zinc-400 transition-colors">
-                    Curriculum Vitae
+                    {t.hero.cvLabel}
                   </span>
                   <span className="font-bold text-lg bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent group-hover:brightness-125 transition-all">
-                    Download PDF
+                    {t.hero.cvAction}
                   </span>
                 </div>
               </a>
-            </div>
-
-            <div className="flex gap-4 justify-center lg:justify-start pt-4">
-              <a
-                href="https://www.github.com/Picancianmartin"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-                className="p-4 bg-surface-elevated hover:bg-brand-primary/20 text-text-primary hover:text-brand-primary rounded-lg transition-all border border-brand-primary/20 hover:border-brand-primary/50 active:scale-95"
-              >
-                <Github size={24} />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/martinpietra/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="p-4 bg-surface-elevated hover:bg-brand-primary/20 text-text-primary hover:text-brand-primary rounded-lg transition-all border border-brand-primary/20 hover:border-brand-primary/50 active:scale-95"
-              >
-                <Linkedin size={24} />
-              </a>
-              <a
-                href="https://www.instagram.com/piimartin"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="p-4 bg-surface-elevated hover:bg-brand-primary/20 text-text-primary hover:text-brand-primary rounded-lg transition-all border border-brand-primary/20 hover:border-brand-primary/50 active:scale-95"
-              >
-                <Instagram size={24} />
-              </a>
-              <button
-                type="button"
-                aria-label="Email"
-                onClick={() =>
-                  document.getElementById("contact")?.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start",
-                  })
-                }
-                className="p-4 bg-surface-elevated hover:bg-brand-primary/20 text-text-primary hover:text-brand-primary rounded-lg transition-all border border-brand-primary/20 hover:border-brand-primary/50 active:scale-95"
-              >
-                <Mail size={20} />
-              </button>
             </div>
           </div>
 

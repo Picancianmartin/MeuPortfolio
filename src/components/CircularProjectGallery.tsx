@@ -16,6 +16,8 @@ import {
   MoveHorizontal,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "../contexts/LanguageContext";
+import { translations } from "../content/translations";
 
 // --- Interfaces ---
 export interface ProjectItem {
@@ -65,6 +67,8 @@ export const CircularProjectGallery = ({
   autoplay = false,
   interval = 5000,
 }: CircularGalleryProps) => {
+  const { language } = useLanguage();
+  const t = translations[language];
   const [activeIndex, setActiveIndex] = useState(0);
   const [containerWidth, setContainerWidth] = useState(1000);
   const imageContainerRef = useRef<HTMLDivElement>(null);
@@ -224,7 +228,7 @@ export const CircularProjectGallery = ({
           {/* Badge Indicativo */}
           <div className="lg:hidden absolute -top-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/20 backdrop-blur-sm border border-white/5 text-white/80 text-[10px] font-medium tracking-wide pointer-events-none">
             <MoveHorizontal size={12} className="text-white/70" />
-            <span>Deslize</span>
+            <span>{t.projects.swipe}</span>
           </div>
 
           {items.map((item, index) => (
@@ -268,7 +272,7 @@ export const CircularProjectGallery = ({
         [background:linear-gradient(var(--color-surface-primary),var(--color-surface-primary))_padding-box,linear-gradient(135deg,var(--color-brand-primary),var(--color-accent-cta))_border-box]"
                   >
                     <span className="h-2 w-2 rounded-full bg-accent-cta animate-pulse" />
-                    Em desenvolvimento
+                    {t.projects.inDevelopment}
                   </span>
                 )}
               </div>
@@ -313,7 +317,7 @@ export const CircularProjectGallery = ({
                       className="text-[var(--color-brand-primary)] group-hover:brightness-125 transition-colors duration-300"
                     />
                     <span className="bg-[linear-gradient(to_right,var(--color-brand-primary),var(--color-accent-cta))] bg-clip-text text-transparent">
-                      Ver Projeto
+                      {t.projects.viewProject}
                     </span>
                   </a>
                 )}
@@ -329,7 +333,7 @@ export const CircularProjectGallery = ({
       dark:hover:text-accent-cta dark:hover:border-accent-cta dark:hover:bg-accent-cta/20"
                   >
                     <Github size={20} />
-                    Código
+                    {t.projects.code}
                   </a>
                 )}
 
@@ -343,7 +347,7 @@ export const CircularProjectGallery = ({
       dark:hover:text-accent-cta dark:hover:border-accent-cta dark:hover:bg-accent-cta/20"
                   >
                     <Figma size={20} />
-                    Design
+                    {t.projects.design}
                   </a>
                 )}
                 
@@ -355,7 +359,7 @@ export const CircularProjectGallery = ({
                   [background:linear-gradient(var(--color-surface-primary),var(--color-surface-primary))_padding-box,linear-gradient(135deg,var(--color-brand-primary),var(--color-accent-cta))_border-box]"
                   >
                     <span className="h-2.5 w-2.5 rounded-full bg-accent-cta animate-pulse" />
-                    WIP • Em breve
+                    {t.projects.wipSoon}
                   </span>
                 )}
               </div>

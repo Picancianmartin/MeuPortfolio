@@ -3,15 +3,21 @@ import imageMedFlow from '../assets/MedFlowCapa.png';
 import imageLP from '../assets/LandingPage.png';
 import agcapa from '../assets/agCapa.png';
 import aiStudio from '../assets/AIStudio.png'
+import placeholder from '../assets/placeholder.jpg';
+import codeImage from '../assets/code.jpg';
+import { useLanguage } from "../contexts/LanguageContext";
+import { translations } from "../content/translations";
 
 export function Projects() {
+  const { language } = useLanguage();
+  const t = translations[language];
   
   // Seus dados adaptados para o novo formato
   const projects: ProjectItem[] = [
     {
       id: 1,
-      title: "MedFlow iOS",
-      description: "App nativo (SwiftUI) para gestão de medicamentos. Organiza remédios por nome ou sintoma, com sistema inteligente de lembretes e histórico de uso.",
+      title: t.projects.items.medflow.title,
+      description: t.projects.items.medflow.description,
       image: imageMedFlow,
       tags: ["Swift", "SwiftUI", "Xcode", "iOS"],
       github: "https://github.com/Picancianmartin/MedFlowiOS.git",
@@ -20,8 +26,8 @@ export function Projects() {
     },
     {
       id: 2,
-      title: "AulaGo",
-      description: "Plataforma completa para professores autônomos. Landing page de alta conversão com dashboard simulado e sistema de agendamento integrado.",
+      title: t.projects.items.aulago.title,
+      description: t.projects.items.aulago.description,
       image: agcapa,
       tags: ["React", "TypeScript", "Tailwind", "Vite"],
       github: "https://github.com/Jessica-G-arcia/AulaGo_mobile.git",
@@ -30,8 +36,24 @@ export function Projects() {
     },
     {
       id: 3,
-      title: "Smart Banking",
-      description: "Interface de alta fidelidade para Fintechs. Foco total em Pixel Perfect a partir do Figma, responsividade avançada e animações suaves.",
+      title: t.projects.items.beachmatch.title,
+      description: t.projects.items.beachmatch.description,
+      image: placeholder,
+      tags: ["React", "Supabase", "Multi-tenant", "Mobile-first"],
+      inDevelopment: false,
+    },
+    {
+      id: 4,
+      title: t.projects.items.uniformes.title,
+      description: t.projects.items.uniformes.description,
+      image: placeholder,
+      tags: ["React", "Supabase", "Pix", "Mercado Pago"],
+      inDevelopment: false,
+    },
+    {
+      id: 5,
+      title: t.projects.items.smartBanking.title,
+      description: t.projects.items.smartBanking.description,
       image: imageLP,
       tags: ["HTML", "CSS", "Bootstrap", "Figma"],
       figma: "https://www.figma.com/community/file/1592239441747222722",
@@ -39,12 +61,20 @@ export function Projects() {
       inDevelopment: false,
     },
     {
-      id: 4,
-      title: "AI Studio Gallery",
-      description: "AI STUDIO GALLERY é uma prévia de página (mockup) criada para apresentar, de forma organizada e elegante, uma coleção de pôsteres gerados com IA para uso em redes sociais.",
+      id: 6,
+      title: t.projects.items.aiAutomation.title,
+      description: t.projects.items.aiAutomation.description,
+      image: codeImage,
+      tags: ["n8n", "APIs", "AI Agents", "Automation"],
+      inDevelopment: false,
+    },
+    {
+      id: 7,
+      title: t.projects.items.aiStudio.title,
+      description: t.projects.items.aiStudio.description,
       image: aiStudio,
       tags: ["React", "Tailwind CSS", "TypeScript", "Next.js"],
-      demo: "" ,
+      demo: "/ai-studio",
       inDevelopment: false,
       wipSoon: true,
     }
@@ -64,11 +94,11 @@ export function Projects() {
         {/* Cabeçalho */}
         <div className="text-center mb-16">
           <h2 className="text-4xl gradient-tesxt md:text-5xl font-bold text-gray-900 dark:text-white mb-6 transition-colors duration-300">
-            Projetos <span className="bg-gradient-to-r from-neon-purple via-neon-blue to-neon-yellow bg-clip-text text-transparent"></span>
+            {t.projects.title} <span className="bg-gradient-to-r from-neon-purple via-neon-blue to-neon-yellow bg-clip-text text-transparent"></span>
           </h2>
           <div className="w-20 h-1 bg-brand-primary mx-auto mb-5"></div>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg transition-colors duration-300 space-y-8">
-            Navegue pela galeria circular para explorar os detalhes de cada aplicação.
+            {t.projects.subtitle}
           </p>
         </div>
 

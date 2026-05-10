@@ -1,27 +1,32 @@
 import image_me from "../assets/foto.jpeg";
 import { GraduationCap, Code2, Briefcase, Target } from "lucide-react";
+import { useLanguage } from "../contexts/LanguageContext";
+import { translations } from "../content/translations";
 
 export function About() {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   const highlights = [
     {
       icon: GraduationCap,
-      title: "Formação Acadêmica",
-      description: "Análise e Desenv. de Sistemas (Facens)",
+      title: t.about.highlights[0].title,
+      description: t.about.highlights[0].description,
     },
     {
       icon: Code2,
-      title: "Desenvolvimento",
-      description: "Full Stack com foco em soluções escaláveis",
+      title: t.about.highlights[1].title,
+      description: t.about.highlights[1].description,
     },
     {
       icon: Briefcase,
-      title: "Experiência",
-      description: "Atleta Profissional (8 anos) & Dev",
+      title: t.about.highlights[2].title,
+      description: t.about.highlights[2].description,
     },
     {
       icon: Target,
-      title: "Objetivo",
-      description: "Criar impacto através da tecnologia",
+      title: t.about.highlights[3].title,
+      description: t.about.highlights[3].description,
     },
   ];
 
@@ -39,7 +44,7 @@ export function About() {
               letterSpacing: "-0.01em",
             }}
           >
-            Sobre Mim
+            {t.about.title}
           </h2>
           <div className="w-20 h-1 bg-brand-primary mx-auto"></div>
         </div>
@@ -58,16 +63,7 @@ export function About() {
 
           <div className="space-y-6">
             <p className="text-lg text-text-secondary mt-10 lg:mt-0 leading-relaxed">
-              Como ex-atleta profissional com 8 anos de experiência, entendi que
-              o sucesso é fruto de dedicação, colaboração e superação de
-              limites. Minha jornada me ensinou o real significado de liderança,
-              trabalho em equipe e resiliência sob pressão. Agora, estou
-              aplicando a mesma disciplina e paixão no meu desenvolvimento na
-              área de tecnologia, um setor que sempre me fascinou. Minha
-              capacidade de me comunicar de forma assertiva e de me adaptar a
-              novos desafios me prepara para atuar de forma significativa,
-              usando a mentalidade de um atleta para superar limites e
-              contribuir com o avanço e a inovação tecnológica.
+              {t.about.body}
             </p>
 
             <div className="grid grid-cols-2 lg:grid-cols-2 gap-2 lg:gap-4 pt-3 lg:pt-4">

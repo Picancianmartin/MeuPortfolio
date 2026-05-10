@@ -9,6 +9,7 @@ import { Projects } from './components/Projects';
 import { Contact } from './components/Contact';
 import { Navigation } from './components/Navigation';
 import { ThemeProvider } from './contexts/ThemeContext';
+import { LanguageProvider } from './contexts/LanguageContext';
 
 // Importar as novas páginas
 import AIGallery from './components/AIGallery';
@@ -104,14 +105,16 @@ useEffect(() => {
 export default function App() {
   return (
     <ThemeProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/ai-studio" element={<AIGallery />} />
-          <Route path="/lp-aulago" element={<LPAulaGo />} />
-          <Route path="/links" element={<Links />} />
-        </Routes>
-      </Router>
+      <LanguageProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/ai-studio" element={<AIGallery />} />
+            <Route path="/lp-aulago" element={<LPAulaGo />} />
+            <Route path="/links" element={<Links />} />
+          </Routes>
+        </Router>
+      </LanguageProvider>
     </ThemeProvider>
   );
 }

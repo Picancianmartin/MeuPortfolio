@@ -1,53 +1,31 @@
-import {
-  Code2,
-  Server,
-  PenTool,
-  Target,
-  Users,
-  Brain,
-  Zap,
-} from "lucide-react"; // Ícones para cada categoria
+import { Code2, Server, Cpu, Target, Users, Brain, Zap } from "lucide-react"; // Ícones para cada categoria
+import { useLanguage } from "../contexts/LanguageContext";
+import { translations } from "../content/translations";
 
 export function Skills() {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   const skillCategories = [
     {
-      category: "Frontend",
+      category: t.skills.categories.frontend,
       icon: Code2,
-      skills: [
-        "React",
-        "TypeScript",
-        "SwiftUI",
-        "HTML5",
-        "Swift",
-        "JavaScript",
-        "Bootstrap",
-      ],
+      skills: ["React", "SwiftUI", "Tailwind"],
     },
     {
-      category: "Backend",
+      category: t.skills.categories.backend,
       icon: Server,
-      skills: [
-        "Node.js",
-        "Python",
-        "Supabase",
-        "REST APIs",
-        "Java",
-        "Firebase",
-      ],
+      skills: ["Node.js", "Python", "Supabase"],
     },
     {
-      category: "Ferramentas",
-      icon: PenTool,
-      skills: [
-        "GitHub",
-        "XCode",
-        "VS Code",
-        "Figma",
-        "Scrum",
-        "UI/UX",
-        "Android Studio",
-        "Canva",
-      ],
+      category: t.skills.categories.architecture,
+      icon: Cpu,
+      skills: ["CI/CD", "GitHub Actions", "Fastlane", "Jest/XCTest"],
+    },
+    {
+      category: t.skills.categories.automation,
+      icon: Brain,
+      skills: ["n8n", "API Orchestration", "AI Agents"],
     },
   ];
 
@@ -55,29 +33,26 @@ export function Skills() {
   const softSkills = [
     {
       icon: Target,
-      title: "Disciplina & Foco",
-      description:
-        "Mindset de atleta: consistência diária e busca por excelência.",
+      title: t.skills.softSkills[0].title,
+      description: t.skills.softSkills[0].description,
     },
     {
       icon: Users,
-      title: "Trabalho em Equipe",
-      description: "Facilidade em colaborar e crescer junto com o time.",
+      title: t.skills.softSkills[1].title,
+      description: t.skills.softSkills[1].description,
     },
     {
       icon: Brain,
-      title: "Resolução de Problemas",
-      description: "Pensamento analítico para desafios complexos.",
+      title: t.skills.softSkills[2].title,
+      description: t.skills.softSkills[2].description,
     },
     {
       icon: Zap,
-      title: "Adaptabilidade",
-      description: "Rapidez para aprender novas tecnologias e processos.",
+      title: t.skills.softSkills[3].title,
+      description: t.skills.softSkills[3].description,
     },
   ];
 
-  const cardStyle =
-    "p-6 rounded-xl glass-effect outline-gradient outline-gradient-hover transition-all";
   const iconBoxStyle =
     "p-3 bg-brand-primary/10 rounded-lg border border-brand-primary/20 flex-shrink-0";
 
@@ -95,11 +70,11 @@ export function Skills() {
               letterSpacing: "-0.01em",
             }}
           >
-            Habilidades
+            {t.skills.title}
           </h2>
           <div className="w-20 h-1 bg-brand-primary mx-auto"></div>
           <p className="text-lg text-text-secondary mt-6 max-w-2xl mx-auto">
-            Hard Skills (Stack Técnica) & Soft Skills (Comportamental)
+            {t.skills.subtitle}
           </p>
         </div>
 
@@ -152,7 +127,7 @@ export function Skills() {
         <h3 className="text-2xl font-bold text-text-primary mb-8 pt-8 text-center sm:text-left flex items-center justify-center sm:justify-start gap-3">
           <span className="w-10 h-1 bg-brand-primary rounded-full sm:hidden"></span>{" "}
           {/* Linha decorativa mobile */}
-          Diferenciais
+          {t.skills.differentiators}
           <span className="w-full h-px bg-brand-primary/20 ml-4 hidden sm:block"></span>{" "}
           {/* Linha decorativa desktop */}
         </h3>
