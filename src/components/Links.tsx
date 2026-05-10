@@ -26,7 +26,7 @@ const links = [
   {
     title: "LinkedIn",
     subtitle: "Experiência e networking",
-    href: "https://www.linkedin.com/in/pietra-cancian-martin/",
+    href: "https://www.linkedin.com/in/martinpietra/",
     icon: Linkedin,
   },
   {
