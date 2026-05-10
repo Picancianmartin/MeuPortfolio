@@ -18,7 +18,6 @@ export function Navigation({ activeSection, setActiveSection }: NavigationProps)
     { id: 'about', label: t.nav.about, icon: User },
     { id: 'skills', label: t.nav.skills, icon: Cpu },
     { id: 'projects', label: t.nav.projects, icon: Code },
-    // Adicionei CV aqui se quiser linkar no futuro, ou mantenha Contato
     { id: 'contact', label: t.nav.contact, icon: Mail },
   ];
 

@@ -94,7 +94,7 @@ export function Projects() {
         {/* Cabeçalho */}
         <div className="text-center mb-16">
           <h2 className="text-4xl gradient-tesxt md:text-5xl font-bold text-gray-900 dark:text-white mb-6 transition-colors duration-300">
-            {t.projects.title} <span className="bg-gradient-to-r from-neon-purple via-neon-blue to-neon-yellow bg-clip-text text-transparent"></span>
+            {t.projects.title}
           </h2>
           <div className="w-20 h-1 bg-brand-primary mx-auto mb-5"></div>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg transition-colors duration-300 space-y-8">
