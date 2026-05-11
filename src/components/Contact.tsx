@@ -6,6 +6,7 @@ export function Contact() {
   const { language } = useLanguage();
   const t = translations[language];
   const currentYear = new Date().getFullYear();
+  const whatsappLink = "https://wa.me/5515000000000";
 
   return (
     <footer
@@ -38,7 +39,7 @@ export function Contact() {
             {t.contact.links.linkedin}
           </a>
           <a
-            href="https://wa.me/"
+            href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-brand-primary/30 text-text-secondary hover:text-brand-primary hover:border-brand-primary/60 transition-all"
