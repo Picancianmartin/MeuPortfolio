@@ -195,8 +195,7 @@ export function Projects() {
                     disabled
                     className="flex items-center gap-2 px-5 py-2.5 lg:px-6 lg:py-3 rounded-xl font-bold transition-all duration-300 text-sm lg:text-base
                     text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-white/20
-                    hover:text-accent-cta hover:border-accent-cta hover:bg-accent-cta/10 hover:scale-105
-                    disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
+                    disabled:opacity-60 disabled:cursor-not-allowed"
                   >
                     Ver Código (GitHub)
                   </button>
@@ -206,8 +205,7 @@ export function Projects() {
                     disabled
                     className="flex items-center gap-2 px-5 py-2.5 lg:px-6 lg:py-3 rounded-xl font-bold transition-all duration-300 text-sm lg:text-base
                     text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-white/20
-                    hover:text-brand-primary hover:border-brand-primary hover:bg-brand-primary/10 hover:scale-105
-                    disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
+                    disabled:opacity-60 disabled:cursor-not-allowed"
                   >
                     Ver Demo
                   </button>
