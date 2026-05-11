@@ -23,7 +23,7 @@ export function Projects() {
         "Catálogo inteligente com validação de estoque em tempo real",
         "Carrinho com fluxo automatizado de PIX",
         "Painel administrativo com CRUD",
-        "Dashboard analítico com exportação (ExcelJS).",
+        "Dashboard analítico com exportação (ExcelJS)",
       ],
       impact:
         "Digitalização de ponta a ponta do fluxo de pedidos, centralizando pagamentos e estoque em uma arquitetura escalável e fornecendo um painel analítico para decisões de negócio.",
@@ -49,7 +49,7 @@ export function Projects() {
         "Cadastro de tratamentos com cálculo autônomo",
         "Busca inteligente de medicamentos via JSON",
         "Orquestração de notificações locais nativas",
-        "Sincronização de estado para edição/exclusão.",
+        "Sincronização de estado para edição/exclusão",
       ],
       impact:
         "Elimina a fricção no controle de medicamentos, garantindo a aderência do usuário por meio de uma arquitetura local leve, rápida e com notificações à prova de falhas.",
@@ -73,7 +73,7 @@ export function Projects() {
         "Login social e autenticação segura",
         "Onboarding em duas etapas com validações rigorosas (CPF, Data)",
         "Consumo de API para autocompletar endereços",
-        "Persistência de perfil em banco NoSQL.",
+        "Persistência de perfil em banco NoSQL",
       ],
       impact:
         "Padronização completa da governança de dados na entrada do usuário, reduzindo o atrito de cadastro e entregando uma base limpa e estruturada.",
