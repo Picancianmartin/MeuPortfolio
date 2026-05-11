@@ -1,4 +1,6 @@
 export function Projects() {
+  const badgeBaseClasses =
+    "inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase text-brand-primary border border-brand-primary/30 bg-brand-primary/10";
   const caseStudies = [
     {
       id: 1,
@@ -89,10 +91,10 @@ export function Projects() {
         
         {/* Cabeçalho */}
         <div className="text-center mb-16">
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-[0.2em] text-brand-primary border border-brand-primary/30 bg-brand-primary/10">
+          <span className={`${badgeBaseClasses} tracking-[0.2em]`}>
             Case Studies
           </span>
-          <h2 className="text-4xl gradient-tesxt md:text-5xl font-bold text-gray-900 dark:text-white mb-6 mt-4 transition-colors duration-300">
+          <h2 className="text-4xl gradient-text md:text-5xl font-bold text-gray-900 dark:text-white mb-6 mt-4 transition-colors duration-300">
             Projetos em Destaque <span className="bg-gradient-to-r from-neon-purple via-neon-blue to-neon-yellow bg-clip-text text-transparent"></span>
           </h2>
           <div className="w-20 h-1 bg-brand-primary mx-auto mb-5"></div>
@@ -110,7 +112,7 @@ export function Projects() {
               <div className="space-y-8">
                 <header className="space-y-4">
                   <div className="flex flex-wrap items-center gap-3">
-                    <span className="px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-widest text-brand-primary border border-brand-primary/30 bg-brand-primary/10">
+                    <span className={`${badgeBaseClasses} tracking-widest`}>
                       {project.title}
                     </span>
                     <h3 className="text-2xl lg:text-3xl font-bold text-text-primary">
@@ -195,17 +197,23 @@ export function Projects() {
                 <div className="flex flex-wrap gap-4 pt-2">
                   <button
                     type="button"
+                    aria-label="Ver código no GitHub (placeholder)"
+                    disabled
                     className="flex items-center gap-2 px-5 py-2.5 lg:px-6 lg:py-3 rounded-xl font-bold transition-all duration-300 text-sm lg:text-base
                     text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-white/20
-                    hover:text-accent-cta hover:border-accent-cta hover:bg-accent-cta/10 hover:scale-105"
+                    hover:text-accent-cta hover:border-accent-cta hover:bg-accent-cta/10 hover:scale-105
+                    disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
                   >
                     Ver Código (GitHub)
                   </button>
                   <button
                     type="button"
+                    aria-label="Ver demo (placeholder)"
+                    disabled
                     className="flex items-center gap-2 px-5 py-2.5 lg:px-6 lg:py-3 rounded-xl font-bold transition-all duration-300 text-sm lg:text-base
                     text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-white/20
-                    hover:text-brand-primary hover:border-brand-primary hover:bg-brand-primary/10 hover:scale-105"
+                    hover:text-brand-primary hover:border-brand-primary hover:bg-brand-primary/10 hover:scale-105
+                    disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
                   >
                     Ver Demo
                   </button>
