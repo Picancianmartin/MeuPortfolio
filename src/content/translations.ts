@@ -136,6 +136,5 @@ const ptContent = {
 } as const;
 
 export const translations = {
-  en: ptContent,
   pt: ptContent,
 } as const;
