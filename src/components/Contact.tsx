@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, MapPin } from "lucide-react";
+import { Linkedin, Mail, MessageCircle } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
 import { translations } from "../content/translations";
 
@@ -12,7 +12,7 @@ export function Contact() {
       id="contact"
       className="bg-surface-primary border-t border-brand-primary/20 px-4 sm:px-6 lg:px-8"
     >
-      <div className="max-w-5xl mx-auto py-20 text-center space-y-6">
+      <div className="max-w-5xl mx-auto py-20 text-center space-y-8">
         <p
           className="text-2xl sm:text-3xl font-bold text-text-primary"
           style={{ fontFamily: "Space Grotesk, sans-serif" }}
@@ -20,37 +20,31 @@ export function Contact() {
           {t.contact.title}
         </p>
 
-        <a
-          href="mailto:contato@pietramartin.dev"
-          className="inline-flex items-center justify-center gap-3 text-2xl sm:text-3xl font-bold text-brand-primary hover:text-brand-primary/80 transition-colors"
-        >
-          <Mail size={24} />
-          contato@pietramartin.dev
-        </a>
-
-        <div className="flex items-center justify-center gap-2 text-text-secondary text-sm sm:text-base">
-          <MapPin size={16} className="text-brand-primary" />
-          <span>{t.contact.location}</span>
-        </div>
-
-        <div className="flex items-center justify-center gap-4 pt-2">
+        <div className="flex flex-wrap items-center justify-center gap-3">
           <a
-            href="https://github.com/Picancianmartin"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-primary/30 text-text-primary hover:text-brand-primary hover:border-brand-primary/60 transition-all"
+            href="mailto:contato@pietramartin.dev"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-brand-primary/40 text-text-primary hover:text-brand-primary hover:border-brand-primary/70 transition-all"
           >
-            <Github size={18} />
-            GitHub
+            <Mail size={18} />
+            {t.contact.links.email}
           </a>
           <a
             href="https://www.linkedin.com/in/martinpietra/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-primary/30 text-text-primary hover:text-brand-primary hover:border-brand-primary/60 transition-all"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-brand-primary/30 text-text-secondary hover:text-brand-primary hover:border-brand-primary/60 transition-all"
           >
             <Linkedin size={18} />
-            LinkedIn
+            {t.contact.links.linkedin}
+          </a>
+          <a
+            href="https://wa.me/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-brand-primary/30 text-text-secondary hover:text-brand-primary hover:border-brand-primary/60 transition-all"
+          >
+            <MessageCircle size={18} />
+            {t.contact.links.whatsapp}
           </a>
         </div>
 

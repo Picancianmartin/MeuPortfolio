@@ -62,9 +62,10 @@ export function About() {
           </div>
 
           <div className="space-y-6">
-            <p className="text-lg text-text-secondary mt-10 lg:mt-0 leading-relaxed">
-              {t.about.body}
-            </p>
+            <div className="space-y-4 text-lg text-text-secondary mt-10 lg:mt-0 leading-relaxed">
+              <p>{t.about.body}</p>
+              <p>{t.about.athlete}</p>
+            </div>
 
             <div className="grid grid-cols-2 lg:grid-cols-2 gap-2 lg:gap-4 pt-3 lg:pt-4">
               {highlights.map((item, index) => (

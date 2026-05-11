@@ -1,4 +1,14 @@
-import { Code2, Server, Cpu, Target, Users, Brain, Zap } from "lucide-react"; // Ícones para cada categoria
+import {
+  Code2,
+  Server,
+  Database,
+  Workflow,
+  PenTool,
+  Target,
+  Users,
+  Brain,
+  Zap,
+} from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
 import { translations } from "../content/translations";
 
@@ -10,22 +20,27 @@ export function Skills() {
     {
       category: t.skills.categories.frontend,
       icon: Code2,
-      skills: ["React", "SwiftUI", "Tailwind"],
+      skills: ["React", "SwiftUI", "Tailwind", "TypeScript", "JavaScript"],
     },
     {
       category: t.skills.categories.backend,
       icon: Server,
-      skills: ["Node.js", "Python", "Supabase", "REST APIs"],
+      skills: ["Node.js", "Python", "REST APIs"],
     },
     {
-      category: t.skills.categories.workflows,
-      icon: Brain,
-      skills: ["n8n", "AI Agent Orchestration", "API Integrations"],
+      category: t.skills.categories.database,
+      icon: Database,
+      skills: ["Supabase", "Firebase"],
     },
     {
-      category: t.skills.categories.tools,
-      icon: Cpu,
-      skills: ["GitHub", "Xcode", "VS Code"],
+      category: t.skills.categories.automation,
+      icon: Workflow,
+      skills: ["n8n"],
+    },
+    {
+      category: t.skills.categories.design,
+      icon: PenTool,
+      skills: ["Figma", "UI/UX", "GitHub", "Xcode", "VS Code"],
     },
   ];
 

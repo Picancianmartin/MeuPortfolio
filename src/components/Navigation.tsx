@@ -1,4 +1,4 @@
-import { Home, User, Cpu, Code, Mail } from 'lucide-react';
+import { Home, User, Cpu, Code, Mail, Workflow } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
 import { useLanguage } from '../contexts/LanguageContext';
 import { translations } from '../content/translations';
@@ -17,6 +17,7 @@ export function Navigation({ activeSection, setActiveSection }: NavigationProps)
     { id: 'home', label: t.nav.home, icon: Home },
     { id: 'about', label: t.nav.about, icon: User },
     { id: 'skills', label: t.nav.skills, icon: Cpu },
+    { id: 'process', label: t.nav.process, icon: Workflow },
     { id: 'projects', label: t.nav.projects, icon: Code },
     { id: 'contact', label: t.nav.contact, icon: Mail },
   ];
