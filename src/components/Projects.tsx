@@ -1,53 +1,79 @@
-import { CircularProjectGallery, ProjectItem } from "./CircularProjectGallery";
-import imageMedFlow from '../assets/MedFlowCapa.png';
-import imageLP from '../assets/LandingPage.png';
-import agcapa from '../assets/agCapa.png';
-import aiStudio from '../assets/AIStudio.png'
-
 export function Projects() {
-  
-  // Seus dados adaptados para o novo formato
-  const projects: ProjectItem[] = [
+  const caseStudies = [
     {
       id: 1,
-      title: "MedFlow iOS",
-      description: "App nativo (SwiftUI) para gestão de medicamentos. Organiza remédios por nome ou sintoma, com sistema inteligente de lembretes e histórico de uso.",
-      image: imageMedFlow,
-      tags: ["Swift", "SwiftUI", "Xcode", "iOS"],
-      github: "https://github.com/Picancianmartin/MedFlowiOS.git",
-      demo: "https://picancianmartin.github.io/MedFlowiOS/",
-      inDevelopment: false,
+      title: "UniformesCoach",
+      subtitle: "E-commerce Full-Stack e Gestão de Pedidos",
+      problem:
+        "A venda e encomenda de uniformes ocorria de forma totalmente manual (WhatsApp e planilhas), gerando retrabalho, perda do rastreio de pedidos e falta de visibilidade sobre o estoque e o status de produção.",
+      solution:
+        "Um sistema web full-stack de catálogo e pedidos, com checkout via integração PIX, acompanhamento de status pelo cliente e um backoffice administrativo robusto para gestão de produtos, estoque e indicadores de vendas.",
+      technologies: [
+        "React",
+        "Vite",
+        "Tailwind CSS",
+        "Supabase (Auth/Storage/DB)",
+        "Mercado Pago API",
+      ],
+      features: [
+        "Catálogo inteligente com validação de estoque em tempo real",
+        "Carrinho com fluxo automatizado de PIX",
+        "Painel administrativo com CRUD",
+        "Dashboard analítico com exportação (ExcelJS).",
+      ],
+      impact:
+        "Digitalização de ponta a ponta do fluxo de pedidos, centralizando pagamentos e estoque em uma arquitetura escalável e fornecendo um painel analítico para decisões de negócio.",
     },
     {
       id: 2,
-      title: "AulaGo",
-      description: "Plataforma completa para professores autônomos. Landing page de alta conversão com dashboard simulado e sistema de agendamento integrado.",
-      image: agcapa,
-      tags: ["React", "TypeScript", "Tailwind", "Vite"],
-      github: "https://github.com/Jessica-G-arcia/AulaGo_mobile.git",
-      demo: "/lp-aulago",
-      inDevelopment: true,
+      title: "MedFlow",
+      subtitle: "App Nativo iOS para Gestão de Medicamentos",
+      contextNote:
+        "Aplicativo desenvolvido integralmente como projeto prático para aprendizado autodidata avançado no ecossistema Apple (Swift, SwiftUI e arquiteturas nativas).",
+      problem:
+        "Pacientes perdem a aderência a tratamentos médicos devido à dificuldade de organizar horários, dosagens e durações em múltiplos medicamentos simultâneos.",
+      solution:
+        "Um aplicativo nativo iOS offline-first que centraliza o controle do tratamento, gerenciando a agenda de doses com cálculos automáticos e lembretes confiáveis integrados ao sistema.",
+      technologies: [
+        "Swift",
+        "SwiftUI",
+        "Combine",
+        "SwiftData (Persistência local)",
+        "UserNotifications",
+      ],
+      features: [
+        "Cadastro de tratamentos com cálculo autônomo",
+        "Busca inteligente de medicamentos via JSON",
+        "Orquestração de notificações locais nativas",
+        "Sincronização de estado para edição/exclusão.",
+      ],
+      impact:
+        "Elimina a fricção no controle de medicamentos, garantindo a aderência do usuário por meio de uma arquitetura local leve, rápida e com notificações à prova de falhas.",
     },
     {
       id: 3,
-      title: "Smart Banking",
-      description: "Interface de alta fidelidade para Fintechs. Foco total em Pixel Perfect a partir do Figma, responsividade avançada e animações suaves.",
-      image: imageLP,
-      tags: ["HTML", "CSS", "Bootstrap", "Figma"],
-      figma: "https://www.figma.com/community/file/1592239441747222722",
-      demo: "https://picancianmartin.github.io/LandingPage/",
-      inDevelopment: false,
+      title: "AulaGo",
+      subtitle: "App Android Nativo para Governança de Usuários",
+      problem:
+        "Processos de cadastro manuais e dispersos geram alta taxa de abandono e resultam em um banco de dados de usuários inconsistente para a plataforma educacional.",
+      solution:
+        "Um aplicativo nativo Android focado na governança de identidade, centralizando a autenticação, integrando fluxos sociais e garantindo a higienização e persistência de dados em nuvem.",
+      technologies: [
+        "Android SDK",
+        "Java",
+        "Firebase (Auth/Firestore)",
+        "Google Sign-In",
+        "REST API (ViaCEP)",
+      ],
+      features: [
+        "Login social e autenticação segura",
+        "Onboarding em duas etapas com validações rigorosas (CPF, Data)",
+        "Consumo de API para autocompletar endereços",
+        "Persistência de perfil em banco NoSQL.",
+      ],
+      impact:
+        "Padronização completa da governança de dados na entrada do usuário, reduzindo o atrito de cadastro e entregando uma base limpa e estruturada.",
     },
-    {
-      id: 4,
-      title: "AI Studio Gallery",
-      description: "AI STUDIO GALLERY é uma prévia de página (mockup) criada para apresentar, de forma organizada e elegante, uma coleção de pôsteres gerados com IA para uso em redes sociais.",
-      image: aiStudio,
-      tags: ["React", "Tailwind CSS", "TypeScript", "Next.js"],
-      demo: "" ,
-      inDevelopment: false,
-      wipSoon: true,
-    }
   ];
 
   return (
@@ -63,17 +89,131 @@ export function Projects() {
         
         {/* Cabeçalho */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl gradient-tesxt md:text-5xl font-bold text-gray-900 dark:text-white mb-6 transition-colors duration-300">
-            Projetos <span className="bg-gradient-to-r from-neon-purple via-neon-blue to-neon-yellow bg-clip-text text-transparent"></span>
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-[0.2em] text-brand-primary border border-brand-primary/30 bg-brand-primary/10">
+            Case Studies
+          </span>
+          <h2 className="text-4xl gradient-tesxt md:text-5xl font-bold text-gray-900 dark:text-white mb-6 mt-4 transition-colors duration-300">
+            Projetos em Destaque <span className="bg-gradient-to-r from-neon-purple via-neon-blue to-neon-yellow bg-clip-text text-transparent"></span>
           </h2>
           <div className="w-20 h-1 bg-brand-primary mx-auto mb-5"></div>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg transition-colors duration-300 space-y-8">
-            Navegue pela galeria circular para explorar os detalhes de cada aplicação.
+            Estudos de caso completos com problema de negócio, solução aplicada e impacto final de cada sistema.
           </p>
         </div>
 
-        {/* Componente da Galeria */}
-        <CircularProjectGallery items={projects} />
+        <div className="space-y-8 lg:space-y-12">
+          {caseStudies.map((project) => (
+            <article
+              key={project.id}
+              className="rounded-3xl border border-brand-primary/10 bg-surface-primary shadow-sm p-6 lg:p-10 transition-all hover:-translate-y-1 hover:shadow-lg"
+            >
+              <div className="space-y-8">
+                <header className="space-y-4">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <span className="px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-widest text-brand-primary border border-brand-primary/30 bg-brand-primary/10">
+                      {project.title}
+                    </span>
+                    <h3 className="text-2xl lg:text-3xl font-bold text-text-primary">
+                      {project.subtitle}
+                    </h3>
+                  </div>
+
+                  {project.contextNote && (
+                    <div className="rounded-2xl border border-brand-primary/20 bg-brand-primary/10 px-5 py-4 text-sm text-text-secondary">
+                      <div className="text-xs font-semibold uppercase tracking-widest text-brand-primary">
+                        Contexto/Nota
+                      </div>
+                      <p className="mt-2 leading-relaxed">{project.contextNote}</p>
+                    </div>
+                  )}
+                </header>
+
+                <div className="grid gap-8 lg:grid-cols-2">
+                  <div className="space-y-6">
+                    <div>
+                      <h4 className="text-sm font-semibold uppercase tracking-widest text-brand-primary">
+                        O Problema
+                      </h4>
+                      <p className="mt-2 text-base lg:text-lg text-text-secondary leading-relaxed">
+                        {project.problem}
+                      </p>
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-semibold uppercase tracking-widest text-brand-primary">
+                        A Solução
+                      </h4>
+                      <p className="mt-2 text-base lg:text-lg text-text-secondary leading-relaxed">
+                        {project.solution}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-6">
+                    <div>
+                      <h4 className="text-sm font-semibold uppercase tracking-widest text-brand-primary">
+                        Tecnologias
+                      </h4>
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {project.technologies.map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-3 py-1 lg:px-4 lg:py-1.5 rounded-full text-xs lg:text-sm font-medium cursor-default
+                            text-text-secondary bg-surface-primary
+                            border border-transparent
+                            [background:linear-gradient(var(--color-surface-primary),var(--color-surface-primary))_padding-box,linear-gradient(135deg,color-mix(in_srgb,var(--color-brand-primary)_70%,transparent),color-mix(in_srgb,var(--color-accent-cta)_70%,transparent))_border-box]
+                            hover:text-text-primary hover:bg-surface-elevated
+                            transition-all"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <h4 className="text-sm font-semibold uppercase tracking-widest text-brand-primary">
+                        Funcionalidades
+                      </h4>
+                      <ul className="mt-3 space-y-2 text-base text-text-secondary list-disc list-inside">
+                        {project.features.map((feature) => (
+                          <li key={feature}>{feature}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="rounded-2xl border border-accent-cta/30 bg-accent-cta/10 px-5 py-4">
+                  <h4 className="text-sm font-semibold uppercase tracking-widest text-accent-cta">
+                    Impacto
+                  </h4>
+                  <p className="mt-2 text-base lg:text-lg text-text-secondary leading-relaxed">
+                    {project.impact}
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap gap-4 pt-2">
+                  <button
+                    type="button"
+                    className="flex items-center gap-2 px-5 py-2.5 lg:px-6 lg:py-3 rounded-xl font-bold transition-all duration-300 text-sm lg:text-base
+                    text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-white/20
+                    hover:text-accent-cta hover:border-accent-cta hover:bg-accent-cta/10 hover:scale-105"
+                  >
+                    Ver Código (GitHub)
+                  </button>
+                  <button
+                    type="button"
+                    className="flex items-center gap-2 px-5 py-2.5 lg:px-6 lg:py-3 rounded-xl font-bold transition-all duration-300 text-sm lg:text-base
+                    text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-white/20
+                    hover:text-brand-primary hover:border-brand-primary hover:bg-brand-primary/10 hover:scale-105"
+                  >
+                    Ver Demo
+                  </button>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
         
       </div>
     </section>
