@@ -1,6 +1,8 @@
 export function Projects() {
   const badgeBaseClasses =
     "inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase text-brand-primary border border-brand-primary/30 bg-brand-primary/10";
+  const techPillClasses =
+    "px-3 py-1 lg:px-4 lg:py-1.5 rounded-full text-xs lg:text-sm font-medium cursor-default text-text-secondary bg-surface-primary border border-transparent [background:linear-gradient(var(--color-surface-primary),var(--color-surface-primary))_padding-box,linear-gradient(135deg,color-mix(in_srgb,var(--color-brand-primary)_70%,transparent),color-mix(in_srgb,var(--color-accent-cta)_70%,transparent))_border-box] hover:text-text-primary hover:bg-surface-elevated transition-all";
   const caseStudies = [
     {
       id: 1,
@@ -91,7 +93,7 @@ export function Projects() {
         
         {/* Cabeçalho */}
         <div className="text-center mb-16">
-          <span className={`${badgeBaseClasses} tracking-[0.2em]`}>
+          <span className={`${badgeBaseClasses} tracking-widest`}>
             Case Studies
           </span>
           <h2 className="text-4xl gradient-text md:text-5xl font-bold text-gray-900 dark:text-white mb-6 mt-4 transition-colors duration-300">
@@ -157,15 +159,7 @@ export function Projects() {
                       </h4>
                       <div className="mt-3 flex flex-wrap gap-2">
                         {project.technologies.map((tech) => (
-                          <span
-                            key={tech}
-                            className="px-3 py-1 lg:px-4 lg:py-1.5 rounded-full text-xs lg:text-sm font-medium cursor-default
-                            text-text-secondary bg-surface-primary
-                            border border-transparent
-                            [background:linear-gradient(var(--color-surface-primary),var(--color-surface-primary))_padding-box,linear-gradient(135deg,color-mix(in_srgb,var(--color-brand-primary)_70%,transparent),color-mix(in_srgb,var(--color-accent-cta)_70%,transparent))_border-box]
-                            hover:text-text-primary hover:bg-surface-elevated
-                            transition-all"
-                          >
+                          <span key={tech} className={techPillClasses}>
                             {tech}
                           </span>
                         ))}
@@ -197,7 +191,7 @@ export function Projects() {
                 <div className="flex flex-wrap gap-4 pt-2">
                   <button
                     type="button"
-                    aria-label="Ver código no GitHub (placeholder)"
+                    aria-label="Ver código no GitHub"
                     disabled
                     className="flex items-center gap-2 px-5 py-2.5 lg:px-6 lg:py-3 rounded-xl font-bold transition-all duration-300 text-sm lg:text-base
                     text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-white/20
@@ -208,7 +202,7 @@ export function Projects() {
                   </button>
                   <button
                     type="button"
-                    aria-label="Ver demo (placeholder)"
+                    aria-label="Ver demo"
                     disabled
                     className="flex items-center gap-2 px-5 py-2.5 lg:px-6 lg:py-3 rounded-xl font-bold transition-all duration-300 text-sm lg:text-base
                     text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-white/20
