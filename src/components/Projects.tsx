@@ -6,6 +6,9 @@ import {
 } from "lucide-react";
 import imageMedFlow from "../assets/MedFlowCapa.png";
 import agcapa from "../assets/agCapa.png";
+import imageLP from "../assets/LandingPage.png";
+import aiStudio from "../assets/AIStudio.png";
+import codeImage from "../assets/code.jpg";
 import placeholderImage from "../assets/placeholder.jpg";
 import { useLanguage } from "../contexts/LanguageContext";
 import { translations } from "../content/translations";
@@ -25,6 +28,10 @@ interface CaseStudy {
     ui?: string;
   };
   images: {
+    main: string;
+    screens: string[];
+  };
+  imageAlts: {
     main: string;
     screens: string[];
   };
@@ -59,7 +66,15 @@ export function Projects() {
       },
       images: {
         main: imageMedFlow,
-        screens: [placeholderImage, placeholderImage, placeholderImage],
+        screens: [placeholderImage, codeImage, imageLP],
+      },
+      imageAlts: {
+        main: "Tela principal do MedFlow iOS com agenda de medicações",
+        screens: [
+          "Tela de confirmação de horários no MedFlow iOS",
+          "Histórico de doses do MedFlow iOS",
+          "Configurações e preferências do MedFlow iOS",
+        ],
       },
     },
     {
@@ -86,7 +101,15 @@ export function Projects() {
       },
       images: {
         main: agcapa,
-        screens: [placeholderImage, placeholderImage, placeholderImage],
+        screens: [imageLP, placeholderImage, codeImage],
+      },
+      imageAlts: {
+        main: "Tela inicial do AulaGo com destaque para agenda",
+        screens: [
+          "Visão do painel de aulas do AulaGo",
+          "Tela de perfil de professor no AulaGo",
+          "Fluxo de inscrição de alunos no AulaGo",
+        ],
       },
     },
     {
@@ -110,7 +133,15 @@ export function Projects() {
       links: {},
       images: {
         main: placeholderImage,
-        screens: [placeholderImage, placeholderImage, placeholderImage],
+        screens: [codeImage, aiStudio, imageLP],
+      },
+      imageAlts: {
+        main: "Tela principal do BeachMatch com arenas e torneios",
+        screens: [
+          "Dashboard de arenas e quadras do BeachMatch",
+          "Feed social de atletas no BeachMatch",
+          "Tela de organização de torneios no BeachMatch",
+        ],
       },
     },
     {
@@ -134,7 +165,15 @@ export function Projects() {
       links: {},
       images: {
         main: placeholderImage,
-        screens: [placeholderImage, placeholderImage, placeholderImage],
+        screens: [imageLP, placeholderImage, codeImage],
+      },
+      imageAlts: {
+        main: "Tela principal do UniformesCoach com catálogo de produtos",
+        screens: [
+          "Página de detalhes do uniforme no UniformesCoach",
+          "Checkout com pagamentos Pix/Mercado Pago",
+          "Painel administrativo de pedidos do UniformesCoach",
+        ],
       },
     },
   ];
@@ -223,11 +262,11 @@ export function Projects() {
 
                 <div className="space-y-4">
                   <div className="rounded-xl overflow-hidden border border-brand-primary/20">
-                    <img
-                      src={study.images.main}
-                      alt={`Tela principal ${study.title}`}
-                      className="w-full h-52 object-cover"
-                    />
+                  <img
+                    src={study.images.main}
+                      alt={study.imageAlts.main}
+                    className="w-full h-52 object-cover"
+                  />
                   </div>
                   <div>
                     <h4 className="text-sm font-semibold text-brand-primary uppercase tracking-wider mb-3">
@@ -241,7 +280,7 @@ export function Projects() {
                         >
                           <img
                             src={screen}
-                            alt={`Tela ${index + 1} ${study.title}`}
+                            alt={study.imageAlts.screens[index]}
                             className="w-full h-20 object-cover"
                           />
                         </div>
