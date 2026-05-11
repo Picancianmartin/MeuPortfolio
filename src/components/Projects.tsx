@@ -94,7 +94,7 @@ export function Projects() {
         {/* Cabeçalho */}
         <div className="text-center mb-16">
           <span className={`${badgeBaseClasses} tracking-widest`}>
-            Case Studies
+            Estudos de Caso
           </span>
           <h2 className="text-4xl gradient-text md:text-5xl font-bold text-gray-900 dark:text-white mb-6 mt-4 transition-colors duration-300">
             Projetos em Destaque <span className="bg-gradient-to-r from-neon-purple via-neon-blue to-neon-yellow bg-clip-text text-transparent"></span>
