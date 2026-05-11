@@ -6,7 +6,7 @@ export function Contact() {
   const { language } = useLanguage();
   const t = translations[language];
   const currentYear = new Date().getFullYear();
-  const whatsappLink = "https://wa.me/5515000000000";
+  const whatsappLink = "https://wa.me/5515999999999";
 
   return (
     <footer
