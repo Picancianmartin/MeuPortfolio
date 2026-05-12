@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-
 type ProjectCaseStudy = {
   id: string;
   title: string;
@@ -11,10 +9,18 @@ type ProjectCaseStudy = {
   features: string;
   impact: string;
   images: {
-    main: string;
-    thumbnails: [string, string];
+    main: CaseStudyImageData;
+    thumbnails: [CaseStudyImageData, CaseStudyImageData];
   };
 };
+
+type CaseStudyImageData = {
+  label: string;
+  src: string;
+};
+
+const MAIN_IMAGE_SIZE = { width: 960, height: 720 };
+const THUMB_IMAGE_SIZE = { width: 480, height: 360 };
 
 const createPlaceholder = (label: string, width: number, height: number) => {
   const normalizedLabel = label.toLowerCase().replace(/[^a-z0-9]+/g, "-");
@@ -42,45 +48,36 @@ const splitList = (text: string) =>
     .map((item) => item.trim())
     .filter(Boolean);
 
-const CaseStudyImage = ({
+const buildImage = (label: string, size: { width: number; height: number }) => ({
   label,
-  width,
-  height,
+  src: createPlaceholder(label, size.width, size.height),
+});
+
+const CaseStudyImage = ({
+  image,
   priority = false,
   className = "",
 }: {
-  label: string;
-  width: number;
-  height: number;
+  image: CaseStudyImageData;
   priority?: boolean;
   className?: string;
 }) => {
-  const [loaded, setLoaded] = useState(false);
-  const src = createPlaceholder(label, width, height);
-
-  useEffect(() => {
-    setLoaded(false);
-  }, [label, width, height]);
-
   return (
     <div
       className={`relative overflow-hidden rounded-2xl border border-white/10 bg-slate-100/80 dark:bg-white/5 ${className}`}
     >
       <img
-        src={src}
-        alt={`Placeholder: ${label}`}
+        src={image.src}
+        alt={`Placeholder: ${image.label}`}
         loading={priority ? "eager" : "lazy"}
         decoding="async"
-        onLoad={() => setLoaded(true)}
-        className={`h-full w-full object-cover transition-opacity duration-500 ease-out ${loaded ? "opacity-100" : "opacity-0"}`}
+        className="h-full w-full object-cover"
       />
     </div>
   );
 };
 
-export function Projects() {
-
-  const projects: ProjectCaseStudy[] = [
+const projects: ProjectCaseStudy[] = [
     {
       id: "uniformescoach",
       title: "UniformesCoach",
@@ -96,8 +93,11 @@ export function Projects() {
       impact:
         "Digitalização de ponta a ponta do fluxo de pedidos, centralizando pagamentos e estoque em uma arquitetura escalável e fornecendo um painel analítico para decisões de negócio.",
       images: {
-        main: "Main Product View",
-        thumbnails: ["Dashboard Screen", "Admin CRUD View"],
+        main: buildImage("Main Product View", MAIN_IMAGE_SIZE),
+        thumbnails: [
+          buildImage("Dashboard Screen", THUMB_IMAGE_SIZE),
+          buildImage("Admin CRUD View", THUMB_IMAGE_SIZE),
+        ],
       },
     },
     {
@@ -117,8 +117,11 @@ export function Projects() {
       impact:
         "Elimina a fricção no controle de medicamentos, garantindo a aderência do usuário por meio de uma arquitetura local leve, rápida e com notificações à prova de falhas.",
       images: {
-        main: "Main Treatment List",
-        thumbnails: ["Add Medication Form", "Daily Progress View"],
+        main: buildImage("Main Treatment List", MAIN_IMAGE_SIZE),
+        thumbnails: [
+          buildImage("Add Medication Form", THUMB_IMAGE_SIZE),
+          buildImage("Daily Progress View", THUMB_IMAGE_SIZE),
+        ],
       },
     },
     {
@@ -138,11 +141,19 @@ export function Projects() {
       impact:
         "Estruturou a base técnica e de governança de usuários de um marketplace escalável, resolvendo o atrito de entrada e permitindo conexões seguras no ecossistema educacional.",
       images: {
-        main: "User Onboarding/Login",
-        thumbnails: ["Teacher Listing", "Profile Detail View"],
+        main: buildImage("User Onboarding/Login", MAIN_IMAGE_SIZE),
+        thumbnails: [
+          buildImage("Teacher Listing", THUMB_IMAGE_SIZE),
+          buildImage("Profile Detail View", THUMB_IMAGE_SIZE),
+        ],
       },
     },
   ];
+
+const placeholderButtonClassName =
+  "inline-flex items-center justify-center rounded-full border border-gray-200 dark:border-white/15 px-5 py-2 text-sm font-semibold text-gray-600 dark:text-gray-300 bg-white/80 dark:bg-slate-900/40 cursor-not-allowed opacity-70";
+
+export function Projects() {
 
   return (
     <section
@@ -179,19 +190,15 @@ export function Projects() {
                     className={`flex flex-col gap-4 lg:col-span-5 ${isReversed ? "lg:order-2" : "lg:order-1"}`}
                   >
                     <CaseStudyImage
-                      label={project.images.main}
-                      width={960}
-                      height={720}
+                      image={project.images.main}
                       priority={index === 0}
                       className="aspect-[4/3]"
                     />
                     <div className="grid grid-cols-2 gap-4">
                       {project.images.thumbnails.map((thumb) => (
                         <CaseStudyImage
-                          key={thumb}
-                          label={thumb}
-                          width={480}
-                          height={360}
+                          key={`${project.id}-${thumb.label}`}
+                          image={thumb}
                           className="aspect-[4/3]"
                         />
                       ))}
@@ -273,14 +280,14 @@ export function Projects() {
                       <button
                         type="button"
                         disabled
-                        className="inline-flex items-center justify-center rounded-full border border-gray-200 dark:border-white/15 px-5 py-2 text-sm font-semibold text-gray-600 dark:text-gray-300 bg-white/80 dark:bg-slate-900/40 cursor-not-allowed opacity-70"
+                        className={placeholderButtonClassName}
                       >
                         Ver Código (GitHub)
                       </button>
                       <button
                         type="button"
                         disabled
-                        className="inline-flex items-center justify-center rounded-full border border-gray-200 dark:border-white/15 px-5 py-2 text-sm font-semibold text-gray-600 dark:text-gray-300 bg-white/80 dark:bg-slate-900/40 cursor-not-allowed opacity-70"
+                        className={placeholderButtonClassName}
                       >
                         Ver Demo
                       </button>
