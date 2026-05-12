@@ -100,7 +100,7 @@ useEffect(() => {
   );
 }
 
-// --- APP PRINCIPAL ---
+// --- COMPONENTE PRINCIPAL APP ---
 export default function App() {
   return (
     <ThemeProvider>
