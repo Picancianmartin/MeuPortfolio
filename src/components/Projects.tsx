@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 type ProjectCaseStudy = {
   id: string;
@@ -17,15 +17,17 @@ type ProjectCaseStudy = {
 };
 
 const createPlaceholder = (label: string, width: number, height: number) => {
+  const normalizedLabel = label.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  const gradientId = `g-${normalizedLabel}-${width}x${height}`;
   const svg = `
     <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="${label}">
       <defs>
-        <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+        <linearGradient id="${gradientId}" x1="0" x2="1" y1="0" y2="1">
           <stop offset="0%" stop-color="#0f172a" />
           <stop offset="100%" stop-color="#1e293b" />
         </linearGradient>
       </defs>
-      <rect width="100%" height="100%" fill="url(#g)" />
+      <rect width="100%" height="100%" fill="url(#${gradientId})" />
       <text x="50%" y="50%" fill="#e2e8f0" font-size="${Math.max(18, width / 22)}" font-family="Inter, system-ui, sans-serif" text-anchor="middle" dominant-baseline="middle">
         ${label}
       </text>
@@ -54,7 +56,11 @@ const CaseStudyImage = ({
   className?: string;
 }) => {
   const [loaded, setLoaded] = useState(false);
-  const src = useMemo(() => createPlaceholder(label, width, height), [label, width, height]);
+  const src = createPlaceholder(label, width, height);
+
+  useEffect(() => {
+    setLoaded(false);
+  }, [label, width, height]);
 
   return (
     <div
