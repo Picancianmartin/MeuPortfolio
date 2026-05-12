@@ -24,7 +24,11 @@ const THUMB_IMAGE_SIZE = { width: 480, height: 360 };
 
 const createPlaceholder = (label: string, width: number, height: number) => {
   const normalizedLabel = label.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-  const gradientId = `g-${normalizedLabel}-${width}x${height}`;
+  const labelHash = Array.from(label).reduce(
+    (acc, char) => acc + char.charCodeAt(0),
+    0,
+  );
+  const gradientId = `g-${normalizedLabel}-${width}x${height}-${labelHash}`;
   const svg = `
     <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="${label}">
       <defs>
