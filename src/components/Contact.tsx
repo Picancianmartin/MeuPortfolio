@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import {
   Mail,
   MapPin,
-  Phone,
   Send,
   CheckCircle2,
   XCircle,
@@ -12,7 +11,10 @@ import {
   Linkedin,
   Instagram,
 } from "lucide-react";
+import { FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
+import { fill } from "three/src/extras/TextureUtils.js";
+import { c } from "node_modules/vite/dist/node/moduleRunnerTransport.d-DJ_mE5sf";
 
 type ToastType = "success" | "error";
 
@@ -30,6 +32,19 @@ export function Contact() {
     subject: "",
     message: "",
   });
+
+  const WhatsAppIcon = ({ size = 24, className = "" }) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+    >
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.012c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
+    </svg>
+  );
 
   const [isLoading, setIsLoading] = useState(false);
   const [formKey, setFormKey] = useState(0); // Anti-autofill persistente
@@ -86,7 +101,7 @@ export function Contact() {
         "service_2j1cwaa",
         "template_f8ipf24",
         templateParams,
-        "qPUaabFaIxmMGcytP"
+        "qPUaabFaIxmMGcytP",
       )
       .then((response) => {
         console.log("SUCCESS!", response.status, response.text);
@@ -113,7 +128,7 @@ export function Contact() {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setFormData({
       ...formData,
@@ -123,19 +138,20 @@ export function Contact() {
 
   const contactInfo = [
     {
-      icon: Mail,
+      icon: FaEnvelope,
       title: "Email",
       value: "contato@pietramartin.dev",
       link: "mailto:contato@pietramartin.dev",
     },
     {
-      icon: Phone,
-      title: "Telefone",
-      value: "+55 (15) 991762066",
-      link: "tel:+5515991762066",
+      icon: WhatsAppIcon,
+      title: "WhatsApp",
+      value: "+55 (15) 99241-6473",
+      link: "https://wa.me/5515992416473",
+      fill: "currentColor",
     },
     {
-      icon: MapPin,
+      icon: FaMapMarkerAlt,
       title: "Localização",
       value: "Sorocaba, SP - Brasil",
       link: null,
@@ -450,7 +466,7 @@ export function Contact() {
                         </a>
                       </li>
                     );
-                  }
+                  },
                 )}
               </ul>
             </div>
@@ -478,49 +494,28 @@ export function Contact() {
                     href: "https://www.instagram.com/piimartin",
                     label: "Instagram",
                   },
-                  { Icon: Mail, scrollTo: "contact", label: "Email" }, // <- aqui
-                ].map(({ Icon, href, scrollTo, label }) => {
-                  const baseClass =
-                    "p-3 rounded-full transition-all duration-300 " +
-                    "bg-zinc-200 dark:bg-white/5 " +
-                    "text-zinc-700 dark:text-zinc-400 " +
-                    "hover:bg-cyan-500 hover:text-white dark:hover:bg-cyan-500 dark:hover:text-white " +
-                    "active:scale-90";
-
-                  // Caso especial: Email faz scroll (não mailto)
-                  if (scrollTo) {
-                    return (
-                      <button
-                        key={label}
-                        type="button"
-                        onClick={() =>
-                          document.getElementById(scrollTo)?.scrollIntoView({
-                            behavior: "smooth",
-                            block: "start",
-                          })
-                        }
-                        className={baseClass}
-                        aria-label="Ir para o formulário de contato"
-                      >
-                        <Icon size={20} />
-                      </button>
-                    );
-                  }
-
-                  // Links normais (externos)
-                  return (
-                    <a
-                      key={label}
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={baseClass}
-                      aria-label={label}
-                    >
-                      <Icon size={20} />
-                    </a>
-                  );
-                })}
+                  {
+                    Icon: WhatsAppIcon, // <-- ATUALIZADO AQUI
+                    href: "https://wa.me/5515992416473?text=Olá,%20Pietra!%20Vim%20pelo%20seu%20portfólio%20e%20gostaria%20de%20conversar.",
+                    label: "WhatsApp",
+                  },
+                ].map(({ Icon, href, label }, index) => (
+                  <a
+                    key={index}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    // Dica extra de UI: Adicionei a cor verde padrão do WhatsApp no hover apenas para ele
+                    className={`text-zinc-600 dark:text-zinc-400 transition-colors ${
+                      label === "WhatsApp"
+                        ? "hover:text-[#25D366]"
+                        : "hover:text-cyan-600 dark:hover:text-cyan-400"
+                    }`}
+                    aria-label={label}
+                  >
+                    <Icon size={24} />
+                  </a>
+                ))}
               </div>
             </div>
           </div>
