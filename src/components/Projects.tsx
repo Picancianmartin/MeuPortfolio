@@ -1,77 +1,78 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
+
+type ProjectCaseStudy = {
+  id: string;
+  title: string;
+  subtitle: string;
+  contextNote?: string;
+  problem: string;
+  solution: string;
+  technologies: string;
+  features: string;
+  impact: string;
+  images: {
+    main: string;
+    thumbnails: [string, string];
+  };
+};
+
+const createPlaceholder = (label: string, width: number, height: number) => {
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="${label}">
+      <defs>
+        <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0%" stop-color="#0f172a" />
+          <stop offset="100%" stop-color="#1e293b" />
+        </linearGradient>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#g)" />
+      <text x="50%" y="50%" fill="#e2e8f0" font-size="${Math.max(18, width / 22)}" font-family="Inter, system-ui, sans-serif" text-anchor="middle" dominant-baseline="middle">
+        ${label}
+      </text>
+    </svg>
+  `;
+  return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+};
+
+const splitList = (text: string) =>
+  text
+    .split(";")
+    .map((item) => item.trim())
+    .filter(Boolean);
+
+const CaseStudyImage = ({
+  label,
+  width,
+  height,
+  priority = false,
+  className = "",
+}: {
+  label: string;
+  width: number;
+  height: number;
+  priority?: boolean;
+  className?: string;
+}) => {
+  const [loaded, setLoaded] = useState(false);
+  const src = useMemo(() => createPlaceholder(label, width, height), [label, width, height]);
+
+  return (
+    <div
+      className={`relative overflow-hidden rounded-2xl border border-white/10 bg-slate-100/80 dark:bg-white/5 ${className}`}
+    >
+      <img
+        src={src}
+        alt={`Placeholder: ${label}`}
+        loading={priority ? "eager" : "lazy"}
+        decoding="async"
+        onLoad={() => setLoaded(true)}
+        className={`h-full w-full object-cover transition-opacity duration-500 ease-out ${loaded ? "opacity-100" : "opacity-0"}`}
+      />
+    </div>
+  );
+};
 
 export function Projects() {
-  type ProjectCaseStudy = {
-    id: string;
-    title: string;
-    subtitle: string;
-    contextNote?: string;
-    problem: string;
-    solution: string;
-    technologies: string;
-    features: string;
-    impact: string;
-    images: {
-      main: string;
-      thumbnails: [string, string];
-    };
-  };
-
-  const createPlaceholder = (label: string, width: number, height: number) => {
-    const svg = `
-      <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="${label}">
-        <defs>
-          <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
-            <stop offset="0%" stop-color="#0f172a" />
-            <stop offset="100%" stop-color="#1e293b" />
-          </linearGradient>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#g)" />
-        <text x="50%" y="50%" fill="#e2e8f0" font-size="${Math.max(18, width / 22)}" font-family="Inter, system-ui, sans-serif" text-anchor="middle" dominant-baseline="middle">
-          ${label}
-        </text>
-      </svg>
-    `;
-    return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
-  };
-
-  const CaseStudyImage = ({
-    label,
-    width,
-    height,
-    priority = false,
-    className = "",
-  }: {
-    label: string;
-    width: number;
-    height: number;
-    priority?: boolean;
-    className?: string;
-  }) => {
-    const [loaded, setLoaded] = useState(false);
-    const src = createPlaceholder(label, width, height);
-
-    return (
-      <div
-        className={`relative overflow-hidden rounded-2xl border border-white/10 bg-slate-100/80 dark:bg-white/5 ${className}`}
-      >
-        <img
-          src={src}
-          alt={`Placeholder: ${label}`}
-          loading={priority ? "eager" : "lazy"}
-          decoding="async"
-          onLoad={() => setLoaded(true)}
-          className={`h-full w-full object-cover transition-opacity duration-500 ease-out ${loaded ? "opacity-100" : "opacity-0"}`}
-        />
-      </div>
-    );
-  };
-
-  const splitList = (text: string) =>
-    text
-      .split(";")
-      .map((item) => item.trim())
-      .filter(Boolean);
 
   const projects: ProjectCaseStudy[] = [
     {
@@ -265,15 +266,15 @@ export function Projects() {
                     <div className="flex flex-wrap gap-3 pt-2">
                       <button
                         type="button"
-                        aria-disabled="true"
-                        className="inline-flex items-center justify-center rounded-full border border-gray-200 dark:border-white/15 px-5 py-2 text-sm font-semibold text-gray-600 dark:text-gray-300 bg-white/80 dark:bg-slate-900/40 cursor-not-allowed"
+                        disabled
+                        className="inline-flex items-center justify-center rounded-full border border-gray-200 dark:border-white/15 px-5 py-2 text-sm font-semibold text-gray-600 dark:text-gray-300 bg-white/80 dark:bg-slate-900/40 cursor-not-allowed opacity-70"
                       >
                         Ver Código (GitHub)
                       </button>
                       <button
                         type="button"
-                        aria-disabled="true"
-                        className="inline-flex items-center justify-center rounded-full border border-gray-200 dark:border-white/15 px-5 py-2 text-sm font-semibold text-gray-600 dark:text-gray-300 bg-white/80 dark:bg-slate-900/40 cursor-not-allowed"
+                        disabled
+                        className="inline-flex items-center justify-center rounded-full border border-gray-200 dark:border-white/15 px-5 py-2 text-sm font-semibold text-gray-600 dark:text-gray-300 bg-white/80 dark:bg-slate-900/40 cursor-not-allowed opacity-70"
                       >
                         Ver Demo
                       </button>
