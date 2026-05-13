@@ -68,28 +68,8 @@ export function Hero() {
               >
                 Ver Projetos
               </button>
-              <a
-                href={curriculopdf}
-                download="Pietra_Cancian_Martin_CV.pdf"
-                className="group flex items-center gap-3 px-3 py-2 transition-all duration-300 hover:scale-105 cursor-pointer"
-              >
-                {/* Círculo sutil atrás do ícone para dar peso visual */}
-                <div className="relative flex items-center justify-center w-10 h-10 rounded-full bg-white/5 group-hover:bg-white/10 transition-colors border border-white/5">
-                  <Download
-                    size={20}
-                    className="text-cyan-400 group-hover:text-indigo-300 transition-all duration-300 group-hover:translate-y-1"
-                  />
-                </div>
-
-                <div className="flex flex-col">
-                  <span className="text-[10px] uppercase tracking-wider text-zinc-500 font-semibold group-hover:text-zinc-400 transition-colors">
-                    Curriculum Vitae
-                  </span>
-                  <span className="font-bold text-lg bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent group-hover:brightness-125 transition-all">
-                    Download PDF
-                  </span>
-                </div>
-              </a>
+              
+              
             </div>
 
             <div className="flex gap-4 justify-center lg:justify-start pt-4">
