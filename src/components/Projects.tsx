@@ -74,15 +74,15 @@ const projects: ProjectCaseStudy[] = [
     title: "UniformesCoach",
     subtitle: "E-commerce Full-Stack e Gestão de Pedidos",
     problem:
-      "A venda e encomenda de uniformes ocorria de forma totalmente manual (WhatsApp e planilhas), gerando retrabalho, perda do rastreio de pedidos e falta de visibilidade sobre o estoque.",
+      "As vendas eram feitas manualmente (WhatsApp e planilhas), gerando desorganização nos pedidos, retrabalho e falta de controle do estoque.",
     solution:
-      "Um sistema web full-stack de catálogo e pedidos, com checkout via integração PIX, acompanhamento de status pelo cliente e um backoffice administrativo robusto para gestão de produtos, estoque e indicadores de vendas.",
+      "E-commerce web full-stack com catálogo em tempo real, checkout automatizado via PIX e um painel administrativo para gestão de produtos e vendas.",
     technologies:
-      "React, Vite, Tailwind CSS, Supabase (Auth/Storage/DB), Mercado Pago API.",
+      "React, Vite, Tailwind CSS, Supabase (Auth/Storage/DB).",
     features:
       "Catálogo inteligente com validação de estoque em tempo real; Carrinho com fluxo automatizado de PIX; Painel administrativo com CRUD; Dashboard analítico com exportação (ExcelJS).",
     impact:
-      "Digitalização de ponta a ponta do fluxo de pedidos, centralizando pagamentos e estoque em uma arquitetura escalável e fornecendo um painel analítico para decisões de negócio.",
+      "Automatizou o processo de vendas da loja, eliminando o trabalho manual e centralizando o controle de estoque e pagamentos.",
     links: {
       code: "https://github.com/Picancianmartin/UniformesCoachSite.git",
       demo: "https://www.ctcoachdavidsousa.com.br",
@@ -104,17 +104,17 @@ const projects: ProjectCaseStudy[] = [
     title: "MedFlow",
     subtitle: "App Nativo iOS para Gestão de Medicamentos",
     contextNote:
-      "Aplicativo desenvolvido integralmente como projeto prático para aprendizado autodidata avançado no ecossistema Apple (Swift, SwiftUI e arquiteturas nativas).",
+      "App desenvolvido do zero para aprofundamento técnico no ecossistema Apple (Swift e SwiftUI).",
     problem:
-      "Pacientes perdem a aderência a tratamentos médicos devido à dificuldade de organizar horários, dosagens e durações em múltiplos medicamentos simultâneos.",
+      "Pacientes se perdem e abandonam tratamentos por não conseguirem organizar horários e dosagens de vários medicamentos ao mesmo tempo.",
     solution:
-      "Um aplicativo nativo iOS offline-first que centraliza o controle do tratamento, gerenciando a agenda de doses com cálculos automáticos e lembretes confiáveis integrados ao sistema.",
+      "App iOS nativo e offline-first que calcula automaticamente a agenda de doses e dispara notificações locais confiáveis.",
     technologies:
       "Swift, SwiftUI, Combine, SwiftData (Persistência local), UserNotifications.",
     features:
       "Cadastro de tratamentos com cálculo autônomo; Busca inteligente de medicamentos via JSON; Orquestração de notificações locais nativas; Sincronização de estado para edição/exclusão.",
     impact:
-      "Elimina a fricção no controle de medicamentos, garantindo a aderência do usuário por meio de uma arquitetura local leve, rápida e com notificações à prova de falhas.",
+      "Facilita a rotina médica do usuário com um aplicativo leve, rápido e que não depende de internet para alertar sobre os horários.",
     links: {
       code: "https://github.com/Picancianmartin/MedFlowiOS.git",
       demo: "https://picancianmartin.github.io/MedFlowiOS/",
@@ -133,17 +133,17 @@ const projects: ProjectCaseStudy[] = [
     title: "AulaGo",
     subtitle: "App Android Nativo (Marketplace Educacional)",
     contextNote:
-      'MVP de marketplace acadêmico desenvolvido na faculdade com o objetivo de conectar alunos e professores particulares (o "iFood dos idiomas").',
+      'MVP acadêmico criado para ser o "iFood dos idiomas", conectando alunos a professores particulares.',
     problem:
-      "Alunos têm dificuldade em encontrar e agendar aulas, enquanto professores carecem de uma vitrine digital profissional.",
+      "Alunos têm dificuldade em encontrar professores de idiomas, e professores não têm um espaço focado e profissional para oferecer suas aulas.",
     solution:
-      "Um aplicativo mobile Android nativo que estrutura o cadastro e a conexão entre perfis de professores e alunos, garantindo uma base de dados limpa e padronizada para o marketplace.",
+      "App Android nativo com sistema de autenticação, perfis detalhados e busca estruturada para conectar os dois públicos.",
     technologies:
       "Android SDK, Java, Firebase (Auth/Firestore), Google Sign-In, REST API (ViaCEP).",
     features:
       "Login social e autenticação segmentada (Aluno/Professor); Onboarding em duas etapas com validações rigorosas (CPF, Data); Consumo de API ViaCEP para autocompletar endereços; Persistência de dados em banco NoSQL.",
     impact:
-      "Estruturou a base técnica e de governança de usuários de um marketplace escalável, resolvendo o atrito de entrada e permitindo conexões seguras no ecossistema educacional.",
+      "Criou um ambiente digital padronizado e seguro que facilita o agendamento de aulas e o contato no ecossistema educacional.",
     links: {
       code: "https://github.com/Jessica-G-arcia/AulaGo_mobile.git",
       demo: "/lp-aulago",
@@ -178,7 +178,7 @@ export function Projects() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 transition-colors duration-300">
-            Engineering Case Studies
+            Case Studies
           </h2>
           <div className="w-20 h-1 bg-brand-primary mx-auto mb-5"></div>
           <p className="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto text-lg transition-colors duration-300">
