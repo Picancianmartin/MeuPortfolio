@@ -101,7 +101,7 @@ export function Hero() {
                 <Instagram size={24} />
               </a>
               <a
-                href="https://wa.me/5515992416473?text=Olá,%20Pietra!%20Vim%20pelo%20seu%20portfólio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto."
+                href="https://wa.me/5515992416473?text=Olá,%20Pietra!%20Vim%20pelo%20seu%20portfólio%20e%20gostaria%20de%20saber%20mais%20sobre%20."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-4 bg-surface-elevated hover:bg-brand-primary/20 text-text-primary hover:text-brand-primary rounded-lg transition-all border border-brand-primary/20 hover:border-brand-primary/50 active:scale-95"
