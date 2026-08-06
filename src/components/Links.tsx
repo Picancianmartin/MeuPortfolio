@@ -1,7 +1,7 @@
 import { Mail, Github, Linkedin, FileText, Globe, ArrowRight } from "lucide-react";
 import StarBorder from "./StarBorder"; 
 import FloatingLines from "./FloatingLines";
-import curriculopdf from "../assets/Currículo.pdf";
+import curriculopdf from "../assets/Currículo-Único.pdf";
 
 const links = [
   {

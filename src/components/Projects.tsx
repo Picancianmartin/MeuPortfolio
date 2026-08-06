@@ -6,6 +6,9 @@ import medflowCapa from "../assets/medflow-capa.png";
 import placeholderImage from "../assets/placeholder.jpg";
 import medflowscreen from "../assets/medflow-screen.png";
 import medflowAdd from "../assets/medflow-add.png";
+import carlosHome from "../assets/carlos-home.png";
+import carlosEspecialidades from "../assets/carlos-especialidades.png";
+import carlosDepoimentos from "../assets/carlos-FAQ.png";
 
 import aulagoHome from "../assets/AulaGo/AulaGo.png";
 import aulagoBuscar from "../assets/AulaGo/buscar.jpg";
@@ -69,6 +72,35 @@ const CaseStudyImage = ({
 
 const projects: ProjectCaseStudy[] = [
   {
+    id: "carlosmartin",
+    type: "web",
+    title: "Psicólogo Carlos Martin",
+    subtitle: "Landing Page Premium & Automação n8n",
+    problem:
+      "Criar uma presença digital de alto valor para um psicólogo clínico, que transmitisse extrema confiança e facilitasse a conversão de pacientes. Havia também a necessidade de um sistema de prova social (depoimentos) dinâmico, mas sem a complexidade e o custo de manutenção de um backend tradicional.",
+    solution:
+      "Desenvolvimento de uma SPA (Single Page Application) moderna focada em conversão, com UI premium e animações fluidas. A arquitetura dispensou um backend tradicional ao integrar webhooks do n8n para orquestrar um fluxo dinâmico de captura, revisão e exibição de depoimentos em tempo real.",
+    technologies:
+      "React 18, TypeScript, Vite, Tailwind CSS, Framer Motion, Radix UI e n8n.",
+    features:
+      "Sistema dinâmico de depoimentos (GET/POST) automatizado via webhooks (n8n); UI Premium com animações de scroll e parallax utilizando Framer Motion; FAQ interativo, acessível e otimizado com componentes Radix UI; UX focada em conversão com CTAs flutuantes e direcionamento direto para WhatsApp.",
+    impact:
+      "Elevação imediata do valor percebido da clínica. A automação da prova social eliminou o trabalho manual de atualização do site, enquanto a interface de alta performance otimizou a jornada de captação e conversão de novos pacientes.",
+    links: {
+      demo: "https://www.psicologocarlosmartin.com.br",
+    },
+    images: {
+      main: {
+        label: "Página Inicial (Hero Section)",
+        src: carlosHome,
+      },
+      thumbnails: [
+        { label: "Seção de Especialidades", src: carlosEspecialidades },
+        { label: "Prova Social Dinâmica", src: carlosDepoimentos },
+      ],
+    },
+  },
+  {
     id: "uniformescoach",
     type: "web",
     title: "UniformesCoach",
@@ -77,8 +109,7 @@ const projects: ProjectCaseStudy[] = [
       "As vendas eram feitas manualmente (WhatsApp e planilhas), gerando desorganização nos pedidos, retrabalho e falta de controle do estoque.",
     solution:
       "E-commerce web full-stack com catálogo em tempo real, checkout automatizado via PIX e um painel administrativo para gestão de produtos e vendas.",
-    technologies:
-      "React, Vite, Tailwind CSS, Supabase (Auth/Storage/DB).",
+    technologies: "React, Vite, Tailwind CSS, Supabase (Auth/Storage/DB).",
     features:
       "Catálogo inteligente com validação de estoque em tempo real; Carrinho com fluxo automatizado de PIX; Painel administrativo com CRUD; Dashboard analítico com exportação (ExcelJS).",
     impact:
