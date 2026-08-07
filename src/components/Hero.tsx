@@ -1,8 +1,10 @@
-import image_code from "../assets/code.jpg";
-import { Github, Linkedin, Download, Instagram } from "lucide-react";
-import curriculopdf from "../assets/Currículo.pdf";
+import { Github, Linkedin, Instagram } from "lucide-react";
+import { useTheme } from "../contexts/ThemeContext";
+import { motion } from "framer-motion";
+import { AnimatedLogo } from "./AnimatedLogo";
 
 export function Hero() {
+  const { theme } = useTheme();
   const WhatsAppIcon = ({ size = 24 }) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15,6 +17,19 @@ export function Hero() {
     </svg>
   );
 
+  const fadeUpVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.15,
+        duration: 0.7,
+        ease: "easeOut",
+      },
+    }),
+  };
+
   return (
     <section
       id="home"
@@ -24,11 +39,21 @@ export function Hero() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Text Content */}
           <div className="text-center lg:text-left space-y-5">
-            <div className="inline-block px-4 py-2 bg-brand-primary/10 border border-brand-primary/30 rounded-full gradient-text text-sm font-medium">
+            <motion.div
+              custom={0}
+              variants={fadeUpVariants}
+              initial="hidden"
+              animate="visible"
+              className="inline-block px-4 py-2 bg-accent-cta/10 border border-accent-cta/30 rounded-full text-accent-cta text-sm font-medium"
+            >
               Disponível para Oportunidades
-            </div>
+            </motion.div>
 
-            <h1
+            <motion.h1
+              custom={1}
+              variants={fadeUpVariants}
+              initial="hidden"
+              animate="visible"
               className="text-4xl sm:text-5xl lg:text-6xl font-bold text-text-primary"
               style={{
                 fontFamily: "Space Grotesk, sans-serif",
@@ -39,16 +64,27 @@ export function Hero() {
               <span className="block gradient-text mt-2">
                 projetando experiências
               </span>
-            </h1>
+            </motion.h1>
 
-            <p className="text-lg text-text-secondary max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+            <motion.p
+              custom={2}
+              variants={fadeUpVariants}
+              initial="hidden"
+              animate="visible"
+              className="text-lg text-text-secondary max-w-2xl mx-auto lg:mx-0 leading-relaxed"
+            >
               Sou formada em Análise e Desenvolvimento de Sistemas e apaixonada
               por construir produtos úteis. Atuo entre UI/UX e desenvolvimento
               fullstack, criando soluções web e mobile e explorando IA aplicada
               para automatizar tarefas, otimizar processos e apoiar decisões.
-            </p>
+            </motion.p>
 
-            <div className="flex flex-wrap gap-2 justify-center lg:justify-start pt-3">
+            <motion.div
+              custom={3}
+              variants={fadeUpVariants}
+              initial="hidden"
+              animate="visible"
+              className="flex flex-wrap gap-2 justify-center lg:justify-start pt-3">
               <button
                 onClick={() => {
                   const projectsSection = document.getElementById("projects");
@@ -68,17 +104,36 @@ export function Hero() {
               >
                 Ver Projetos
               </button>
-              
-              
-            </div>
 
-            <div className="flex gap-4 justify-center lg:justify-start pt-4">
+              <button
+                onClick={() => {
+                  const contactSection = document.getElementById("contact");
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
+                className="px-8 py-4 sm:py-3 rounded-3xl font-bold cursor-pointer text-base
+             text-[#091636] bg-accent-cta
+             border border-transparent shadow-lg shadow-accent-cta/30
+             hover:bg-accent-cta/90 hover:scale-105 hover:shadow-xl hover:shadow-accent-cta/40
+             transition-all duration-300 active:scale-95"
+              >
+                Fale Comigo
+              </button>
+            </motion.div>
+
+            <motion.div
+              custom={4}
+              variants={fadeUpVariants}
+              initial="hidden"
+              animate="visible"
+              className="flex gap-4 justify-center lg:justify-start pt-4">
               <a
                 href="https://www.github.com/Picancianmartin"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
-                className="p-4 bg-surface-elevated hover:bg-brand-primary/20 text-text-primary hover:text-brand-primary rounded-lg transition-all border border-brand-primary/20 hover:border-brand-primary/50 active:scale-95"
+                className="p-4 bg-surface-elevated hover:bg-accent-cta/10 text-text-primary hover:text-accent-cta rounded-lg transition-all border border-zinc-200 dark:border-white/10 hover:border-accent-cta/40 active:scale-95"
               >
                 <Github size={24} />
               </a>
@@ -87,7 +142,7 @@ export function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="p-4 bg-surface-elevated hover:bg-brand-primary/20 text-text-primary hover:text-brand-primary rounded-lg transition-all border border-brand-primary/20 hover:border-brand-primary/50 active:scale-95"
+                className="p-4 bg-surface-elevated hover:bg-accent-cta/10 text-text-primary hover:text-accent-cta rounded-lg transition-all border border-zinc-200 dark:border-white/10 hover:border-accent-cta/40 active:scale-95"
               >
                 <Linkedin size={24} />
               </a>
@@ -96,7 +151,7 @@ export function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="p-4 bg-surface-elevated hover:bg-brand-primary/20 text-text-primary hover:text-brand-primary rounded-lg transition-all border border-brand-primary/20 hover:border-brand-primary/50 active:scale-95"
+                className="p-4 bg-surface-elevated hover:bg-accent-cta/10 text-text-primary hover:text-accent-cta rounded-lg transition-all border border-zinc-200 dark:border-white/10 hover:border-accent-cta/40 active:scale-95"
               >
                 <Instagram size={24} />
               </a>
@@ -104,22 +159,41 @@ export function Hero() {
                 href="https://wa.me/5515992416473?text=Olá,%20Pietra!%20Vim%20pelo%20seu%20portfólio%20e%20gostaria%20de%20saber%20mais%20sobre%20."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-4 bg-surface-elevated hover:bg-brand-primary/20 text-text-primary hover:text-brand-primary rounded-lg transition-all border border-brand-primary/20 hover:border-brand-primary/50 active:scale-95"
+                className="p-4 bg-surface-elevated hover:bg-accent-cta/10 text-text-primary hover:text-accent-cta rounded-lg transition-all border border-zinc-200 dark:border-white/10 hover:border-accent-cta/40 active:scale-95"
               >
                 <WhatsAppIcon />
               </a>
-            </div>
+            </motion.div>
           </div>
 
-          {/* Image */}
-          <div className="relative hidden lg:block">
-            <div className="relative w-full aspect-square max-w-lg mx-auto glow-purple-hover rounded-2xl">
-              <div className="absolute inset-0 bg-brand-primary/20 rounded-2xl blur-3xl"></div>
-              <img
-                src={image_code}
-                alt="Developer Workspace"
-                className="relative rounded-2xl shadow-2xl w-full h-full object-cover border border-brand-primary/30"
+          {/* Logo */}
+          <div className="relative hidden lg:flex items-center justify-center">
+            <div className="relative w-full max-w-lg mx-auto flex items-center justify-center">
+              <motion.div
+                className="absolute inset-0 bg-brand-primary/20 rounded-full blur-3xl"
+                animate={{ scale: [1, 1.12, 1], opacity: [0.6, 0.9, 0.6] }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
               />
+              <motion.div
+                className="relative w-full max-w-md drop-shadow-2xl"
+                animate={{ y: [0, -10, 0] }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 2,
+                }}
+                whileHover={{ scale: 1.03 }}
+              >
+                <AnimatedLogo
+                  theme={theme}
+                  className="w-full h-auto object-contain"
+                />
+              </motion.div>
             </div>
           </div>
         </div>

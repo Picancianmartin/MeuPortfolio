@@ -28,7 +28,7 @@
   /* Seus tokens UI */
   --color-bg-primary: var(--frost-white);
   --color-surface-primary: #FFFFFF;
-  --color-surface-elevated: #B8A9FE1A;
+  --color-surface-elevated: #0916360A;
   --color-text-primary: var(--deep-navy);
   --color-text-secondary: #33406A;
 
@@ -74,7 +74,7 @@
 .dark {
   --color-bg-primary: var(--deep-navy);
   --color-surface-primary: #0C1B33;
-  --color-surface-elevated: #B8A9FE14;
+  --color-surface-elevated: #FFFFFF0D;
   --color-text-primary: var(--frost-white);
   --color-text-secondary: #C9D4FF;
 
@@ -142,8 +142,8 @@
   .glass-effect {
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    background: color-mix(in srgb, var(--color-brand-primary) 8%, transparent);
-    border: 1px solid color-mix(in srgb, var(--color-brand-primary) 20%, transparent);
+    background: color-mix(in srgb, var(--color-text-primary) 4%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-text-primary) 10%, transparent);
   }
 
   .gradient-text {
@@ -224,6 +224,31 @@
       .hover\:bg-accent-cta\/10:hover { background-color: color-mix(in oklab, var(--color-accent-cta) 10%, transparent); }
       .hover\:bg-accent-cta\/20:hover { background-color: color-mix(in oklab, var(--color-accent-cta) 20%, transparent); }
       .hover\:bg-accent-cta\/90:hover { background-color: color-mix(in oklab, var(--color-accent-cta) 90%, transparent); }
+    }
+  }
+
+  /* Fundo da navbar fixa (translúcido + blur) */
+  .artic-sky {
+    background-color: color-mix(in srgb, var(--color-surface-primary) 85%, transparent);
+  }
+
+  /* Borda gradiente sutil (assinatura roxo→azul), mais forte no hover */
+  .outline-gradient {
+    border: 1px solid transparent;
+    background:
+      linear-gradient(var(--color-surface-elevated), var(--color-surface-elevated)) padding-box,
+      linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--color-brand-primary) 25%, transparent),
+        color-mix(in srgb, var(--color-accent-cta) 25%, transparent)
+      ) border-box;
+  }
+
+  @media (hover: hover) {
+    .outline-gradient-hover:hover {
+      background:
+        linear-gradient(var(--color-surface-elevated), var(--color-surface-elevated)) padding-box,
+        linear-gradient(135deg, var(--color-brand-primary), var(--color-accent-cta)) border-box;
     }
   }
 }

@@ -1,12 +1,13 @@
 import image_me from "../assets/foto.jpeg";
 import { GraduationCap, Code2, Briefcase, Target } from "lucide-react";
+import { BorderBeam } from "./ui/border-beam";
 
 export function About() {
   const highlights = [
     {
       icon: GraduationCap,
       title: "Formação Acadêmica",
-      description: "Análise e Desenv. de Sistemas (Facens)",
+      description: "ADS (Facens) + MBA em andamento (USP)",
     },
     {
       icon: Code2,
@@ -41,7 +42,7 @@ export function About() {
           >
             Sobre Mim
           </h2>
-          <div className="w-20 h-1 bg-brand-primary mx-auto"></div>
+          <div className="w-20 h-1 rounded-full bg-[linear-gradient(90deg,var(--color-brand-primary),var(--color-accent-cta))] mx-auto"></div>
         </div>
 
         <div className="relative lg:grid lg:grid-cols-2 gap-16 items-center">
@@ -51,7 +52,7 @@ export function About() {
               <img
                 src={image_me}
                 alt="Technology"
-                className="relative rounded-2xl shadow-2xl w-80 h-80 lg:w-full lg:h-full object-cover border border-brand-primary/30"
+                className="relative rounded-2xl shadow-2xl w-80 h-80 lg:w-full lg:h-full object-cover border border-white/10"
               />
             </div>
           </div>
@@ -75,11 +76,11 @@ export function About() {
                 <div
                   key={index}
                   // AJUSTE 1: 'p-3' deixa o card bem compacto no celular
-                  className="p-3 lg:p-6 bg-surface-elevated rounded-xl border border-brand-primary/20 hover:border-brand-primary/50 transition-all hover:shadow-lg glass-effect glow-purple-hover hover:-translate-y-1"
+                  className="relative overflow-hidden p-3 lg:p-6 bg-surface-elevated rounded-xl border border-zinc-200 dark:border-white/10 hover:border-accent-cta/40 transition-all hover:shadow-lg glass-effect hover:-translate-y-1"
                 >
-                  {/* AJUSTE 2: Removi 'size={32}' fixo. 
+                  {/* AJUSTE 2: Removi 'size={32}' fixo.
           Usei Tailwind: w-5 h-5 (pequeno no mobile) e lg:w-8 (grande no PC) */}
-                  <item.icon className="text-brand-primary mb-2 lg:mb-3 w-5 h-5 lg:w-8 lg:h-8" />
+                  <item.icon className="text-accent-cta mb-2 lg:mb-3 w-5 h-5 lg:w-8 lg:h-8" />
 
                   {/* AJUSTE 3: Título pequeno (text-sm) no mobile */}
                   <h3
@@ -93,6 +94,7 @@ export function About() {
                   <p className="text-md lg:text-sm text-text-secondary leading-tight">
                     {item.description}
                   </p>
+                  <BorderBeam size={60} duration={6} delay={index * 0.6} />
                 </div>
               ))}
             </div>
