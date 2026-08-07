@@ -15,6 +15,9 @@ import { FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
 import { fill } from "three/src/extras/TextureUtils.js";
 import { c } from "node_modules/vite/dist/node/moduleRunnerTransport.d-DJ_mE5sf";
+import logoClaro from "../assets/logo-claro.svg";
+import logoEscuro from "../assets/logo-escuro.svg";
+import { BorderBeam } from "./ui/border-beam";
 
 type ToastType = "success" | "error";
 
@@ -172,7 +175,7 @@ export function Contact() {
             aria-live="polite"
           >
             <div
-              className={`relative overflow-hidden rounded-2xl border border-brand-primary/20
+              className={`relative overflow-hidden rounded-2xl border border-zinc-200 dark:border-white/10
                 bg-surface-primary/95 backdrop-blur-xl shadow-2xl
                 transition-all duration-200
                 ${
@@ -212,7 +215,7 @@ export function Contact() {
                 <button
                   type="button"
                   onClick={closeToast}
-                  className="p-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-brand-primary/10 transition-all"
+                  className="p-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-zinc-100 dark:hover:bg-white/5 transition-all"
                   aria-label="Fechar"
                 >
                   <X size={18} />
@@ -234,7 +237,7 @@ export function Contact() {
             >
               Entre em Contato
             </h2>
-            <div className="w-20 h-1 bg-brand-primary mx-auto"></div>
+            <div className="w-20 h-1 rounded-full bg-[linear-gradient(90deg,var(--color-brand-primary),var(--color-accent-cta))] mx-auto"></div>
             <p className="text-lg text-text-secondary mt-6 max-w-2xl mx-auto">
               Estou sempre aberta a novas oportunidades e colaborações
             </p>
@@ -261,10 +264,10 @@ export function Contact() {
                 {contactInfo.map((item, index) => (
                   <div
                     key={index}
-                    className="flex items-start gap-4 p-6 bg-surface-elevated rounded-xl border border-brand-primary/20 hover:border-brand-primary/50 transition-all glass-effect glow-purple-hover"
+                    className="relative overflow-hidden flex items-start gap-4 p-6 bg-surface-elevated rounded-xl border border-zinc-200 dark:border-white/10 hover:border-accent-cta/40 transition-all glass-effect hover:shadow-lg"
                   >
-                    <div className="p-3 bg-brand-primary/10 rounded-lg border border-brand-primary/20">
-                      <item.icon className="text-brand-primary" size={24} />
+                    <div className="p-3 bg-accent-cta/10 rounded-lg border border-accent-cta/20">
+                      <item.icon className="text-accent-cta" size={24} />
                     </div>
                     <div>
                       <h4 className="text-text-primary font-bold mb-1">
@@ -273,7 +276,7 @@ export function Contact() {
                       {item.link ? (
                         <a
                           href={item.link}
-                          className="text-text-secondary hover:text-brand-primary transition-colors"
+                          className="text-text-secondary hover:text-accent-cta transition-colors"
                         >
                           {item.value}
                         </a>
@@ -281,13 +284,14 @@ export function Contact() {
                         <p className="text-text-secondary">{item.value}</p>
                       )}
                     </div>
+                    <BorderBeam size={70} duration={6} delay={index * 0.6} />
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Direita: Formulário */}
-            <div className="bg-surface-elevated -mt-8 lg:mt-0 rounded-xl p-8 border border-brand-primary/20 glass-effect">
+            <div className="relative overflow-hidden bg-surface-elevated -mt-8 lg:mt-0 rounded-xl p-8 border border-zinc-200 dark:border-white/10 glass-effect">
               <form
                 key={formKey}
                 onSubmit={handleSubmit}
@@ -310,7 +314,7 @@ export function Contact() {
                     required
                     disabled={isLoading}
                     autoComplete="name"
-                    className="w-full px-4 py-4 sm:py-3 text-base bg-[var(--input-background)] border border-brand-primary/20 rounded-lg text-text-primary placeholder-text-secondary focus:outline-none focus:border-brand-primary transition-all disabled:opacity-50"
+                    className="w-full px-4 py-4 sm:py-3 text-base bg-[var(--input-background)] border border-zinc-200 dark:border-white/10 rounded-lg text-text-primary placeholder-text-secondary focus:outline-none focus:border-accent-cta transition-all disabled:opacity-50"
                     placeholder="Seu nome"
                   />
                 </div>
@@ -331,7 +335,7 @@ export function Contact() {
                     required
                     disabled={isLoading}
                     autoComplete="email"
-                    className="w-full px-4 py-4 sm:py-3 text-base bg-[var(--input-background)] border border-brand-primary/20 rounded-lg text-text-primary placeholder-text-secondary focus:outline-none focus:border-brand-primary transition-all disabled:opacity-50"
+                    className="w-full px-4 py-4 sm:py-3 text-base bg-[var(--input-background)] border border-zinc-200 dark:border-white/10 rounded-lg text-text-primary placeholder-text-secondary focus:outline-none focus:border-accent-cta transition-all disabled:opacity-50"
                     placeholder="seu@email.com"
                     autoCapitalize="none"
                     autoCorrect="off"
@@ -355,7 +359,7 @@ export function Contact() {
                     onChange={handleChange}
                     required
                     disabled={isLoading}
-                    className="w-full px-4 py-4 sm:py-3 text-base bg-[var(--input-background)] border border-brand-primary/20 rounded-lg text-text-primary placeholder-text-secondary focus:outline-none focus:border-brand-primary transition-all disabled:opacity-50"
+                    className="w-full px-4 py-4 sm:py-3 text-base bg-[var(--input-background)] border border-zinc-200 dark:border-white/10 rounded-lg text-text-primary placeholder-text-secondary focus:outline-none focus:border-accent-cta transition-all disabled:opacity-50"
                     placeholder="Assunto da mensagem"
                   />
                 </div>
@@ -375,7 +379,7 @@ export function Contact() {
                     required
                     disabled={isLoading}
                     rows={5}
-                    className="w-full px-4 py-4 sm:py-3 text-base bg-[var(--input-background)] border border-brand-primary/20 rounded-lg text-text-primary placeholder-text-secondary transition-all focus:outline-none focus:border-brand-primary resize-none disabled:opacity-50"
+                    className="w-full px-4 py-4 sm:py-3 text-base bg-[var(--input-background)] border border-zinc-200 dark:border-white/10 rounded-lg text-text-primary placeholder-text-secondary transition-all focus:outline-none focus:border-accent-cta resize-none disabled:opacity-50"
                     placeholder="Sua mensagem..."
                   />
                 </div>
@@ -418,6 +422,7 @@ export function Contact() {
                   )}
                 </button>
               </form>
+              <BorderBeam size={300} duration={8} />
             </div>
           </div>
         </div>
@@ -530,6 +535,25 @@ export function Contact() {
               <span className="text-zinc-500 text-sm hidden md:block">
                 Feito com React & Tailwind CSS
               </span>
+
+              {/* Assinatura discreta: link para contato */}
+              <a
+                href="#contact"
+                title="Site desenvolvido por Pietra Cancian Martin — fale comigo para o seu projeto"
+                aria-label="Site desenvolvido por Pietra Cancian Martin"
+                className="opacity-40 hover:opacity-100 transition-opacity duration-300"
+              >
+                <img
+                  src={logoClaro}
+                  alt="Assinatura Pietra Cancian Martin"
+                  className="h-5 w-auto dark:hidden"
+                />
+                <img
+                  src={logoEscuro}
+                  alt="Assinatura Pietra Cancian Martin"
+                  className="h-5 w-auto hidden dark:block"
+                />
+              </a>
 
               {/* Botão Voltar ao Topo */}
               <button

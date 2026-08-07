@@ -29,7 +29,7 @@ export function Navigation({ activeSection, setActiveSection }: NavigationProps)
   return (
     <>
       {/* --- HEADER SUPERIOR (Desktop Completo | Mobile Apenas Logo) --- */}
-      <nav className="fixed top-0 w-full artic-sky backdrop-blur-xl z-50 border-b border-brand-primary/20">
+      <nav className="fixed top-0 w-full artic-sky backdrop-blur-xl z-50 border-b border-zinc-200 dark:border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             
@@ -48,8 +48,8 @@ export function Navigation({ activeSection, setActiveSection }: NavigationProps)
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`text-sm font-medium hover:text-brand-primary transition-colors ${
-                    activeSection === item.id ? 'text-brand-primary' : 'text-text-secondary'
+                  className={`text-sm font-medium hover:text-accent-cta transition-colors ${
+                    activeSection === item.id ? 'text-accent-cta' : 'text-text-secondary'
                   }`}
                 >
                   {item.label}
@@ -67,7 +67,7 @@ export function Navigation({ activeSection, setActiveSection }: NavigationProps)
       </nav>
 
       {/* --- NAVEGAÇÃO INFERIOR (Mobile Only - Estilo App) --- */}
-      <nav className="md:hidden fixed bottom-0 left-0 w-full bg-surface-primary/95 backdrop-blur-xl border-t border-brand-primary/20 z-50 pb-safe">
+      <nav className="md:hidden fixed bottom-0 left-0 w-full bg-surface-primary/95 backdrop-blur-xl border-t border-zinc-200 dark:border-white/10 z-50 pb-safe">
         <div className="flex justify-around items-center h-16 px-2">
           {navItems.map((item) => {
             const Icon = item.icon;
@@ -84,7 +84,7 @@ export function Navigation({ activeSection, setActiveSection }: NavigationProps)
                   size={24} 
                   className={`transition-all duration-300 ${
                     isActive 
-                      ? 'text-brand-primary -translate-y-1' 
+                      ? 'text-accent-cta -translate-y-1' 
                       : 'text-text-secondary'
                   }`}
                   // Preenchimento opcional se quiser estilo "Sólido" quando ativo
@@ -94,7 +94,7 @@ export function Navigation({ activeSection, setActiveSection }: NavigationProps)
                 
                 {/* Label pequeno */}
                 <span className={`text-[10px] font-medium transition-colors ${
-                  isActive ? 'text-brand-primary' : 'text-text-secondary/70'
+                  isActive ? 'text-accent-cta' : 'text-text-secondary/70'
                 }`}>
                   {item.label}
                 </span>

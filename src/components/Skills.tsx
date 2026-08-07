@@ -7,6 +7,7 @@ import {
   Brain,
   Zap,
 } from "lucide-react"; // Ícones para cada categoria
+import { BorderBeam } from "./ui/border-beam";
 
 export function Skills() {
   const skillCategories = [
@@ -79,7 +80,7 @@ export function Skills() {
   const cardStyle =
     "p-6 rounded-xl glass-effect outline-gradient outline-gradient-hover transition-all";
   const iconBoxStyle =
-    "p-3 bg-brand-primary/10 rounded-lg border border-brand-primary/20 flex-shrink-0";
+    "p-3 bg-accent-cta/10 rounded-lg border border-accent-cta/20 flex-shrink-0";
 
   return (
     <section
@@ -97,25 +98,25 @@ export function Skills() {
           >
             Habilidades
           </h2>
-          <div className="w-20 h-1 bg-brand-primary mx-auto"></div>
+          <div className="w-20 h-1 rounded-full bg-[linear-gradient(90deg,var(--color-brand-primary),var(--color-accent-cta))] mx-auto"></div>
           <p className="text-lg text-text-secondary mt-6 max-w-2xl mx-auto">
             Hard Skills (Stack Técnica) & Soft Skills (Comportamental)
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 -mt-10 lg:mt-0 lg:grid-cols-3 gap-4 lg:gap-8">
-          {skillCategories.map((category) => (
+          {skillCategories.map((category, catIndex) => (
             <div
               key={category.category}
               // AJUSTE 1: p-5 no mobile (mais espaço útil) vs p-8 no PC
-              className="rounded-xl p-5 lg:p-8 glass-effect outline-gradient outline-gradient-hover
+              className="relative overflow-hidden rounded-xl p-5 lg:p-8 glass-effect outline-gradient outline-gradient-hover
       transition-all hover:-translate-y-1"
             >
               {/* Título do Card com Ícone */}
               {/* AJUSTE 2: Margens e Gaps menores no mobile */}
-              <div className="flex items-center gap-3 lg:gap-4 mb-4 lg:mb-6 pb-3 lg:pb-4 border-b border-brand-primary/10">
+              <div className="flex items-center gap-3 lg:gap-4 mb-4 lg:mb-6 pb-3 lg:pb-4 border-b border-zinc-200 dark:border-white/10">
                 {/* Ícone responsivo: w-5 (20px) mobile / w-6 (24px) PC */}
-                <category.icon className="text-brand-primary w-5 h-5 lg:w-6 lg:h-6" />
+                <category.icon className="text-accent-cta w-5 h-5 lg:w-6 lg:h-6" />
 
                 <h3
                   // AJUSTE 3: Fonte menor no título mobile (text-lg)
@@ -144,33 +145,34 @@ export function Skills() {
                   </span>
                 ))}
               </div>
+              <BorderBeam size={80} duration={7} delay={catIndex * 0.7} />
             </div>
           ))}
         </div>
       </div>
       <div>
         <h3 className="text-2xl font-bold text-text-primary mb-8 pt-8 text-center sm:text-left flex items-center justify-center sm:justify-start gap-3">
-          <span className="w-10 h-1 bg-brand-primary rounded-full sm:hidden"></span>{" "}
+          <span className="w-10 h-1 rounded-full bg-[linear-gradient(90deg,var(--color-brand-primary),var(--color-accent-cta))] sm:hidden"></span>{" "}
           {/* Linha decorativa mobile */}
           Diferenciais
-          <span className="w-full h-px bg-brand-primary/20 ml-4 hidden sm:block"></span>{" "}
+          <span className="w-full h-px bg-zinc-200 dark:bg-white/10 ml-4 hidden sm:block"></span>{" "}
           {/* Linha decorativa desktop */}
         </h3>
 
         {/* 1. Grid: 2 colunas no mobile (grid-cols-2) para ficar compacto lado a lado */}
         {/* 2. Gap: gap-3 no mobile (bem juntinho) */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-8">
-          {softSkills.map((skill) => (
+          {softSkills.map((skill, skillIndex) => (
             <div
               key={skill.title}
               // AJUSTE: Troquei ${cardStyle} por classes manuais para controlar o padding
               // p-3 (mobile) vs lg:p-6 (PC)
-              className="p-3 lg:p-6 bg-surface-elevated rounded-xl border border-brand-primary/20 hover:border-brand-primary/50 transition-all hover:shadow-lg glass-effect hover:-translate-y-1 flex flex-col items-start gap-2 lg:gap-4"
+              className="relative overflow-hidden p-3 lg:p-6 bg-surface-elevated rounded-xl border border-zinc-200 dark:border-white/10 hover:border-accent-cta/40 transition-all hover:shadow-lg glass-effect hover:-translate-y-1 flex flex-col items-start gap-2 lg:gap-4"
             >
               {/* Wrapper do ícone (se iconBoxStyle tiver padding, talvez precise ajustar, mas o principal é o ícone) */}
               <div className={iconBoxStyle}>
                 {/* Ícone menor no mobile (w-5 h-5) */}
-                <skill.icon className="text-brand-primary w-5 h-5 lg:w-6 lg:h-6" />
+                <skill.icon className="text-accent-cta w-5 h-5 lg:w-6 lg:h-6" />
               </div>
 
               <div>
@@ -185,6 +187,7 @@ export function Skills() {
                   {skill.description}
                 </p>
               </div>
+              <BorderBeam size={50} duration={5} delay={skillIndex * 0.5} />
             </div>
           ))}
         </div>

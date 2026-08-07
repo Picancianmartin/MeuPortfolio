@@ -14,6 +14,10 @@ import aulagoHome from "../assets/AulaGo/AulaGo.png";
 import aulagoBuscar from "../assets/AulaGo/buscar.jpg";
 import aulagoPerfil from "../assets/AulaGo/perfil.jpg";
 
+import { useState } from "react";
+import { Expand } from "lucide-react";
+import { ImageLightbox } from "./ImageLightbox";
+
 type ProjectCaseStudy = {
   id: string;
   type: "web" | "mobile";
@@ -46,27 +50,45 @@ const splitList = (text: string) =>
     .map((item) => item.trim())
     .filter(Boolean);
 
+const splitTechnologies = (text: string) =>
+  text
+    .replace(/\.$/, "")
+    .split(",")
+    .flatMap((item) => item.split(" e "))
+    .map((item) => item.trim())
+    .filter(Boolean);
+
 const CaseStudyImage = ({
   image,
   priority = false,
   className = "",
+  onClick,
 }: {
   image: CaseStudyImageData;
   priority?: boolean;
   className?: string;
+  onClick?: () => void;
 }) => {
   return (
-    <div
-      className={`relative overflow-hidden rounded-2xl border border-white/10 bg-slate-100/80 dark:bg-white/5 ${className}`}
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label={`Ampliar imagem: ${image.label}`}
+      className={`group relative block w-full appearance-none p-0 m-0 overflow-hidden rounded-2xl border border-white/10 bg-slate-100/80 dark:bg-white/5 cursor-zoom-in text-left ${className}`}
     >
       <img
         src={image.src}
         alt={image.label}
         loading={priority ? "eager" : "lazy"}
         decoding="async"
-        className="h-full w-full object-cover object-[65%_10%]"
+        className="h-full w-full object-cover object-[65%_10%] transition-transform duration-500 ease-out group-hover:scale-105"
       />
-    </div>
+      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
+        <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-3 rounded-full bg-white/15 backdrop-blur-sm text-white">
+          <Expand size={20} />
+        </span>
+      </div>
+    </button>
   );
 };
 
@@ -196,14 +218,24 @@ const activeButtonClassName =
   "inline-flex items-center justify-center rounded-full border border-transparent px-5 py-2 text-sm font-semibold text-white bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200 transition-colors shadow-lg shadow-slate-900/10";
 
 export function Projects() {
+  const [lightbox, setLightbox] = useState<{
+    projectId: string;
+    index: number;
+  } | null>(null);
+
+  const activeProject = projects.find((p) => p.id === lightbox?.projectId);
+  const activeImages = activeProject
+    ? [activeProject.images.main, ...activeProject.images.thumbnails]
+    : [];
+
   return (
     <section
       id="projects"
       className="scroll-mt-24 py-20 bg-gray-50 bg-surface-primary min-h-screen flex flex-col justify-center overflow-hidden relative transition-colors duration-300"
     >
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full pointer-events-none">
-        <div className="absolute top-[10%] left-[10%] w-96 h-96 bg-neon-purple/10 rounded-full blur-[100px]" />
-        <div className="absolute bottom-[10%] right-[10%] w-96 h-96 bg-neon-blue/10 rounded-full blur-[100px]" />
+        <div className="absolute top-[10%] left-[10%] w-96 h-96 bg-brand-primary/10 rounded-full blur-[100px]" />
+        <div className="absolute bottom-[10%] right-[10%] w-96 h-96 bg-accent-cta/10 rounded-full blur-[100px]" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -211,7 +243,7 @@ export function Projects() {
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 transition-colors duration-300">
             Case Studies
           </h2>
-          <div className="w-20 h-1 bg-brand-primary mx-auto mb-5"></div>
+          <div className="w-20 h-1 rounded-full bg-[linear-gradient(90deg,var(--color-brand-primary),var(--color-accent-cta))] mx-auto mb-5"></div>
           <p className="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto text-lg transition-colors duration-300">
             Estudos de caso técnicos que combinam arquitetura de sistemas,
             produto e UI/UX para transformar desafios complexos em soluções
@@ -242,14 +274,23 @@ export function Projects() {
                       image={project.images.main}
                       priority={index === 0}
                       className={mainAspect} // Usando a variável dinâmica
+                      onClick={() =>
+                        setLightbox({ projectId: project.id, index: 0 })
+                      }
                     />
 
                     <div className="grid grid-cols-2 gap-4">
-                      {project.images.thumbnails.map((thumb) => (
+                      {project.images.thumbnails.map((thumb, thumbIndex) => (
                         <CaseStudyImage
                           key={`${project.id}-${thumb.label}`}
                           image={thumb}
                           className={thumbAspect} // Usando a variável dinâmica
+                          onClick={() =>
+                            setLightbox({
+                              projectId: project.id,
+                              index: thumbIndex + 1,
+                            })
+                          }
                         />
                       ))}
                     </div>
@@ -259,7 +300,7 @@ export function Projects() {
                     className={`flex flex-col gap-6 lg:col-span-7 ${isReversed ? "lg:order-1" : "lg:order-2"}`}
                   >
                     <div className="space-y-3">
-                      <span className="text-xs font-semibold tracking-[0.3em] text-neon-blue uppercase">
+                      <span className="text-xs font-semibold tracking-[0.3em] text-accent-cta uppercase">
                         Case Study
                       </span>
                       <h3 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
@@ -271,8 +312,8 @@ export function Projects() {
                     </div>
 
                     {project.contextNote && (
-                      <div className="rounded-2xl border border-neon-blue/30 bg-neon-blue/10 p-4 sm:p-5">
-                        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-neon-blue mb-2">
+                      <div className="rounded-2xl border border-accent-cta/30 bg-accent-cta/10 p-4 sm:p-5">
+                        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-accent-cta mb-2">
                           Contexto/Nota
                         </p>
                         <p className="text-sm sm:text-base text-gray-600 dark:text-gray-200">
@@ -302,9 +343,18 @@ export function Projects() {
                         <h4 className="text-sm font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400 mb-2">
                           Tecnologias
                         </h4>
-                        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">
-                          {project.technologies}
-                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {splitTechnologies(project.technologies).map(
+                            (tech) => (
+                              <span
+                                key={tech}
+                                className="inline-flex items-center rounded-full border border-accent-cta/30 bg-accent-cta/10 px-3 py-1 text-xs sm:text-sm font-medium text-accent-cta"
+                              >
+                                {tech}
+                              </span>
+                            ),
+                          )}
+                        </div>
                       </div>
                       <div>
                         <h4 className="text-sm font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400 mb-2">
@@ -380,6 +430,17 @@ export function Projects() {
           })}
         </div>
       </div>
+
+      <ImageLightbox
+        images={activeImages}
+        index={lightbox ? lightbox.index : null}
+        onClose={() => setLightbox(null)}
+        onNavigate={(newIndex) =>
+          setLightbox((current) =>
+            current ? { ...current, index: newIndex } : current,
+          )
+        }
+      />
     </section>
   );
 }
