@@ -10,6 +10,8 @@ import {
   Github,
   Linkedin,
   Instagram,
+  FileText,
+  Download,
 } from "lucide-react";
 import { FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
@@ -159,6 +161,20 @@ export function Contact() {
       value: "Sorocaba, SP - Brasil",
       link: null,
     },
+    {
+      icon: FileText,
+      title: "Currículo",
+      value: "Ver currículo",
+      link: "/curriculo.html",
+      target: "_blank",
+    },
+    {
+      icon: Download,
+      title: "Currículo (PDF)",
+      value: "Baixar PDF",
+      link: "/curriculo-pietra-martin.pdf",
+      download: true,
+    },
   ];
 
   return (
@@ -276,6 +292,9 @@ export function Contact() {
                       {item.link ? (
                         <a
                           href={item.link}
+                          target={item.target}
+                          rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
+                          download={item.download}
                           className="text-text-secondary hover:text-accent-cta transition-colors"
                         >
                           {item.value}

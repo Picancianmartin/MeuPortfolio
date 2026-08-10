@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pietra Cancian Martin — Desenvolvedora de Software</title>
+<meta name="description" content="Currículo de Pietra Cancian Martin — Desenvolvedora de Software Full-stack e Mobile.">
+<style>
+  :root{
+    --ink:#16181d;
+    --muted:#5f646e;
+    --line:#e2e5ea;
+    --accent:#1b4dd8;
+    --bg:#fff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:#eceef1;
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif;
+    font-size:14px;
+    line-height:1.45;
+    padding:28px 16px;
+  }
+  .page{
+    background:var(--bg);
+    max-width:820px;
+    margin:0 auto;
+    padding:44px 52px 40px;
+    border-radius:4px;
+    box-shadow:0 2px 18px rgba(0,0,0,.10);
+  }
+
+  /* ---------- cabeçalho ---------- */
+  header{border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:20px}
+  h1{font-size:29px;line-height:1.1;letter-spacing:-.02em;font-weight:700}
+  .role{font-size:14.5px;color:var(--muted);margin-top:4px}
+  .contact{margin-top:9px;font-size:12.6px;display:flex;flex-wrap:wrap;gap:5px 0}
+  .contact a{color:var(--accent);text-decoration:none}
+  .contact a:hover{text-decoration:underline}
+  .contact .sep{color:var(--line);padding:0 9px}
+
+  /* ---------- seções ---------- */
+  section{margin-top:19px}
+  h2{
+    font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--muted);padding-bottom:5px;margin-bottom:10px;border-bottom:1px solid var(--line);
+  }
+  p{font-size:13.4px}
+
+  /* ---------- linhas com data à direita ---------- */
+  .row{display:flex;justify-content:space-between;align-items:baseline;gap:14px}
+  .row .when{font-size:12.3px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+  .title{font-size:14px;font-weight:700}
+  .sub{font-size:12.8px;color:var(--muted)}
+
+  .entry{margin-bottom:11px}
+  .entry:last-child{margin-bottom:0}
+
+  /* ---------- projetos ---------- */
+  .project{margin-bottom:13px}
+  .project:last-child{margin-bottom:0}
+  .project .name{font-weight:700;font-size:13.6px}
+  .project .kind{font-weight:400;color:var(--muted)}
+  .project .what{font-weight:400;color:var(--muted)}
+  .tag{
+    display:inline-block;font-size:10.4px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
+    color:#0d6b3f;background:#e6f4ec;border-radius:3px;padding:1.5px 6px;vertical-align:1.5px;margin-left:5px;
+  }
+  ul{list-style:none;margin-top:5px}
+  li{font-size:13px;padding-left:13px;position:relative;margin-bottom:3.5px;color:#2b2f37}
+  li::before{content:"";position:absolute;left:0;top:8px;width:4px;height:4px;border-radius:50%;background:#b9bec7}
+  li b{font-weight:650;color:var(--ink)}
+  .link{margin-top:4px;padding-left:13px;font-size:12.3px}
+  .link a{color:var(--accent);text-decoration:none}
+  .link a:hover{text-decoration:underline}
+
+  /* ---------- habilidades ---------- */
+  .skills{display:grid;grid-template-columns:1fr;gap:4px}
+  .skills div{font-size:13px}
+  .skills b{font-weight:650}
+
+  .inline-list{font-size:13px}
+  .inline-list span{margin-right:22px}
+
+  /* ---------- campos a preencher ---------- */
+  .todo{background:#fff2b8;color:#7a5800;border-radius:3px;padding:0 4px;font-weight:600}
+
+  /* ---------- impressão / PDF ---------- */
+  @page{size:A4;margin:11mm 12mm}
+  @media print{
+    body{background:#fff;padding:0;font-size:10.2pt}
+    .page{box-shadow:none;border-radius:0;max-width:none;padding:0}
+    a{color:var(--accent)!important}
+    section{break-inside:avoid}
+    .project,.entry{break-inside:avoid}
+    .todo{background:none;color:inherit;font-weight:inherit}
+  }
+  @media (max-width:640px){
+    .page{padding:28px 22px}
+    h1{font-size:24px}
+    .row{flex-direction:column;gap:1px}
+  }
+</style>
+</head>
+<body>
+<main class="page">
+
+  <header>
+    <h1>Pietra Cancian Martin</h1>
+    <div class="role">Desenvolvedora de Software (Full-stack &amp; Mobile) &nbsp;·&nbsp; Sorocaba, SP</div>
+    <div class="contact">
+      <a href="mailto:contato@pietramartin.dev">contato@pietramartin.dev</a><span class="sep">|</span>
+      <a href="https://pietramartin.dev">pietramartin.dev</a><span class="sep">|</span>
+      <a href="https://linkedin.com/in/martinpietra">linkedin.com/in/martinpietra</a><span class="sep">|</span>
+      <a href="https://github.com/Picancianmartin">github.com/Picancianmartin</a>
+    </div>
+  </header>
+
+  <section>
+    <h2>Resumo</h2>
+    <p>Desenvolvedora de software com formação em Análise e Desenvolvimento de Sistemas e MBA em Data Science,
+    Inteligência Artificial e Analytics (USP/Esalq) em andamento. Atuação full-stack em React/TypeScript e Node.js, mobile nativo
+    em Swift/SwiftUI e automação de processos com n8n, com base sólida em UI/UX (Figma). Duas aplicações entregues e
+    em produção para clientes reais. Oito anos como atleta profissional de handebol — vice-campeã da Liga Nacional e
+    eleita Melhor Atleta em 2024 — trazendo disciplina, trabalho em equipe e desempenho sob pressão para a engenharia
+    de software.</p>
+  </section>
+
+  <section>
+    <h2>Formação Acadêmica</h2>
+
+    <div class="entry">
+      <div class="row">
+        <span class="title">MBA em Data Science, Inteligência Artificial e Analytics</span>
+        <span class="when">Mai/2026 – Mai/2028</span>
+      </div>
+      <div class="sub">USP/Esalq — Universidade de São Paulo · Pós-graduação lato sensu · Em andamento</div>
+    </div>
+
+    <div class="entry">
+      <div class="row">
+        <span class="title">Análise e Desenvolvimento de Sistemas</span>
+        <span class="when">Concluído em Dez/2025</span>
+      </div>
+      <div class="sub">Faculdade de Engenharia de Sorocaba</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Habilidades Técnicas</h2>
+    <div class="skills">
+      <div><b>Front-end:</b> React, TypeScript, JavaScript, HTML5, Tailwind CSS, Vite, Framer Motion, Radix UI.</div>
+      <div><b>Mobile:</b> Swift, SwiftUI, SwiftData (iOS).</div>
+      <div><b>Back-end &amp; Dados:</b> Node.js, Java, Python, Supabase (PostgreSQL), REST APIs.</div>
+      <div><b>Automação &amp; Integrações:</b> n8n, Webhooks, integrações via API.</div>
+      <div><b>Ferramentas:</b> Git/GitHub, Xcode, VS Code, Figma (UI/UX), Scrum.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Projetos</h2>
+
+    <div class="project">
+      <div class="row">
+        <span>
+          <span class="name">Psicólogo Carlos Martin</span>
+          <span class="what">| Landing page de conversão com automação de depoimentos</span>
+          <span class="tag">Em produção</span>
+        </span>
+        <span class="when">Mai/2026 – atual</span>
+      </div>
+      <ul>
+        <li><b>Front-end (React 18, TypeScript &amp; Tailwind CSS):</b> SPA de alta performance com UI premium,
+        animações de scroll e parallax (Framer Motion) e componentes acessíveis (Radix UI), com UX focada em conversão
+        e CTAs diretos para WhatsApp.</li>
+        <li><b>Automação &amp; Arquitetura (n8n):</b> eliminação da necessidade de backend tradicional ao orquestrar,
+        via webhooks, o fluxo dinâmico de captura, revisão e publicação de depoimentos em tempo real (GET/POST),
+        removendo a atualização manual do site.</li>
+      </ul>
+      <div class="link"><a href="https://psicologocarlosmartin.com.br">psicologocarlosmartin.com.br</a></div>
+    </div>
+
+    <div class="project">
+      <div class="row">
+        <span>
+          <span class="name">CT Coach David Sousa</span>
+          <span class="what">| E-commerce full-stack e sistema de gestão de pedidos</span>
+          <span class="tag">Em produção</span>
+        </span>
+        <span class="when">Fev/2026 – Mar/2026</span>
+      </div>
+      <ul>
+        <li><b>Front-end &amp; Integração (React &amp; Tailwind CSS):</b> catálogo inteligente de produtos e fluxo de
+        carrinho com finalização de pedidos e direcionamento automatizado para pagamentos via PIX.</li>
+        <li><b>Back-office &amp; Banco de Dados (Supabase):</b> arquitetura e criação de painel administrativo com CRUD
+        para gestão de estoque em tempo real e geração de relatórios de métricas exportáveis (ExcelJS).</li>
+      </ul>
+      <div class="link"><a href="https://ctcoachdavidsousa.com.br">ctcoachdavidsousa.com.br</a></div>
+    </div>
+
+    <div class="project">
+      <div class="row">
+        <span>
+          <span class="name">MedFlow</span>
+          <span class="kind"> · Projeto pessoal</span>
+          <span class="what">| Aplicativo nativo iOS para gestão de tratamentos médicos</span>
+        </span>
+        <span class="when">Jan/2026</span>
+      </div>
+      <ul>
+        <li><b>Mobile nativo (Swift &amp; SwiftUI):</b> aplicativo offline-first focado em alta performance e
+        experiência do usuário dentro do ecossistema Apple.</li>
+        <li><b>Arquitetura &amp; Persistência (SwiftData):</b> cálculos autônomos para agenda de doses, orquestração de
+        notificações locais nativas e busca rápida de medicamentos via base de dados JSON.</li>
+      </ul>
+      <div class="link"><a href="https://github.com/Picancianmartin/MedFlowiOS">github.com/Picancianmartin/MedFlowiOS</a></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Experiência</h2>
+    <div class="entry">
+      <div class="row">
+        <span class="title">Atleta Profissional de Handebol</span>
+        <span class="when">2017 – 2024</span>
+      </div>
+      <ul>
+        <li>Atuação em alto rendimento por 8 anos. Vice-campeã da Liga Nacional (2021) e eleita Melhor Atleta (2024).</li>
+        <li>Rotina de treinos e competições conciliada com a graduação em Análise e Desenvolvimento de Sistemas.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Certificações e Idiomas</h2>
+    <ul>
+      <li>User Interface Design Essentials (UI/UX) — Skillshare, 2025.</li>
+    </ul>
+    <div class="inline-list" style="margin-top:8px;padding-left:13px">
+      <span><b>Português:</b> nativo</span><span><b>Inglês:</b> avançado</span>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>
