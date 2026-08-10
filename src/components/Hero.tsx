@@ -170,22 +170,31 @@ export function Hero() {
               variants={fadeUpVariants}
               initial="hidden"
               animate="visible"
-              className="flex flex-wrap gap-3 justify-center lg:justify-start pt-2">
+              className="md:hidden flex flex-wrap gap-2 justify-center pt-4">
               <a
                 href="/curriculo.html"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-cta/10 border border-accent-cta/30 text-accent-cta text-sm font-medium hover:bg-accent-cta/20 transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-3xl font-bold cursor-pointer text-sm
+             text-text-primary bg-surface-primary
+             border border-transparent
+             [background:linear-gradient(var(--color-surface-primary),var(--color-surface-primary))_padding-box,linear-gradient(135deg,color-mix(in_srgb,var(--color-brand-primary)_70%,transparent),color-mix(in_srgb,var(--color-accent-cta)_70%,transparent))_border-box]
+             hover:scale-105 hover:bg-surface-elevated hover:shadow-lg
+             transition-all duration-300 active:scale-95"
               >
-                <FileText size={16} />
+                <FileText size={18} />
                 Ver currículo
               </a>
               <a
                 href="/curriculo-pietra-martin.pdf"
                 download
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-cta/10 border border-accent-cta/30 text-accent-cta text-sm font-medium hover:bg-accent-cta/20 transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-3xl font-bold cursor-pointer text-sm
+             text-[#091636] bg-accent-cta
+             border border-transparent shadow-lg shadow-accent-cta/30
+             hover:bg-accent-cta/90 hover:scale-105 hover:shadow-xl hover:shadow-accent-cta/40
+             transition-all duration-300 active:scale-95"
               >
-                <Download size={16} />
+                <Download size={18} />
                 Baixar PDF
               </a>
             </motion.div>

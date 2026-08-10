@@ -161,6 +161,9 @@ export function Contact() {
       value: "Sorocaba, SP - Brasil",
       link: null,
     },
+  ];
+
+  const resumeLinks = [
     {
       icon: FileText,
       title: "Currículo",
@@ -292,9 +295,6 @@ export function Contact() {
                       {item.link ? (
                         <a
                           href={item.link}
-                          target={item.target}
-                          rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
-                          download={item.download}
                           className="text-text-secondary hover:text-accent-cta transition-colors"
                         >
                           {item.value}
@@ -302,6 +302,34 @@ export function Contact() {
                       ) : (
                         <p className="text-text-secondary">{item.value}</p>
                       )}
+                    </div>
+                    <BorderBeam size={70} duration={6} delay={index * 0.6} />
+                  </div>
+                ))}
+              </div>
+
+              <div className="space-y-4">
+                {resumeLinks.map((item, index) => (
+                  <div
+                    key={index}
+                    className="relative overflow-hidden flex items-start gap-4 p-6 bg-surface-elevated rounded-xl border border-zinc-200 dark:border-white/10 hover:border-accent-cta/40 transition-all glass-effect hover:shadow-lg"
+                  >
+                    <div className="p-3 bg-accent-cta/10 rounded-lg border border-accent-cta/20">
+                      <item.icon className="text-accent-cta" size={24} />
+                    </div>
+                    <div>
+                      <h4 className="text-text-primary font-bold mb-1">
+                        {item.title}
+                      </h4>
+                      <a
+                        href={item.link}
+                        target={item.target}
+                        rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
+                        download={item.download}
+                        className="text-text-secondary hover:text-accent-cta transition-colors"
+                      >
+                        {item.value}
+                      </a>
                     </div>
                     <BorderBeam size={70} duration={6} delay={index * 0.6} />
                   </div>
