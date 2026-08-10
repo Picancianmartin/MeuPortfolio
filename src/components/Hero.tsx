@@ -1,4 +1,4 @@
-import { Github, Linkedin, Instagram } from "lucide-react";
+import { Github, Linkedin, Instagram, FileText, Download } from "lucide-react";
 import { useTheme } from "../contexts/ThemeContext";
 import { motion } from "framer-motion";
 import { AnimatedLogo } from "./AnimatedLogo";
@@ -162,6 +162,31 @@ export function Hero() {
                 className="p-4 bg-surface-elevated hover:bg-accent-cta/10 text-text-primary hover:text-accent-cta rounded-lg transition-all border border-zinc-200 dark:border-white/10 hover:border-accent-cta/40 active:scale-95"
               >
                 <WhatsAppIcon />
+              </a>
+            </motion.div>
+
+            <motion.div
+              custom={5}
+              variants={fadeUpVariants}
+              initial="hidden"
+              animate="visible"
+              className="flex flex-wrap gap-3 justify-center lg:justify-start pt-2">
+              <a
+                href="/curriculo.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-cta/10 border border-accent-cta/30 text-accent-cta text-sm font-medium hover:bg-accent-cta/20 transition-colors"
+              >
+                <FileText size={16} />
+                Ver currículo
+              </a>
+              <a
+                href="/curriculo-pietra-martin.pdf"
+                download
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-cta/10 border border-accent-cta/30 text-accent-cta text-sm font-medium hover:bg-accent-cta/20 transition-colors"
+              >
+                <Download size={16} />
+                Baixar PDF
               </a>
             </motion.div>
           </div>
