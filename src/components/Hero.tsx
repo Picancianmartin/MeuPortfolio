@@ -1,6 +1,7 @@
 import { Github, Linkedin, Instagram } from "lucide-react";
 import { useTheme } from "../contexts/ThemeContext";
 import { motion } from "framer-motion";
+import { rastrear } from "../lib/rastreio";
 import { useNavigate } from "react-router-dom";
 import { AnimatedLogo } from "./AnimatedLogo";
 
@@ -155,6 +156,7 @@ export function Hero() {
               </a>
               <a
                 href="https://wa.me/5515992416473?text=Olá,%20Pietra!%20Vim%20pelo%20seu%20portfólio%20e%20gostaria%20de%20saber%20mais%20sobre%20."
+                onClick={() => rastrear("whatsapp_clicou", { origem: "hero" })}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"

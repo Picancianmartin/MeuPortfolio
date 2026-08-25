@@ -1,21 +1,40 @@
-import { Mail, Github, Linkedin, FileText, Globe, ArrowRight } from "lucide-react";
+import { Github, Linkedin, FileText, Globe, ArrowRight, Calculator, Code, MessageCircle } from "lucide-react";
 import StarBorder from "./StarBorder"; 
 import FloatingLines from "./FloatingLines";
-import curriculopdf from "../assets/Currículo-Único.pdf";
 
+const WHATSAPP =
+  "https://wa.me/5515992416473?text=" +
+  encodeURIComponent("Olá, Pietra! Vim pelo seu link do Instagram e queria falar sobre um projeto.");
+
+// Ordem por intenção comercial: quem chega aqui vem do Instagram e a maioria
+// quer contratar, não conhecer currículo. Orçamento e WhatsApp primeiro.
 const links = [
   {
-    title: "Portfólio",
-    subtitle: "Projetos, cases e habilidades",
-    href: "/", // Vai para a Home
-    icon: Globe,
-    isInternal: true, // Marcação interna
+    title: "Quanto custa o seu site?",
+    subtitle: "Estimativa em 1 minuto, sem compromisso",
+    href: "/orcamento",
+    icon: Calculator,
+    isInternal: true,
   },
   {
-    title: "Currículo (PDF)",
-    subtitle: "Baixar ou visualizar",
-    href: curriculopdf, // Link direto para o PDF
-    icon: FileText,
+    title: "Falar no WhatsApp",
+    subtitle: "Resposta mais rápida",
+    href: WHATSAPP,
+    icon: MessageCircle,
+  },
+  {
+    title: "Portfólio",
+    subtitle: "Quem sou e como trabalho",
+    href: "/",
+    icon: Globe,
+    isInternal: true,
+  },
+  {
+    title: "Projetos",
+    subtitle: "Sites, apps e automações que já entreguei",
+    href: "/projetos",
+    icon: Code,
+    isInternal: true,
   },
   {
     title: "GitHub",
@@ -26,15 +45,14 @@ const links = [
   {
     title: "LinkedIn",
     subtitle: "Experiência e networking",
-    href: "https://www.linkedin.com/in/pietra-cancian-martin/",
+    href: "https://www.linkedin.com/in/martinpietra/",
     icon: Linkedin,
   },
   {
-    title: "Entre em contato",
-    subtitle: "Envie uma mensagem direta",
-    href: "/contato",
-    icon: Mail,
-    isInternal: true,
+    title: "Currículo (PDF)",
+    subtitle: "Para quem procura contratar em vaga",
+    href: "/curriculo-pietra-martin.pdf",
+    icon: FileText,
   },
 ];
 

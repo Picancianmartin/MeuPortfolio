@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   ArrowLeft,
   ArrowRight,
@@ -10,8 +10,10 @@ import {
   Sparkles,
 } from "lucide-react";
 import { Navigation } from "./Navigation";
+import { Planos } from "./Planos";
 import { TIMEOUT_ENVIO_MS, WEBHOOK_ORCAMENTO } from "../data/webhooks";
 import { useMeta } from "../hooks/useMeta";
+import { rastrear } from "../lib/rastreio";
 import {
   ACRESCIMO_URGENCIA,
   MATERIAL,
@@ -112,6 +114,7 @@ function calcular(r: Respostas) {
     extraPiso: arredonda(extraPiso),
     extraTeto: arredonda(extraTeto),
     urgente: r.prazo === "urgente",
+    planoId,
     plano: PLANOS[planoId],
   };
 }
@@ -212,6 +215,10 @@ export default function Orcamento() {
     "Descubra em um minuto qual tipo de site resolve o seu caso, a faixa de investimento e o prazo. Sem compromisso.",
   );
 
+  useEffect(() => {
+    rastrear("orcamento_abriu");
+  }, []);
+
   const [indice, setIndice] = useState(0);
   const [respostas, setRespostas] = useState<Respostas>(RESPOSTAS_INICIAIS);
   const [mostrarResultado, setMostrarResultado] = useState(false);
@@ -256,8 +263,19 @@ export default function Orcamento() {
   }
 
   function avancar() {
+    rastrear("orcamento_respondeu", {
+      passo: passo?.chave ?? "",
+      posicao: indice + 1,
+    });
+
     if (indice + 1 >= passosVisiveis.length) {
       setMostrarResultado(true);
+      rastrear("orcamento_resultado", {
+        tipo: resultado.tipo.nome,
+        plano: resultado.plano.nome,
+        porte: respostas.porte ?? "",
+        urgente: respostas.prazo === "urgente",
+      });
       return;
     }
     setIndice(indice + 1);
@@ -317,6 +335,7 @@ export default function Orcamento() {
         signal: AbortSignal.timeout(TIMEOUT_ENVIO_MS),
       });
       if (!resposta.ok) throw new Error(`webhook respondeu ${resposta.status}`);
+      rastrear("orcamento_enviou", { tipo: resultado.tipo.nome });
       setEnviado(true);
     } catch (falha) {
       // Sem isto, o motivo real (fora do ar, CORS, tempo esgotado) desaparece e
@@ -520,7 +539,7 @@ export default function Orcamento() {
                   <strong className="text-text-primary">
                     {brl(resultado.plano.preco)}/mês
                   </strong>{" "}
-                  ({resultado.plano.nome}) — hospedagem, domínio, backup, segurança e suporte.
+                  ({resultado.plano.nome}). O que entra em cada plano está logo abaixo.
                 </li>
               </ul>
 
@@ -629,6 +648,7 @@ export default function Orcamento() {
                   </button>
                   <a
                     href={WHATSAPP}
+                    onClick={() => rastrear("whatsapp_clicou", { origem: "orcamento" })}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 rounded-lg border border-border px-5 py-3 font-medium transition-colors hover:border-brand-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary/50"
@@ -684,6 +704,10 @@ export default function Orcamento() {
             </div>
           </section>
         )}
+      </div>
+
+      <div className="mx-auto w-full max-w-4xl px-5 pb-10 md:pb-16">
+        <Planos destaque={mostrarResultado ? resultado.planoId : undefined} />
       </div>
     </main>
   );

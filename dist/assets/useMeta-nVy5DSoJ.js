@@ -1,0 +1,1 @@
+import{r as c}from"./index-Dcy0Yxbs.js";function m(n,e){c.useEffect(()=>{const r=document.title;document.title=n;let t=document.querySelector('meta[name="description"]');const o=t?.content;return e&&(t||(t=document.createElement("meta"),t.name="description",document.head.appendChild(t)),t.content=e),()=>{document.title=r,e&&t&&o!==void 0&&(t.content=o)}},[n,e])}export{m as u};

@@ -10,6 +10,7 @@ import { Contact } from './components/Contact';
 import { ConviteOrcamento } from './components/ConviteOrcamento';
 import { Navigation } from './components/Navigation';
 import { ThemeProvider } from './contexts/ThemeContext';
+import { Analytics } from '@vercel/analytics/react';
 
 // Páginas carregadas sob demanda: quem abre a home não baixa o código delas.
 const AIGallery = lazy(() => import('./components/AIGallery'));
@@ -146,6 +147,7 @@ export default function App() {
           <Route path="/orcamento" element={<Orcamento />} />
         </Routes>
         </Suspense>
+        <Analytics />
       </Router>
     </ThemeProvider>
   );

@@ -20,6 +20,7 @@ import logoClaro from "../assets/logo-claro.svg";
 import logoEscuro from "../assets/logo-escuro.svg";
 import { BorderBeam } from "./ui/border-beam";
 import { TIMEOUT_ENVIO_MS, WEBHOOK_CONTATO } from "../data/webhooks";
+import { rastrear } from "../lib/rastreio";
 
 type ToastType = "success" | "error";
 
@@ -111,6 +112,7 @@ export function Contact() {
         signal: AbortSignal.timeout(TIMEOUT_ENVIO_MS),
       });
       if (!resposta.ok) throw new Error(`webhook respondeu ${resposta.status}`);
+      rastrear("contato_enviou");
 
       showToast({
         type: "success",

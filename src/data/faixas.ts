@@ -87,10 +87,52 @@ export const MULTIPLICADOR_PORTE: Record<PorteId, number> = {
 /** Acréscimo quando o prazo é menor que a metade do normal. */
 export const ACRESCIMO_URGENCIA = 0.4;
 
-export const PLANOS: Record<PlanoId, { nome: string; preco: number }> = {
-  P1: { nome: "Essencial", preco: 197 },
-  P2: { nome: "Essencial + Automação", preco: 297 },
-  P3: { nome: "Performance", preco: 597 },
+export interface Plano {
+  nome: string;
+  preco: number;
+  /** Uma frase que diz para quem esse plano é. */
+  paraQuem: string;
+  inclui: string[];
+}
+
+export const PLANOS: Record<PlanoId, Plano> = {
+  P1: {
+    nome: "Essencial",
+    preco: 197,
+    paraQuem: "Site que precisa continuar no ar, rápido e seguro.",
+    inclui: [
+      "Hospedagem, domínio e certificado de segurança",
+      "Backup diário e monitoramento",
+      "Atualizações de segurança",
+      "Suporte por e-mail em até 72h",
+      "1 hora por mês de alterações de conteúdo",
+    ],
+  },
+  P2: {
+    nome: "Essencial + Automação",
+    preco: 297,
+    paraQuem: "Projetos com agendamento, integração ou qualquer coisa automática.",
+    inclui: [
+      "Tudo do Essencial",
+      "1 automação monitorada e mantida",
+      "Custo de infraestrutura da automação incluso",
+      "Suporte em até 48h",
+      "2 horas por mês de alterações",
+    ],
+  },
+  P3: {
+    nome: "Performance",
+    preco: 597,
+    paraQuem: "Quem investe em anúncio e precisa saber o que está dando retorno.",
+    inclui: [
+      "Tudo do Essencial + Automação",
+      "Relatório mensal com análise",
+      "SEO contínuo",
+      "1 landing page nova por trimestre",
+      "Até 2 automações mantidas",
+      "Suporte em até 24h",
+    ],
+  },
 };
 
 export interface Recurso {
