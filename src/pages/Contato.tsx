@@ -5,7 +5,7 @@ import { useMeta } from "../hooks/useMeta";
 export default function Contato() {
   useMeta(
     "Contato | Pietra Martin",
-    "Fale comigo sobre seu projeto de site, app ou automação. Respondo em até um dia útil.",
+    "Fale comigo sobre seu projeto de site, app ou automação. Respondo em até três dias úteis.",
   );
 
   return (

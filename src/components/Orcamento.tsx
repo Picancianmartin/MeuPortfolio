@@ -650,7 +650,7 @@ export default function Orcamento() {
                   Recebi, {contato.nome.split(" ")[0]}!
                 </h3>
                 <p className="mt-2 text-sm text-text-secondary">
-                  Respondo em até um dia útil. Se preferir adiantar, é só chamar no WhatsApp.
+                  Respondo em até três dias úteis. Se preferir adiantar, é só chamar no WhatsApp.
                 </p>
                 <a
                   href={WHATSAPP}

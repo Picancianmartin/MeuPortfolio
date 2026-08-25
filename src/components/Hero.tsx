@@ -1,4 +1,4 @@
-import { Github, Linkedin, Instagram, FileText, Download } from "lucide-react";
+import { Github, Linkedin, Instagram } from "lucide-react";
 import { useTheme } from "../contexts/ThemeContext";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
@@ -41,7 +41,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen bg-surface-primary flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16"
+      className="min-h-[100svh] bg-surface-primary flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16 pb-28 md:pb-0"
     >
       <div className="max-w-7xl mx-auto mt-10 lg:mt-0 w-full">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -62,7 +62,7 @@ export function Hero() {
               variants={fadeUpVariants}
               initial="hidden"
               animate="visible"
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-text-primary"
+              className="text-[2rem] leading-[1.12] sm:text-5xl lg:text-6xl font-bold text-text-primary"
               style={{
                 fontFamily: "Space Grotesk, sans-serif",
                 letterSpacing: "-0.02em",
@@ -79,7 +79,7 @@ export function Hero() {
               variants={fadeUpVariants}
               initial="hidden"
               animate="visible"
-              className="text-lg text-text-secondary max-w-2xl mx-auto lg:mx-0 leading-relaxed"
+              className="text-[15px] sm:text-lg text-text-secondary max-w-xl lg:max-w-2xl mx-auto lg:mx-0 leading-relaxed"
             >
               Sou formada em Análise e Desenvolvimento de Sistemas e apaixonada
               por construir produtos úteis. Atuo entre UI/UX e desenvolvimento
@@ -92,10 +92,10 @@ export function Hero() {
               variants={fadeUpVariants}
               initial="hidden"
               animate="visible"
-              className="flex flex-wrap gap-2 justify-center lg:justify-start pt-3">
+              className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start pt-3">
               <button
                 onClick={() => navegar("/projetos")}
-                className="px-8 py-4 sm:py-3 rounded-3xl font-bold cursor-pointer text-base
+                className="w-full sm:w-auto px-8 py-4 sm:py-3 rounded-3xl font-bold cursor-pointer text-base
              text-text-primary bg-surface-primary
              border border-transparent
              /* A mágica do gradiente na borda: */
@@ -110,7 +110,7 @@ export function Hero() {
 
               <button
                 onClick={() => navegar("/contato")}
-                className="px-8 py-4 sm:py-3 rounded-3xl font-bold cursor-pointer text-base
+                className="w-full sm:w-auto px-8 py-4 sm:py-3 rounded-3xl font-bold cursor-pointer text-base
              text-[#091636] bg-accent-cta
              border border-transparent shadow-lg shadow-accent-cta/30
              hover:bg-accent-cta/90 hover:scale-105 hover:shadow-xl hover:shadow-accent-cta/40
@@ -125,13 +125,13 @@ export function Hero() {
               variants={fadeUpVariants}
               initial="hidden"
               animate="visible"
-              className="flex gap-4 justify-center lg:justify-start pt-4">
+              className="flex flex-wrap gap-3 sm:gap-4 justify-center lg:justify-start pt-4">
               <a
                 href="https://www.github.com/Picancianmartin"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
-                className="p-4 bg-surface-elevated hover:bg-accent-cta/10 text-text-primary hover:text-accent-cta rounded-lg transition-all border border-zinc-200 dark:border-white/10 hover:border-accent-cta/40 active:scale-95"
+                className="p-3 sm:p-4 bg-surface-elevated hover:bg-accent-cta/10 text-text-primary hover:text-accent-cta rounded-lg transition-all border border-zinc-200 dark:border-white/10 hover:border-accent-cta/40 active:scale-95"
               >
                 <Github size={24} />
               </a>
@@ -140,7 +140,7 @@ export function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="p-4 bg-surface-elevated hover:bg-accent-cta/10 text-text-primary hover:text-accent-cta rounded-lg transition-all border border-zinc-200 dark:border-white/10 hover:border-accent-cta/40 active:scale-95"
+                className="p-3 sm:p-4 bg-surface-elevated hover:bg-accent-cta/10 text-text-primary hover:text-accent-cta rounded-lg transition-all border border-zinc-200 dark:border-white/10 hover:border-accent-cta/40 active:scale-95"
               >
                 <Linkedin size={24} />
               </a>
@@ -149,7 +149,7 @@ export function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="p-4 bg-surface-elevated hover:bg-accent-cta/10 text-text-primary hover:text-accent-cta rounded-lg transition-all border border-zinc-200 dark:border-white/10 hover:border-accent-cta/40 active:scale-95"
+                className="p-3 sm:p-4 bg-surface-elevated hover:bg-accent-cta/10 text-text-primary hover:text-accent-cta rounded-lg transition-all border border-zinc-200 dark:border-white/10 hover:border-accent-cta/40 active:scale-95"
               >
                 <Instagram size={24} />
               </a>
@@ -159,28 +159,9 @@ export function Hero() {
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
                 title="WhatsApp"
-                className="p-4 bg-surface-elevated hover:bg-accent-cta/10 text-text-primary hover:text-accent-cta rounded-lg transition-all border border-zinc-200 dark:border-white/10 hover:border-accent-cta/40 active:scale-95"
+                className="p-3 sm:p-4 bg-surface-elevated hover:bg-accent-cta/10 text-text-primary hover:text-accent-cta rounded-lg transition-all border border-zinc-200 dark:border-white/10 hover:border-accent-cta/40 active:scale-95"
               >
                 <WhatsAppIcon />
-              </a>
-              <a
-                href="/curriculo.html"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Ver currículo"
-                title="Ver currículo"
-                className="p-4 bg-surface-elevated hover:bg-accent-cta/10 text-text-primary hover:text-accent-cta rounded-lg transition-all border border-zinc-200 dark:border-white/10 hover:border-accent-cta/40 active:scale-95"
-              >
-                <FileText size={24} />
-              </a>
-              <a
-                href="/curriculo-pietra-martin.pdf"
-                download
-                aria-label="Baixar currículo em PDF"
-                title="Baixar currículo em PDF"
-                className="p-4 bg-surface-elevated hover:bg-accent-cta/10 text-text-primary hover:text-accent-cta rounded-lg transition-all border border-zinc-200 dark:border-white/10 hover:border-accent-cta/40 active:scale-95"
-              >
-                <Download size={24} />
               </a>
             </motion.div>
 
