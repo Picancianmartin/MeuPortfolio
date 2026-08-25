@@ -1,8 +1,31 @@
-import image_me from "../assets/foto.jpeg";
-import { GraduationCap, Code2, Briefcase, Target } from "lucide-react";
+import image_me from "../assets/foto-perfil.webp";
+import { GraduationCap, Code2, Briefcase, Target, FileText, Download } from "lucide-react";
 import { BorderBeam } from "./ui/border-beam";
 
-export function About() {
+interface AboutProps {
+  /** Mostra os cards de currículo junto dos destaques. Só na página /sobre —
+   *  na home o currículo já está nos ícones da hero. */
+  mostrarCurriculo?: boolean;
+}
+
+export function About({ mostrarCurriculo = false }: AboutProps = {}) {
+  const curriculo = [
+    {
+      icon: FileText,
+      title: "Currículo",
+      description: "Ver no navegador",
+      href: "/curriculo.html",
+      target: "_blank",
+    },
+    {
+      icon: Download,
+      title: "Currículo (PDF)",
+      description: "Baixar o arquivo",
+      href: "/curriculo-pietra-martin.pdf",
+      download: true,
+    },
+  ];
+
   const highlights = [
     {
       icon: GraduationCap,
@@ -51,8 +74,8 @@ export function About() {
               <div className="absolute inset-0 bg-brand-primary/20 rounded-2xl blur-3xl"></div>
               <img
                 src={image_me}
-                alt="Technology"
-                className="relative rounded-2xl shadow-2xl w-80 h-80 lg:w-full lg:h-full object-cover border border-white/10"
+                alt="Pietra Cancian Martin"
+                className="relative rounded-2xl shadow-2xl w-80 h-80 lg:w-full lg:h-full object-cover object-top border border-white/10"
               />
             </div>
           </div>
@@ -97,6 +120,34 @@ export function About() {
                   <BorderBeam size={60} duration={6} delay={index * 0.6} />
                 </div>
               ))}
+
+              {mostrarCurriculo &&
+                curriculo.map((item, index) => (
+                  <a
+                    key={item.title}
+                    href={item.href}
+                    target={item.target}
+                    rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
+                    download={item.download}
+                    className="relative overflow-hidden p-3 lg:p-6 bg-surface-elevated rounded-xl border border-zinc-200 dark:border-white/10 hover:border-accent-cta/40 transition-all hover:shadow-lg glass-effect hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-cta/60"
+                  >
+                    <item.icon className="text-accent-cta mb-2 lg:mb-3 w-5 h-5 lg:w-8 lg:h-8" />
+                    <h3
+                      className="text-text-primary font-bold mb-1 lg:mb-2 text-lg lg:text-lg"
+                      style={{ fontFamily: "Space Grotesk, sans-serif" }}
+                    >
+                      {item.title}
+                    </h3>
+                    <p className="text-md lg:text-sm text-text-secondary leading-tight">
+                      {item.description}
+                    </p>
+                    <BorderBeam
+                      size={60}
+                      duration={6}
+                      delay={(highlights.length + index) * 0.6}
+                    />
+                  </a>
+                ))}
             </div>
           </div>
         </div>

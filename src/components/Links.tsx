@@ -32,7 +32,7 @@ const links = [
   {
     title: "Entre em contato",
     subtitle: "Envie uma mensagem direta",
-    href: "/#contact", // Vai para Home e rola até #contact
+    href: "/contato",
     icon: Mail,
     isInternal: true,
   },

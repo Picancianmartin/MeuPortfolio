@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
 // Seus componentes existentes
@@ -7,13 +7,30 @@ import { About } from './components/About';
 import { Skills } from './components/Skills';
 import { Projects } from './components/Projects';
 import { Contact } from './components/Contact';
+import { ConviteOrcamento } from './components/ConviteOrcamento';
 import { Navigation } from './components/Navigation';
 import { ThemeProvider } from './contexts/ThemeContext';
 
-// Importar as novas páginas
-import AIGallery from './components/AIGallery';
-import LPAulaGo from './components/LPAulaGo';
-import Links from './components/Links';
+// Páginas carregadas sob demanda: quem abre a home não baixa o código delas.
+const AIGallery = lazy(() => import('./components/AIGallery'));
+const LPAulaGo = lazy(() => import('./components/LPAulaGo'));
+const Links = lazy(() => import('./components/Links'));
+const Orcamento = lazy(() => import('./components/Orcamento'));
+const Projetos = lazy(() => import('./pages/Projetos'));
+const Sobre = lazy(() => import('./pages/Sobre'));
+const Contato = lazy(() => import('./pages/Contato'));
+
+function Carregando() {
+  return (
+    <div
+      className="min-h-screen bg-background-primary flex items-center justify-center"
+      role="status"
+      aria-label="Carregando página"
+    >
+      <div className="h-8 w-8 animate-spin rounded-full border-2 border-text-secondary/30 border-t-accent-cta" />
+    </div>
+  );
+}
 
 // --- COMPONENTE HOME PAGE ---
 function HomePage() {
@@ -52,37 +69,48 @@ function HomePage() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []); // Array vazio: roda apenas ao montar o componente
 
-// EFEITO 2: Hash Scroll Blindado (Tenta várias vezes até achar)
+// EFEITO 2: rolagem por âncora (ao vir de outra rota, ex: /projetos -> /#contact)
 useEffect(() => {
-  if (hash) {
-    const targetId = hash.replace('#', '');
-    let tentativas = 0;
+  if (!hash) return;
+  const alvo = hash.replace('#', '');
+  let cancelado = false;
+  const timeouts: number[] = [];
 
-    // Cria um intervalo que roda a cada 100 milissegundos
-    const intervalo = setInterval(() => {
-      const element = document.getElementById(targetId);
-      
-      if (element) {
-        // SE ACHOU: Rola e para de procurar
-        console.log(`Elemento ${targetId} encontrado na tentativa ${tentativas}! Rolando...`);
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        clearInterval(intervalo);
-      } else {
-        // SE NÃO ACHOU: Apenas conta
-        tentativas++;
-        console.log(`Tentativa ${tentativas}: Elemento ${targetId} ainda não existe...`);
-      }
+  // 'instant' de propósito: o CSS global usa scroll-behavior smooth, e uma
+  // animação reiniciada a cada correção nunca chegaria ao destino.
+  const rolar = () => {
+    if (cancelado) return;
+    const elemento = document.getElementById(alvo);
+    if (!elemento) return;
+    elemento.scrollIntoView({ block: 'start', behavior: 'instant' });
+    setActiveSection(alvo);
+  };
 
-      // SEGURANÇA: Se tentou 50 vezes (5 segundos) e não achou, desiste para não travar
-      if (tentativas > 50) {
-        console.error("Desisto. O elemento não foi renderizado a tempo.");
-        clearInterval(intervalo);
-      }
-    }, 100); // Checa a cada 0.1 segundo
+  // A home tem imagens pesadas e animações de entrada: a posição da seção só é
+  // definitiva depois que tudo carrega. Rolamos assim que o elemento existe (a
+  // pessoa já chega perto do lugar certo) e corrigimos quando o layout assenta.
+  let tentativas = 0;
+  const procura = setInterval(() => {
+    tentativas++;
+    if (document.getElementById(alvo)) {
+      rolar();
+      clearInterval(procura);
+      // As seções animam ao entrar na tela, então o layout ainda se desloca
+      // depois da primeira rolagem. Três correções cobrem o período de entrada
+      // sem deixar a página saltando indefinidamente.
+      [400, 1200, 2500].forEach((atraso) => {
+        timeouts.push(window.setTimeout(rolar, atraso));
+      });
+    } else if (tentativas > 50) {
+      clearInterval(procura);
+    }
+  }, 100);
 
-    // Limpa o intervalo se o usuário mudar de página antes de terminar
-    return () => clearInterval(intervalo);
-  }
+  return () => {
+    cancelado = true;
+    clearInterval(procura);
+    timeouts.forEach((t) => window.clearTimeout(t));
+  };
 }, [hash]);
 
   return (
@@ -94,7 +122,8 @@ useEffect(() => {
       <Hero />
       <About />
       <Skills />
-      <Projects />
+      <Projects limite={2} linkVerTodos titulo="Projetos em destaque" />
+      <ConviteOrcamento />
       <Contact />
     </div>
   );
@@ -105,12 +134,18 @@ export default function App() {
   return (
     <ThemeProvider>
       <Router>
+        <Suspense fallback={<Carregando />}>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/projetos" element={<Projetos />} />
+          <Route path="/sobre" element={<Sobre />} />
+          <Route path="/contato" element={<Contato />} />
           <Route path="/ai-studio" element={<AIGallery />} />
           <Route path="/lp-aulago" element={<LPAulaGo />} />
           <Route path="/links" element={<Links />} />
+          <Route path="/orcamento" element={<Orcamento />} />
         </Routes>
+        </Suspense>
       </Router>
     </ThemeProvider>
   );

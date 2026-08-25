@@ -280,7 +280,7 @@ const LPAulaGo = () => {
         <div className="container mx-6 px-6 flex justify-between items-center">
           {/* Botão Voltar ao Portfólio */}
           <a
-            href="/#projects" // Seu link do GitHub/Portfólio
+            href="/projetos"
             className={`flex items-center gap-2 text-sm font-bold transition-all group ${
               scrolled
                 ? "text-gray-500 hover:text-orange-600"
