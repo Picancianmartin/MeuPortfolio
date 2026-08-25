@@ -5,13 +5,13 @@ import DomeGallery, { GalleryItem } from "./DomeGallery"; // Ajuste o caminho se
 // Importação das Imagens
 import starbucks from "@/assets/ai/starbucks-miniature.jpeg";
 import stanley from "@/assets/ai/stanley-mountain.png";
-import goiabada from "@/assets/ai/Goiabada.png";
-import dog from "@/assets/ai/dog.png";
-import lancer from "@/assets/ai/evoLancer.png";
-import tenis from "@/assets/ai/tenis.png";
-import skate from "@/assets/ai/skate.png";
-import watch from "@/assets/ai/watch.png";
-import portrait from "@/assets/ai/portrait.png";
+import goiabada from "@/assets/ai/Goiabada.webp";
+import dog from "@/assets/ai/dog.webp";
+import lancer from "@/assets/ai/evoLancer.webp";
+import tenis from "@/assets/ai/tenis.webp";
+import skate from "@/assets/ai/skate.webp";
+import watch from "@/assets/ai/watch.webp";
+import portrait from "@/assets/ai/portrait.webp";
 import { ArrowLeft } from "lucide-react";
 import StarBorder from "./StarBorder";
 

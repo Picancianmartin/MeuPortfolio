@@ -1,55 +1,74 @@
-import { Home, User, Cpu, Code, Mail, FileText } from 'lucide-react';
+import { Home, User, Code, Mail, Calculator } from 'lucide-react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { ThemeToggle } from './ThemeToggle';
 
 interface NavigationProps {
-  activeSection: string;
-  setActiveSection: (section: string) => void;
+  activeSection?: string;
+  setActiveSection?: (section: string) => void;
 }
 
-export function Navigation({ activeSection, setActiveSection }: NavigationProps) {
-  
-  // Definição dos itens com seus respectivos ícones
-  const navItems = [
-    { id: 'home', label: 'Início', icon: Home },
-    { id: 'about', label: 'Sobre', icon: User },
-    { id: 'skills', label: 'Skills', icon: Cpu },
-    { id: 'projects', label: 'Projetos', icon: Code },
-    // Adicionei CV aqui se quiser linkar no futuro, ou mantenha Contato
-    { id: 'contact', label: 'Contato', icon: Mail },
-  ];
+type ItemNav =
+  | { tipo: 'ancora'; id: string; label: string; icon: typeof Home }
+  | { tipo: 'rota'; id: string; label: string; icon: typeof Home; to: string };
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setActiveSection(id);
+// Todo item do menu é uma rota própria. Âncora entre páginas foi descartada de
+// propósito: a home anima as seções na entrada, então a posição do alvo muda
+// enquanto a página carrega e a rolagem nunca para no lugar certo.
+const navItems: ItemNav[] = [
+  { tipo: 'rota', id: 'home', label: 'Início', icon: Home, to: '/' },
+  { tipo: 'rota', id: 'sobre', label: 'Sobre', icon: User, to: '/sobre' },
+  { tipo: 'rota', id: 'projetos', label: 'Projetos', icon: Code, to: '/projetos' },
+  { tipo: 'rota', id: 'orcamento', label: 'Orçamento', icon: Calculator, to: '/orcamento' },
+  { tipo: 'rota', id: 'contato', label: 'Contato', icon: Mail, to: '/contato' },
+];
+
+export function Navigation({ activeSection, setActiveSection }: NavigationProps) {
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const naHome = pathname === '/';
+
+  const irPara = (item: ItemNav) => {
+    if (item.tipo === 'rota') {
+      navigate(item.to);
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      return;
     }
+    // Âncora fora da home: volta para a home com o hash e deixa o App rolar.
+    if (!naHome) {
+      navigate(`/#${item.id}`);
+      return;
+    }
+    document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth' });
+    setActiveSection?.(item.id);
   };
+
+  const estaAtivo = (item: ItemNav) =>
+    item.tipo === 'rota' ? pathname === item.to : naHome && activeSection === item.id;
 
   return (
     <>
-      {/* --- HEADER SUPERIOR (Desktop Completo | Mobile Apenas Logo) --- */}
+      {/* --- HEADER SUPERIOR (Desktop completo | Mobile apenas logo) --- */}
       <nav className="fixed top-0 w-full artic-sky backdrop-blur-xl z-50 border-b border-zinc-200 dark:border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            
-            {/* Logo */}
-            <div 
-              className="text-xl font-bold text-text-primary cursor-pointer" 
+
+            <button
+              type="button"
+              className="text-xl font-bold text-text-primary cursor-pointer"
               style={{ fontFamily: 'Space Grotesk, sans-serif' }}
-              onClick={() => scrollToSection('home')}
+              onClick={() => (naHome ? irPara(navItems[0]) : navigate('/'))}
             >
               &lt;Portfolio /&gt;
-            </div>
+            </button>
 
-            {/* Navegação Desktop (Hidden no Mobile) */}
             <div className="hidden md:flex items-center space-x-8">
               {navItems.map((item) => (
                 <button
                   key={item.id}
-                  onClick={() => scrollToSection(item.id)}
+                  onClick={() => irPara(item)}
+                  aria-current={estaAtivo(item) ? 'page' : undefined}
                   className={`text-sm font-medium hover:text-accent-cta transition-colors ${
-                    activeSection === item.id ? 'text-accent-cta' : 'text-text-secondary'
+                    estaAtivo(item) ? 'text-accent-cta' : 'text-text-secondary'
                   }`}
                 >
                   {item.label}
@@ -58,7 +77,6 @@ export function Navigation({ activeSection, setActiveSection }: NavigationProps)
               <ThemeToggle />
             </div>
 
-            {/* Mobile: Apenas o Toggle de Tema no topo (Menu sumiu daqui) */}
             <div className="md:hidden flex items-center">
               <ThemeToggle />
             </div>
@@ -66,36 +84,33 @@ export function Navigation({ activeSection, setActiveSection }: NavigationProps)
         </div>
       </nav>
 
-      {/* --- NAVEGAÇÃO INFERIOR (Mobile Only - Estilo App) --- */}
+      {/* --- NAVEGAÇÃO INFERIOR (Mobile, estilo app) --- */}
       <nav className="md:hidden fixed bottom-0 left-0 w-full bg-surface-primary/95 backdrop-blur-xl border-t border-zinc-200 dark:border-white/10 z-50 pb-safe">
         <div className="flex justify-around items-center h-16 px-2">
           {navItems.map((item) => {
             const Icon = item.icon;
-            const isActive = activeSection === item.id;
+            const ativo = estaAtivo(item);
 
             return (
               <button
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                onClick={() => irPara(item)}
+                aria-current={ativo ? 'page' : undefined}
                 className="flex flex-col items-center justify-center w-full h-full gap-1"
               >
-                {/* Ícone com animação de cor e posição */}
-                <Icon 
-                  size={24} 
+                <Icon
+                  size={24}
                   className={`transition-all duration-300 ${
-                    isActive 
-                      ? 'text-accent-cta -translate-y-1' 
-                      : 'text-text-secondary'
+                    ativo ? 'text-accent-cta -translate-y-1' : 'text-text-secondary'
                   }`}
-                  // Preenchimento opcional se quiser estilo "Sólido" quando ativo
-                  fill={isActive ? "currentColor" : "none"}
-                  fillOpacity={isActive ? 0.2 : 0} 
+                  fill={ativo ? 'currentColor' : 'none'}
+                  fillOpacity={ativo ? 0.2 : 0}
                 />
-                
-                {/* Label pequeno */}
-                <span className={`text-[10px] font-medium transition-colors ${
-                  isActive ? 'text-accent-cta' : 'text-text-secondary/70'
-                }`}>
+                <span
+                  className={`text-[10px] font-medium transition-colors ${
+                    ativo ? 'text-accent-cta' : 'text-text-secondary/70'
+                  }`}
+                >
                   {item.label}
                 </span>
               </button>

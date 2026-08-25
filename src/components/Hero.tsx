@@ -1,10 +1,18 @@
 import { Github, Linkedin, Instagram, FileText, Download } from "lucide-react";
 import { useTheme } from "../contexts/ThemeContext";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { AnimatedLogo } from "./AnimatedLogo";
 
 export function Hero() {
   const { theme } = useTheme();
+  const irPara = useNavigate();
+
+  // Cada destino é uma página própria, então a hero navega em vez de rolar.
+  const navegar = (rota: string) => {
+    irPara(rota);
+    window.scrollTo({ top: 0, behavior: "instant" });
+  };
   const WhatsAppIcon = ({ size = 24 }) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -86,12 +94,7 @@ export function Hero() {
               animate="visible"
               className="flex flex-wrap gap-2 justify-center lg:justify-start pt-3">
               <button
-                onClick={() => {
-                  const projectsSection = document.getElementById("projects");
-                  if (projectsSection) {
-                    projectsSection.scrollIntoView({ behavior: "smooth" });
-                  }
-                }}
+                onClick={() => navegar("/projetos")}
                 className="px-8 py-4 sm:py-3 rounded-3xl font-bold cursor-pointer text-base
              text-text-primary bg-surface-primary
              border border-transparent
@@ -106,12 +109,7 @@ export function Hero() {
               </button>
 
               <button
-                onClick={() => {
-                  const contactSection = document.getElementById("contact");
-                  if (contactSection) {
-                    contactSection.scrollIntoView({ behavior: "smooth" });
-                  }
-                }}
+                onClick={() => navegar("/contato")}
                 className="px-8 py-4 sm:py-3 rounded-3xl font-bold cursor-pointer text-base
              text-[#091636] bg-accent-cta
              border border-transparent shadow-lg shadow-accent-cta/30
@@ -159,45 +157,33 @@ export function Hero() {
                 href="https://wa.me/5515992416473?text=Olá,%20Pietra!%20Vim%20pelo%20seu%20portfólio%20e%20gostaria%20de%20saber%20mais%20sobre%20."
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                title="WhatsApp"
                 className="p-4 bg-surface-elevated hover:bg-accent-cta/10 text-text-primary hover:text-accent-cta rounded-lg transition-all border border-zinc-200 dark:border-white/10 hover:border-accent-cta/40 active:scale-95"
               >
                 <WhatsAppIcon />
               </a>
-            </motion.div>
-
-            <motion.div
-              custom={5}
-              variants={fadeUpVariants}
-              initial="hidden"
-              animate="visible"
-              className="md:hidden flex flex-wrap gap-2 justify-center pt-4">
               <a
                 href="/curriculo.html"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-3xl font-bold cursor-pointer text-sm
-             text-text-primary bg-surface-primary
-             border border-transparent
-             [background:linear-gradient(var(--color-surface-primary),var(--color-surface-primary))_padding-box,linear-gradient(135deg,color-mix(in_srgb,var(--color-brand-primary)_70%,transparent),color-mix(in_srgb,var(--color-accent-cta)_70%,transparent))_border-box]
-             hover:scale-105 hover:bg-surface-elevated hover:shadow-lg
-             transition-all duration-300 active:scale-95"
+                aria-label="Ver currículo"
+                title="Ver currículo"
+                className="p-4 bg-surface-elevated hover:bg-accent-cta/10 text-text-primary hover:text-accent-cta rounded-lg transition-all border border-zinc-200 dark:border-white/10 hover:border-accent-cta/40 active:scale-95"
               >
-                <FileText size={18} />
-                Ver currículo
+                <FileText size={24} />
               </a>
               <a
                 href="/curriculo-pietra-martin.pdf"
                 download
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-3xl font-bold cursor-pointer text-sm
-             text-[#091636] bg-accent-cta
-             border border-transparent shadow-lg shadow-accent-cta/30
-             hover:bg-accent-cta/90 hover:scale-105 hover:shadow-xl hover:shadow-accent-cta/40
-             transition-all duration-300 active:scale-95"
+                aria-label="Baixar currículo em PDF"
+                title="Baixar currículo em PDF"
+                className="p-4 bg-surface-elevated hover:bg-accent-cta/10 text-text-primary hover:text-accent-cta rounded-lg transition-all border border-zinc-200 dark:border-white/10 hover:border-accent-cta/40 active:scale-95"
               >
-                <Download size={18} />
-                Baixar PDF
+                <Download size={24} />
               </a>
             </motion.div>
+
           </div>
 
           {/* Logo */}

@@ -2,11 +2,11 @@ import coachHome from "../assets/coach-home.png";
 import coachCatalogo from "../assets/coach-catalogo.png";
 import coachAdmin from "../assets/coach-admin.png";
 
-import medflowCapa from "../assets/medflow-capa.png";
+import medflowCapa from "../assets/medflow-capa.webp";
 import placeholderImage from "../assets/placeholder.jpg";
 import medflowscreen from "../assets/medflow-screen.png";
 import medflowAdd from "../assets/medflow-add.png";
-import carlosHome from "../assets/carlos-home.png";
+import carlosHome from "../assets/carlos-home.webp";
 import carlosEspecialidades from "../assets/carlos-especialidades.png";
 import carlosDepoimentos from "../assets/carlos-FAQ.png";
 
@@ -15,7 +15,8 @@ import aulagoBuscar from "../assets/AulaGo/buscar.jpg";
 import aulagoPerfil from "../assets/AulaGo/perfil.jpg";
 
 import { useState } from "react";
-import { Expand } from "lucide-react";
+import { Expand, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { ImageLightbox } from "./ImageLightbox";
 
 type ProjectCaseStudy = {
@@ -217,7 +218,24 @@ const placeholderButtonClassName =
 const activeButtonClassName =
   "inline-flex items-center justify-center rounded-full border border-transparent px-5 py-2 text-sm font-semibold text-white bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200 transition-colors shadow-lg shadow-slate-900/10";
 
-export function Projects() {
+interface ProjectsProps {
+  /** Quantos case studies mostrar. Sem limite, mostra todos. */
+  limite?: number;
+  /** Exibe o link para a página com todos os projetos. */
+  linkVerTodos?: boolean;
+  /** Título e texto de apoio do bloco. */
+  titulo?: string;
+  descricao?: string;
+}
+
+export function Projects({
+  limite,
+  linkVerTodos = false,
+  titulo = "Case Studies",
+  descricao = "Estudos de caso técnicos que combinam arquitetura de sistemas, produto e UI/UX para transformar desafios complexos em soluções escaláveis.",
+}: ProjectsProps = {}) {
+  const projetosVisiveis = limite ? projects.slice(0, limite) : projects;
+
   const [lightbox, setLightbox] = useState<{
     projectId: string;
     index: number;
@@ -241,18 +259,16 @@ export function Projects() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 transition-colors duration-300">
-            Case Studies
+            {titulo}
           </h2>
           <div className="w-20 h-1 rounded-full bg-[linear-gradient(90deg,var(--color-brand-primary),var(--color-accent-cta))] mx-auto mb-5"></div>
           <p className="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto text-lg transition-colors duration-300">
-            Estudos de caso técnicos que combinam arquitetura de sistemas,
-            produto e UI/UX para transformar desafios complexos em soluções
-            escaláveis.
+            {descricao}
           </p>
         </div>
 
         <div className="space-y-12 lg:space-y-20">
-          {projects.map((project, index) => {
+          {projetosVisiveis.map((project, index) => {
             const isReversed = index % 2 !== 0;
 
             // Definimos as proporções dinamicamente
@@ -429,6 +445,18 @@ export function Projects() {
             );
           })}
         </div>
+
+        {linkVerTodos && projects.length > projetosVisiveis.length && (
+          <div className="mt-14 text-center">
+            <Link
+              to="/projetos"
+              className="inline-flex items-center gap-2 rounded-full border border-accent-cta/40 px-6 py-3 text-sm font-semibold text-text-primary transition-colors hover:border-accent-cta hover:text-accent-cta focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-cta/50"
+            >
+              Ver os {projects.length} projetos
+              <ArrowRight size={16} aria-hidden="true" />
+            </Link>
+          </div>
+        )}
       </div>
 
       <ImageLightbox

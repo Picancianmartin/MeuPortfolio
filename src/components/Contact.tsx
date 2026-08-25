@@ -14,12 +14,12 @@ import {
   Download,
 } from "lucide-react";
 import { FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
-import emailjs from "@emailjs/browser";
 import { fill } from "three/src/extras/TextureUtils.js";
 import { c } from "node_modules/vite/dist/node/moduleRunnerTransport.d-DJ_mE5sf";
 import logoClaro from "../assets/logo-claro.svg";
 import logoEscuro from "../assets/logo-escuro.svg";
 import { BorderBeam } from "./ui/border-beam";
+import { TIMEOUT_ENVIO_MS, WEBHOOK_CONTATO } from "../data/webhooks";
 
 type ToastType = "success" | "error";
 
@@ -53,6 +53,7 @@ export function Contact() {
 
   const [isLoading, setIsLoading] = useState(false);
   const [formKey, setFormKey] = useState(0); // Anti-autofill persistente
+  const [armadilha, setArmadilha] = useState("");
 
   // Toast state
   const [toast, setToast] = useState<ToastState | null>(null);
@@ -90,46 +91,47 @@ export function Contact() {
     };
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
 
-    const templateParams = {
-      from_name: formData.name,
-      reply_to: formData.email,
-      subject: formData.subject,
-      message: formData.message,
-    };
-
-    emailjs
-      .send(
-        "service_2j1cwaa",
-        "template_f8ipf24",
-        templateParams,
-        "qPUaabFaIxmMGcytP",
-      )
-      .then((response) => {
-        console.log("SUCCESS!", response.status, response.text);
-        showToast({
-          type: "success",
-          title: "Mensagem enviada!",
-          message: "Obrigada 😊 Em breve entrarei em contato.",
-        });
-        setFormData({ name: "", email: "", subject: "", message: "" });
-        setFormKey((k) => k + 1);
-        (document.activeElement as HTMLElement | null)?.blur();
-      })
-      .catch((err) => {
-        console.log("FAILED...", err);
-        showToast({
-          type: "error",
-          title: "Não foi possível enviar",
-          message: "Tente novamente ou use o e-mail direto.",
-        });
-      })
-      .finally(() => {
-        setIsLoading(false);
+    try {
+      const resposta = await fetch(WEBHOOK_CONTATO, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          nome: formData.name,
+          email: formData.email,
+          assunto: formData.subject,
+          mensagem: formData.message,
+          // Campo-armadilha: humano não vê, robô preenche. O n8n descarta.
+          empresa: armadilha,
+          origem: "portfolio/contato",
+        }),
+        signal: AbortSignal.timeout(TIMEOUT_ENVIO_MS),
       });
+      if (!resposta.ok) throw new Error(`webhook respondeu ${resposta.status}`);
+
+      showToast({
+        type: "success",
+        title: "Mensagem enviada!",
+        message: "Obrigada 😊 Em breve entrarei em contato.",
+      });
+      setFormData({ name: "", email: "", subject: "", message: "" });
+      setArmadilha("");
+      setFormKey((k) => k + 1);
+      (document.activeElement as HTMLElement | null)?.blur();
+    } catch (falha) {
+      // Sem isto o motivo real (fora do ar, CORS, tempo esgotado) desaparece.
+      console.error("[contato] falha no envio:", falha);
+      showToast({
+        type: "error",
+        title: "Não foi possível enviar",
+        message: "Tente novamente ou me chame no WhatsApp.",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleChange = (
@@ -411,7 +413,20 @@ export function Contact() {
                   />
                 </div>
 
-                <div>
+                <div aria-hidden="true" className="absolute left-[-9999px] h-0 w-0 overflow-hidden">
+                    <label htmlFor="contato-empresa">Não preencha este campo</label>
+                    <input
+                      id="contato-empresa"
+                      name="empresa"
+                      type="text"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={armadilha}
+                      onChange={(e) => setArmadilha(e.target.value)}
+                    />
+                  </div>
+
+                  <div>
                   <label
                     htmlFor="message"
                     className="block text-text-primary font-medium mb-2"
